@@ -1,6 +1,11 @@
 import React from 'react'
 
+import Counter from './Counter'
+
 const App = () =>
-  <h1>Hello World!</h1>
+  <React.Fragment>
+    <h1>Hello World!</h1>
+    <Counter />
+  </React.Fragment>
 
 export default App
