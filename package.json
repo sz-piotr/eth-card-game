@@ -1,5 +1,5 @@
 {
-  "name": "identity.eth",
+  "name": "eth-card-game",
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --progress",
