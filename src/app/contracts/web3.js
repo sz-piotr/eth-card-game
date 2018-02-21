@@ -1,15 +1,20 @@
 import * as Web3 from 'web3'
 
-const web3 = new Promise(resolve => {
+const web3 = new Promise((resolve, reject) => {
   window.addEventListener('load', function () {
-    let web3
     if (typeof window.web3 !== 'undefined') {
-      web3 = new Web3(window.web3.currentProvider)
+      let web3 = new Web3(window.web3.currentProvider)
+      web3.eth.getAccounts(function (error, accounts) {
+        if (error) {
+          reject(error)
+        } else {
+          web3.eth.defaultAccount = web3.eth.accounts[0]
+          resolve(web3)
+        }
+      })
     } else {
-      web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+      reject(new Error('No provider was injected!'))
     }
-    web3.eth.defaultAccount = web3.eth.accounts[0]
-    resolve(web3)
   })
 })
 
