@@ -2,11 +2,13 @@ import React from 'react'
 
 import Navbar from './Navbar'
 import Counter from './Counter'
+import AlertBar from './AlertBar'
 
 const App = () =>
   <React.Fragment>
     <Navbar />
-    <main>
+    <AlertBar />
+    <main className='app'>
       <Counter />
     </main>
   </React.Fragment>
