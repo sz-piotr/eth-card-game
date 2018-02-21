@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux'
-import { reducer as metamask } from './metamask'
+import { reducer as web3 } from './web3'
 
 const rootReducer = combineReducers({
-  metamask
+  web3
 })
 
 const store = createStore(
