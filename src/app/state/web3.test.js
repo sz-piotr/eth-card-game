@@ -1,7 +1,7 @@
 import {
   metamaskLoaded,
   metamaskNotPresent,
-  // web3AccountChanged,
+  web3AccountChanged,
   reducer
 } from './web3'
 
@@ -20,7 +20,7 @@ describe('web3 reducer', () => {
     expect(state.metamask.unlocked).toBeTruthy()
   })
 
-  it('correcty handles the metamaskLoaded action with a supported network', () => {
+  it('correcty handles the metamaskLoaded action with supported network', () => {
     const state = reducer({}, metamaskLoaded({
       account: '0x123',
       network: '3'
@@ -55,5 +55,24 @@ describe('web3 reducer', () => {
     expect(state.metamask.installed).toBeFalsy()
   })
 
-  // TODO: correcty handles the web3AccountChanged action
+  it('correcty handles the web3AccountChanged action with unsupported network', () => {
+    const state = reducer({ network: 'unsupported' }, web3AccountChanged('0x123'))
+    expect(state.canTransact).toBeFalsy()
+    expect(state.account).toEqual('0x123')
+    expect(state.metamask.unlocked).toBeTruthy()
+  })
+
+  it('correcty handles the web3AccountChanged action with supported network', () => {
+    const state = reducer({ network: '3' }, web3AccountChanged('0x123'))
+    expect(state.canTransact).toBeTruthy()
+    expect(state.account).toEqual('0x123')
+    expect(state.metamask.unlocked).toBeTruthy()
+  })
+
+  it('correcty handles the web3AccountChanged action when account is undefined', () => {
+    const state = reducer({ network: '3' }, web3AccountChanged())
+    expect(state.canTransact).toBeFalsy()
+    expect(state.account).toBe(undefined)
+    expect(state.metamask.unlocked).toBeFalsy()
+  })
 })
