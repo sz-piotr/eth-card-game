@@ -30,5 +30,17 @@
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "value",
+				"type": "int256"
+			}
+		],
+		"name": "Change",
+		"type": "event"
 	}
 ]

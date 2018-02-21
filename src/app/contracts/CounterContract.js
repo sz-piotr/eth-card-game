@@ -1,9 +1,11 @@
 import abi from './abi/Counter'
 import { web3 } from './web3'
+import { store } from '../state/store'
+import { counterValueChanged } from '../state/counter'
 
 const contract = web3.then(web3 => web3.eth
   .contract(abi)
-  .at('0x74D9f55029b28c6800b1217e8B1e32D212b46Fe5') // Ropsten address
+  .at('0x2df00b2C2E3bE8e8c12704FB578600753401696F') // Ropsten address
 )
 
 function callToPromise (fn, args) {
@@ -29,3 +31,6 @@ export const CounterContract = {
     return contract.then(contract => callToPromise(contract.decrement, []))
   }
 }
+
+CounterContract.getValue()
+  .then(value => store.dispatch(counterValueChanged(value.toString())))
