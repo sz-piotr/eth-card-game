@@ -1,8 +1,10 @@
 import { web3 } from './web3'
 import ropstenAddresses from './addresses/ropsten.json'
 
+const ROPSTEN_NETWORK_ID = 3
+
 const addresses = {
-  3: ropstenAddresses
+  [ROPSTEN_NETWORK_ID]: ropstenAddresses
 }
 
 export function createContract (name, abi) {
