@@ -36,6 +36,7 @@
     "less-loader": "^4.0.5",
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.2",
+    "solc": "^0.4.20",
     "standard": "^10.0.3",
     "style-loader": "^0.20.2",
     "webpack": "^3.10.0",
