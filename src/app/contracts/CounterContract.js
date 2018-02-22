@@ -1,26 +1,26 @@
-import { createContract, call } from './contractUtils'
+import { createContract } from './utils'
 import abi from './abi/Counter'
 import { store } from '../state/store'
 import { counterValueChanged } from '../state/counter'
 
-const contract = createContract(abi, '0x2df00b2C2E3bE8e8c12704FB578600753401696F')
+const contract = createContract('Counter', abi)
 
 export const CounterContract = {
   getValue () {
-    return call(contract, 'value')
+    return contract.call('value')
   },
   increment () {
-    return call(contract, 'increment')
+    return contract.call('increment')
   },
   decrement () {
-    return call(contract, 'decrement')
+    return contract.call('decrement')
   }
 }
 
 CounterContract.getValue()
   .then(value => store.dispatch(counterValueChanged(value.toString())))
 
-contract.then(contract => contract
+contract.getWeb3Contract().then(inst => inst
   .Change({})
   .watch(function (error, event) {
     if (!error) {
