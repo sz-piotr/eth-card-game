@@ -1,26 +1,6 @@
 [
   {
     "constant": true,
-    "inputs": [],
-    "name": "getAll",
-    "outputs": [
-      {
-        "components": [
-          {
-            "name": "cid",
-            "type": "uint256"
-          }
-        ],
-        "name": "",
-        "type": "tuple[]"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
     "inputs": [
       {
         "name": "",
@@ -32,6 +12,33 @@
       {
         "name": "cid",
         "type": "uint256"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCardById",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "string"
       }
     ],
     "payable": false,
@@ -50,7 +57,7 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "getAllCardsId",
+    "name": "getMyCardsId",
     "outputs": [
       {
         "name": "",
