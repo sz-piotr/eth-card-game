@@ -23,7 +23,6 @@ export class ContractInterface {
 
   _createFunction (entry) {
     this[entry.name] = (...args) => {
-      console.log('call ' + entry.name, args)
       return this._web3Contract
         .then(inst => callToPromise(inst[entry.name], args))
     }
