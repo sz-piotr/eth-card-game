@@ -5,8 +5,10 @@ const defaultState = {
   }
 }
 
+const TRUFFLE_DEVELOP_NETWORK = '4447'
+
 function isSupported (network) {
-  return network === '3'
+  return network === TRUFFLE_DEVELOP_NETWORK
 }
 
 export function metamaskLoaded ({ account, network }) {

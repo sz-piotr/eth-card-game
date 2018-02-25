@@ -42,6 +42,11 @@ const config = {
     }),
     extractLess
   ],
+  resolve: {
+    alias: {
+      '_contracts': path.resolve(__dirname, 'build/contracts')
+    }
+  },
   devServer: {
     stats: 'minimal',
     contentBase: 'src/assets',

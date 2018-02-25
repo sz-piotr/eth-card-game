@@ -16,9 +16,7 @@ const METAMASK_NOT_INSTALLED = <React.Fragment>
 
 const METAMASK_LOCKED = 'Your Metamask is locked. Unlock it to make transactions.'
 
-const METAMASK_WRONG_NETWORK = <React.Fragment>
-  Please set the network in Metamask to <strong>Ropsten Test Network</strong>.
-</React.Fragment>
+const METAMASK_WRONG_NETWORK = 'Please set the network in Metamask to truffle develop (http://localhost:9545)'
 
 function getAlertMessage ({ canTransact, metamask }) {
   if (metamask.loaded) {

@@ -1,9 +1,9 @@
+import CounterArtifact from '_contracts/Counter'
 import { createContract } from './utils'
-import abi from './abi/Counter'
 import { store } from '../state/store'
 import { counterValueChanged } from '../state/counter'
 
-const contract = createContract('Counter', abi)
+const contract = createContract(CounterArtifact)
 
 export const CounterContract = {
   getValue () {

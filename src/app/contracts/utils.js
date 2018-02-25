@@ -1,16 +1,9 @@
 import { web3 } from './web3'
-import ropstenAddresses from './addresses/ropsten.json'
 
-const ROPSTEN_NETWORK_ID = 3
-
-const addresses = {
-  [ROPSTEN_NETWORK_ID]: ropstenAddresses
-}
-
-export function createContract (name, abi) {
+export function createContract ({ abi, networks }) {
   const web3Contract = web3
     .then(web3 => {
-      const address = addresses[web3.version.network][name]
+      const address = (networks[web3.version.network] || {}).address
       return web3.eth
         .contract(abi)
         .at(address)
