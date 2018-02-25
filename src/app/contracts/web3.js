@@ -20,10 +20,11 @@ const web3 = new Promise((resolve, reject) => {
   })
 })
 
-web3.then(
-  onWeb3Load,
-  () => store.dispatch(metamaskNotPresent())
-)
+export function getWeb3 () {
+  return web3
+}
+
+getWeb3().then(onWeb3Load, onWeb3Fail)
 
 function onWeb3Load (web3) {
   store.dispatch(metamaskLoaded({
@@ -40,4 +41,6 @@ function onWeb3Load (web3) {
   }, 1000)
 }
 
-export { web3 }
+function onWeb3Fail () {
+  store.dispatch(metamaskNotPresent())
+}

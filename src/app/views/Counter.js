@@ -7,8 +7,8 @@ const Counter = ({ value }) =>
   <section className='container'>
     <h1>Counter</h1>
     <p>Value: <code>{value !== null ? value : '...'}</code></p>
-    <button onClick={CounterContract.increment}>Increment</button>{' '}
-    <button onClick={CounterContract.decrement}>Decrement</button>
+    <button onClick={() => CounterContract.increment()}>Increment</button>{' '}
+    <button onClick={() => CounterContract.decrement()}>Decrement</button>
   </section>
 
 export default connect(
