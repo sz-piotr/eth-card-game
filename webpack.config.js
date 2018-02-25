@@ -50,7 +50,8 @@ const config = {
   devServer: {
     stats: 'minimal',
     contentBase: 'src/assets',
-    overlay: true
+    overlay: true,
+    historyApiFallback: true
   }
 }
 
