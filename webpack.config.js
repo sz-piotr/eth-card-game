@@ -13,7 +13,7 @@ const extractLess = new ExtractTextPlugin({
 const config = {
   entry: './src',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build/webpack'),
     filename: 'app.[chunkhash].js'
   },
   devtool: 'source-map',
@@ -44,7 +44,8 @@ const config = {
   ],
   devServer: {
     stats: 'minimal',
-    contentBase: 'src/assets'
+    contentBase: 'src/assets',
+    overlay: true
   }
 }
 
