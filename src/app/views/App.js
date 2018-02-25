@@ -11,10 +11,9 @@ const App = () =>
     <Navbar />
     <AlertBar />
     <main className='app'>
-      <Route path='/' component={Counter} />
-      <Route path='/cards' component={CardStore} />
-      <p><Link to='/'>Counter</Link></p>
-      <p><Link to='/cards'>Cards</Link></p>
+      <p><Link to='/'>Counter</Link>, <Link to='/cards'>Cards</Link></p>
+      <Route exact path='/' component={Counter} />
+      <Route exact path='/cards' component={CardStore} />
     </main>
   </React.Fragment>
 
