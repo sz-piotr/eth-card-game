@@ -4,20 +4,20 @@ import "./Mintable.sol";
 
 contract Cards is Mintable {
   struct Card {
-    uint number;
-    uint level;
-    bool isShining;
+    uint64 number;
+    uint32 level;
+    uint32 metadata;
   }
 
   Card[] public cards;
-  mapping (uint => address) public ownerOf;
+  mapping (uint256 => address) public ownerOf;
 
   function Cards () public {
     minter = msg.sender;
   }
 
-  function mint (address cardOwner, uint number, uint level, bool isShining) public onlyMinter {
-    uint id = cards.push(Card(number, level, isShining)) - 1;
+  function mint (address cardOwner, uint64 number, uint32 level, uint32 metadata) public onlyMinter {
+    uint id = cards.push(Card(number, level, metadata)) - 1;
     ownerOf[id] = cardOwner;
   }
 }
