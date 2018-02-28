@@ -1,9 +1,11 @@
 pragma solidity ^0.4.18;
 
-import "./Ownable.sol";
+import "./lib/Ownable.sol";
 
 contract Mintable is Ownable {
   address public minter;
+
+  event MinterChanged (address indexed _previousMinter, address indexed _newMinter);
 
   function Mintable () public {
     minter = msg.sender;
@@ -14,8 +16,9 @@ contract Mintable is Ownable {
     _;
   }
 
-  function setMinter (address newMinter) public onlyOwner {
-    require(newMinter != address(0));
-    minter = newMinter;
+  function setMinter (address _newMinter) public onlyOwner {
+    require(_newMinter != address(0));
+    MinterChanged(minter, _newMinter);
+    minter = _newMinter;
   }
 }

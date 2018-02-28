@@ -1,23 +1,24 @@
 pragma solidity ^0.4.18;
 
 import "./Mintable.sol";
+import "./lib/ERC721.sol";
 
-contract Cards is Mintable {
+contract Cards is Mintable, ERC721 {
   struct Card {
-    uint number;
-    uint level;
-    bool isShining;
+    uint64 number;
+    uint32 level;
+    uint32 metadata;
   }
 
   Card[] public cards;
-  mapping (uint => address) public ownerOf;
 
   function Cards () public {
     minter = msg.sender;
   }
 
-  function mint (address cardOwner, uint number, uint level, bool isShining) public onlyMinter {
-    uint id = cards.push(Card(number, level, isShining)) - 1;
-    ownerOf[id] = cardOwner;
+  function mint (address _to, uint64 _number, uint32 _level, uint32 _metadata) public onlyMinter {
+    uint id = cards.push(Card(_number, _level, _metadata)) - 1;
+    giveTokenTo(_to, id);
+    Transfer(0x0, _to, id);
   }
 }
