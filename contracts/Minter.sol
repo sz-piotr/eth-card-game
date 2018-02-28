@@ -1,8 +1,8 @@
 pragma solidity ^0.4.18;
 
-import "./Ownable.sol";
+import "./lib/Ownable.sol";
 import "./Cards.sol";
-import "./Random.sol";
+import "./lib/Random.sol";
 
 contract Minter is Ownable {
   Cards cards;
@@ -18,9 +18,9 @@ contract Minter is Ownable {
 
   uint packPrice = 0.01 ether;
 
-  function Minter (address cardsAddress, address rngAddress) public {
-    random = Random(rngAddress);
-    cards = Cards(cardsAddress);
+  function Minter (address _cardsAddress, address _rngAddress) public {
+    random = Random(_rngAddress);
+    cards = Cards(_cardsAddress);
   }
 
   function purchasePack () public payable {
@@ -33,28 +33,29 @@ contract Minter is Ownable {
 
   function mintRandomCard () private {
     uint rarityRandom = random.random(100);
-    bool isShining = random.random(100) < shinyChance;
+    bool isShiny = random.random(100) < shinyChance;
+    uint32 metadata = isShiny ? 0x1 : 0x0;
     if (rarityRandom < commonTreshold) {
-      mintCommonCard(isShining);
+      mintCommonCard(metadata);
     } else if (rarityRandom < uncommonThreshold) {
-      mintUncommonCard(isShining);
+      mintUncommonCard(metadata);
     } else {
-      mintRareCard(isShining);
+      mintRareCard(metadata);
     }
   }
 
-  function mintCommonCard (bool isShining) private {
-    uint cardNumber = random.random(numberOfCommons);
-    cards.mint(msg.sender, cardNumber, 1, isShining);
+  function mintCommonCard (uint32 _metadata) private {
+    uint64 cardNumber = uint64(random.random(numberOfCommons));
+    cards.mint(msg.sender, cardNumber, 1, _metadata);
   }
 
-  function mintUncommonCard (bool isShining) private {
-    uint cardNumber = random.random(numberOfUncommons) + numberOfCommons;
-    cards.mint(msg.sender, cardNumber, 1, isShining);
+  function mintUncommonCard (uint32 _metadata) private {
+    uint64 cardNumber = uint64(random.random(numberOfUncommons) + numberOfCommons);
+    cards.mint(msg.sender, cardNumber, 1, _metadata);
   }
 
-  function mintRareCard (bool isShining) private {
-    uint cardNumber = random.random(numberOfRares) + numberOfUncommons + numberOfCommons;
-    cards.mint(msg.sender, cardNumber, 1, isShining);
+  function mintRareCard (uint32 _metadata) private {
+    uint64 cardNumber = uint64(random.random(numberOfRares) + numberOfUncommons + numberOfCommons);
+    cards.mint(msg.sender, cardNumber, 1, _metadata);
   }
 }
