@@ -9,10 +9,10 @@ contract ERC721TokenReceiver {
 contract ERC721 {
   using SafeMath for uint256;
 
-  mapping (uint256 => address) private tokenOwner;
-  mapping (uint256 => address) private tokenApprovals;
-  mapping (address => uint256[]) private ownedTokens;
-  mapping (uint256 => uint256) private ownedTokensIndex;
+  mapping (uint256 => address) internal tokenOwner;
+  mapping (uint256 => address) internal tokenApprovals;
+  mapping (address => uint256[]) internal ownedTokens;
+  mapping (uint256 => uint256) internal ownedTokensIndex;
 
   event Transfer (address indexed _from, address indexed _to, uint256 _tokenId);
   event Approval (address indexed _owner, address indexed _approved, uint256 _tokenId);
@@ -22,7 +22,7 @@ contract ERC721 {
     return ownedTokens[_owner].length;
   }
 
-  function tokensOf(address _owner) public view returns (uint256[]) {
+  function tokensOf (address _owner) public view returns (uint256[]) {
     return ownedTokens[_owner];
   }
 
@@ -64,33 +64,33 @@ contract ERC721 {
     checkERC721TokenReceiver(_from, _to, _tokenId);
   }
 
-  function performTransfer (address _from, address _to, uint256 _tokenId) private {
+  function performTransfer (address _from, address _to, uint256 _tokenId) internal {
     clearApproval(_tokenId);
     removeTokenFrom(_from, _tokenId);
     giveTokenTo(_to, _tokenId);
     Transfer(_from, _to, _tokenId);
   }
 
-  bytes4 constant private MAGIC_NFT_RECEIVED_RETURN_NUMBER = bytes4(keccak256("onNFTReceived(address,uint256,bytes)"));
+  bytes4 constant internal MAGIC_NFT_RECEIVED_RETURN_NUMBER = bytes4(keccak256("onNFTReceived(address,uint256,bytes)"));
 
-  function checkERC721TokenReceiver (address _from, address _to, uint256 _tokenId) private {
+  function checkERC721TokenReceiver (address _from, address _to, uint256 _tokenId) internal {
     if (isContract(_to)) {
       bytes4 returnValue = ERC721TokenReceiver(_to).onNFTReceived(_from, _tokenId, "");
       require(returnValue == MAGIC_NFT_RECEIVED_RETURN_NUMBER);
     }
   }
 
-  function isContract(address addr) private returns (bool) {
+  function isContract(address addr) internal returns (bool) {
     uint size;
     assembly { size := extcodesize(addr) }
     return size > 0;
   }
 
-  function clearApproval (uint256 _tokenId) private {
+  function clearApproval (uint256 _tokenId) internal {
     tokenApprovals[_tokenId] = address(0);
   }
 
-  function removeTokenFrom (address _from, uint256 _tokenId) private {
+  function removeTokenFrom (address _from, uint256 _tokenId) internal {
     uint256 tokenIndex = ownedTokensIndex[_tokenId];
     uint256 lastTokenIndex = balanceOf(_from).sub(1);
     uint256 lastToken = ownedTokens[_from][lastTokenIndex];
@@ -104,7 +104,7 @@ contract ERC721 {
     ownedTokensIndex[lastToken] = tokenIndex;
   }
 
-  function giveTokenTo (address _to, uint256 _tokenId) private {
+  function giveTokenTo (address _to, uint256 _tokenId) internal {
     require(_to != address(0));
     assert(ownerOf(_tokenId) != address(0));
     tokenOwner[_tokenId] = _to;
