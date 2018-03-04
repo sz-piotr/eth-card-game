@@ -106,7 +106,7 @@ contract ERC721 {
 
   function giveTokenTo (address _to, uint256 _tokenId) internal {
     require(_to != address(0));
-    assert(ownerOf(_tokenId) != address(0));
+    assert(ownerOf(_tokenId) == address(0));
     tokenOwner[_tokenId] = _to;
     ownedTokensIndex[_tokenId] = ownedTokens[_to].push(_tokenId).sub(1);
   }

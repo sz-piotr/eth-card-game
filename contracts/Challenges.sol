@@ -17,7 +17,7 @@ contract Challenges is ERC721 {
     uint[5] challengerCards;
   }
 
-  uint cardAmount = 5;
+  uint constant cardAmount = 5;
 
   Cards cards;
   CardTypes cardTypes;
@@ -45,7 +45,7 @@ contract Challenges is ERC721 {
     _challenge.challengerCards = _cards;
   }
 
-  function battle(uint id) public view returns (address) {
+  function battle(uint id) public returns (address) {
     Challenge storage _challenge = challenges[id];
     require(_challenge.initiator == msg.sender);
     uint initiatorHeroHealth = getHero(_challenge.initiatorHero);
