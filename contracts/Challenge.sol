@@ -1,6 +1,6 @@
 pragma solidity ^0.4.0;
 
-import "./Ownable.sol";
+import "./lib/Ownable.sol";
 import "./CardTypes.sol";
 import "./Cards.sol";
 
@@ -27,7 +27,7 @@ contract Challenge is Ownable {
         challengerCards = _cards;
     }
 
-    function battle() public onlyOwner returns(uint, uint) {
+    function battle() public onlyOwner returns(uint64 _number, uint32 _level, uint32 _metadata) {
         require(challenger != address(0));
         //integration test
         return cards.getCard(ownerHero);

@@ -1,6 +1,6 @@
 pragma solidity ^0.4.0;
 
-import "./Ownable.sol";
+import "./lib/Ownable.sol";
 
 contract CardTypes is Ownable {
 
