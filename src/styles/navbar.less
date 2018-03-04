@@ -12,6 +12,35 @@
   box-shadow: 0 0 @space-s 0 @color-shadow-weak;
 }
 
+.navbar-container {
+  &:extend(.container);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    position: relative;
+    display: inline-block;
+    margin-left: @space-m;
+  }
+
+  a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -@space-s;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid black;
+  }
+}
+
 .navbar h1 {
   margin: 0;
 }
