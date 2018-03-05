@@ -1,3 +1,4 @@
+/* global artifacts */
 const Cards = artifacts.require('./Cards.sol')
 
 const number = 1
@@ -13,6 +14,6 @@ contract('Cards', () => {
       return instance.minter.call()
     }).then((address) => cards.mint(address, number, lvl, metadata))
       .then(() => cards.cards.call(0))
-      .then(card => assert.equal(card.map(x => x.toNumber()).toString(), resultCard.toString()))
+      .then(card => assert.deepEqual(card.map(x => x.toNumber()), resultCard))
   })
 })

@@ -19,26 +19,27 @@ contract CardTypes is Ownable {
 
   mapping(uint => CardType) cardTypes;
   mapping(uint => Hero) heroes;
-  mapping(uint => bool) ishero;
+  mapping(uint => bool) isHero;
 
   function createCardType(uint id, uint dataId, uint damage, uint8 element) public onlyOwner {
     cardTypes[id] = CardType(dataId, damage, element);
-    ishero[id] = false;
+    isHero[id] = false;
   }
 
   function createHero(uint id, uint dataId, uint health) public onlyOwner {
     heroes[id] = Hero(dataId, health);
-    ishero[id] = true;
+    isHero[id] = true;
   }
 
   function getCardType(uint id) public view returns (uint, uint, uint8) {
+    assert(isHero[id] == false);
     CardType storage cardType = cardTypes[id];
     return (cardType.dataId, cardType.damage, cardType.element);
   }
 
   function getHero(uint id) public view returns (uint, uint) {
+    assert(isHero[id] == true);
     Hero storage hero = heroes[id];
     return (hero.dataId, hero.health);
   }
-
 }
