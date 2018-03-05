@@ -32,12 +32,12 @@ contract CardTypes is Ownable {
   }
 
   function getCardType(uint id) public view returns (uint, uint, uint8) {
-    CardType memory cardType = cardTypes[id];
+    CardType storage cardType = cardTypes[id];
     return (cardType.dataId, cardType.damage, cardType.element);
   }
 
   function getHero(uint id) public view returns (uint, uint) {
-    Hero memory hero = heroes[id];
+    Hero storage hero = heroes[id];
     return (hero.dataId, hero.health);
   }
 

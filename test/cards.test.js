@@ -11,8 +11,8 @@ contract('Cards', () => {
     Cards.deployed().then(instance => {
       cards = instance
       return instance.minter.call()
-    }).then(cards.mint(adres, number, lvl, metadata))
-      .then(cards.cards.call(0))
-      .then(assert.equal(card.map(x => x.toNumber()).toString(), resultCard.toString()))
+    }).then((address) => cards.mint(address, number, lvl, metadata))
+      .then(() => cards.cards.call(0))
+      .then(card => assert.equal(card.map(x => x.toNumber()).toString(), resultCard.toString()))
   })
 })
