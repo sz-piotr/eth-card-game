@@ -1,3 +1,4 @@
+/* global artifacts contract assert */
 const CardTypes = artifacts.require('./CardTypes.sol')
 
 const dataId = 1
@@ -14,13 +15,13 @@ contract('CardTypes', () => {
       cardTypes = instance
     }).then(() => cardTypes.createCardType(dataId, damage, element))
       .then(() => cardTypes.getCardType.call(0))
-      .then((card) => assert.equal(card.map(x => x.toNumber()).toString(), resultCardType.toString()))
+      .then(card => assert.deepEqual(card.map(x => x.toNumber()), resultCardType))
   })
   it('should create a hero ', () => {
     CardTypes.deployed().then(instance => {
       cardTypes = instance
     }).then(() => cardTypes.createHero(dataId, health))
       .then(() => cardTypes.getHero.call(0))
-      .then((card) => assert.equal(card.map(x => x.toNumber()).toString(), resultHero.toString()))
+      .then((card) => assert.deepEqual(card.map(x => x.toNumber()), resultHero))
   })
 })
