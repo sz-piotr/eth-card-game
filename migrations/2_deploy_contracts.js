@@ -1,4 +1,3 @@
-/* global artifacts */
 const Counter = artifacts.require('./Counter.sol')
 const CardStore = artifacts.require('./CardStore.sol')
 

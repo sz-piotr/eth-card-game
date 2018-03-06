@@ -43,9 +43,14 @@
     "webpack-dev-server": "^2.11.1"
   },
   "standard": {
-    "env": "jest",
-    "ignore": [
-      "dist/"
-    ]
+    "env": {
+      "jest": true,
+      "mocha": true
+    },
+    "globals": ["artifacts", "contract", "assert"],
+    "ignore": ["dist/"]
+  },
+  "jest": {
+    "roots": ["./src"]
   }
 }
