@@ -13,10 +13,6 @@ export class ContractInterface {
     for (const entry of abi) {
       if (entry.type === 'function') {
         this._createFunction(entry)
-      } else if (entry.type === 'event') {
-        this._createEvent(entry)
-      } else {
-        console.error('Unknown type: ' + entry.type)
       }
     }
   }
@@ -26,10 +22,6 @@ export class ContractInterface {
       return this._web3Contract
         .then(inst => callToPromise(inst[entry.name], args))
     }
-  }
-
-  _createEvent (entry) {
-    console.log('event', entry)
   }
 }
 

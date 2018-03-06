@@ -8,9 +8,8 @@ const Navbar = () =>
     <div className='navbar-container'>
       <h1>Eth Card Game</h1>
       <NavbarLinks>
-        <NavLink exact to='/'>Counter</NavLink>
+        <NavLink exact to='/'>Collection</NavLink>
         <NavLink to='/shop'>Shop</NavLink>
-        <NavLink to='/cards'>Cards</NavLink>
       </NavbarLinks>
     </div>
   </nav>
