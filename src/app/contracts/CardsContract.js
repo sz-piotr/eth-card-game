@@ -9,6 +9,9 @@ export const CardsContract = new ContractInterface(artifact)
 export function getCardsFor (account) {
   CardsContract.tokensOf(account)
     .then(cardIds =>
-      store.dispatch(ownedCardsChanged(account, cardIds))
+      store.dispatch(ownedCardsChanged(
+        account,
+        cardIds.map(id => id.toString())
+      ))
     )
 }
