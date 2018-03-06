@@ -1,3 +1,9 @@
+import {
+  METAMASK_LOADED,
+  METAMASK_NOT_PRESENT,
+  ACCOUNT_CHANGED
+} from '../actions'
+
 const defaultState = {
   canTransact: false,
   metamask: {
@@ -5,32 +11,9 @@ const defaultState = {
   }
 }
 
-const TRUFFLE_DEVELOP_NETWORK = '4447'
-
-function isSupported (network) {
-  return network === TRUFFLE_DEVELOP_NETWORK
-}
-
-export function metamaskLoaded ({ account, network }) {
-  return {
-    type: 'METAMASK_LOADED',
-    account,
-    network
-  }
-}
-
-export const metamaskNotPresent = () => ({ type: 'METAMASK_NOT_PRESENT' })
-
-export function web3AccountChanged (account) {
-  return {
-    type: 'WEB3_ACCOUNT_CHANGED',
-    account
-  }
-}
-
 export function reducer (state = defaultState, action) {
   switch (action.type) {
-    case 'METAMASK_LOADED':
+    case METAMASK_LOADED:
       return {
         canTransact: action.account && isSupported(action.network),
         account: action.account,
@@ -41,7 +24,7 @@ export function reducer (state = defaultState, action) {
           unlocked: !!action.account
         }
       }
-    case 'METAMASK_NOT_PRESENT':
+    case METAMASK_NOT_PRESENT:
       return {
         canTransact: false,
         metamask: {
@@ -49,7 +32,7 @@ export function reducer (state = defaultState, action) {
           installed: false
         }
       }
-    case 'WEB3_ACCOUNT_CHANGED':
+    case ACCOUNT_CHANGED:
       return {
         canTransact: action.account && isSupported(state.network),
         network: state.network,
@@ -63,4 +46,9 @@ export function reducer (state = defaultState, action) {
     default:
       return state
   }
+}
+
+const TRUFFLE_DEVELOP_NETWORK = '4447'
+function isSupported (network) {
+  return network === TRUFFLE_DEVELOP_NETWORK
 }

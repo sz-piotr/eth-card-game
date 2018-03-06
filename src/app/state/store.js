@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from 'redux'
-import { reducer as web3 } from './web3'
+import { reducer as user } from './user/user'
 import { reducer as counter } from './counter'
 import { reducer as cardStore } from './cardStore'
 
 const rootReducer = combineReducers({
-  web3,
+  user,
+
+  // TODO: remove
   counter,
   cardStore
 })
