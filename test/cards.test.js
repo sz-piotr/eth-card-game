@@ -1,19 +1,21 @@
-/* global artifacts */
+/* global artifacts contract assert */
 const Cards = artifacts.require('./Cards.sol')
 
 const number = 1
 const lvl = 1
 const metadata = 0
 const resultCard = [number, lvl, metadata]
-let cards
 
-contract('Cards', () => {
-  it('should mint a card ', () => {
-    Cards.deployed().then(instance => {
-      cards = instance
-      return instance.minter.call()
-    }).then((address) => cards.mint(address, number, lvl, metadata))
-      .then(() => cards.cards.call(0))
-      .then(card => assert.deepEqual(card.map(x => x.toNumber()), resultCard))
+contract('Cards', (accounts) => {
+  it('should mint a card ', async () => {
+    const instance = await Cards.deployed()
+    await instance.mint(accounts[0], number, lvl, metadata)
+
+    const card = await instance.cards(0)
+
+    assert.deepEqual(
+      card.map(x => x.toNumber()),
+      resultCard
+    )
   })
 })
