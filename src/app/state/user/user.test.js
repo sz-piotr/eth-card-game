@@ -8,7 +8,7 @@ import {
 const SUPPORTED_NETWORK = '4447'
 const UNSUPPORTED_NETWORK = 'unsupported'
 
-describe('web3 reducer', () => {
+describe('user reducer', () => {
   it('correcty handles the metamaskLoaded action with unsupported network', () => {
     const state = reducer({}, metamaskLoaded('0x123', UNSUPPORTED_NETWORK))
 
