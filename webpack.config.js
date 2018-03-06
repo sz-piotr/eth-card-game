@@ -52,6 +52,9 @@ const config = {
     contentBase: 'src/assets',
     overlay: true,
     historyApiFallback: true
+  },
+  watchOptions: {
+    ignored: /node_modules/
   }
 }
 
