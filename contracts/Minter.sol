@@ -5,6 +5,10 @@ import "./lib/Random.sol";
 import "./Cards.sol";
 
 contract Minter is Ownable, Random {
+  event ChancesUpdated (uint _commonChance, uint _rareChance, uint _epicChance, uint _shinyChance);
+  event PriceUpdated (uint _packPrice);
+  event PackPurchased (address indexed _buyer, uint _firstCardId);
+
   Cards cards;
 
   struct Expansion {
@@ -20,10 +24,8 @@ contract Minter is Ownable, Random {
   uint public rareChance = 30;
   uint public epicChance = 10;
   uint public shinyChance = 10;
-  event ChancesUpdated (uint commonChance, uint rareChance, uint epicChance, uint shinyChance);
 
   uint public packPrice = 0.01 ether;
-  event PriceUpdated (uint packPrice);
 
   function Minter (address cardsAddress) public {
     cards = Cards(cardsAddress);
@@ -56,41 +58,29 @@ contract Minter is Ownable, Random {
 
     Expansion storage expansion = expansions[_expansionId];
 
+    uint firstCardId = mintRandomCard(expansion);
     mintRandomCard(expansion);
     mintRandomCard(expansion);
-    mintRandomCard(expansion);
+
+    PackPurchased(msg.sender, firstCardId);
   }
 
-  function mintRandomCard (Expansion _expansion) private {
+  function mintRandomCard (Expansion _expansion) private returns (uint) {
     uint rarityRandom = random(commonChance + rareChance + epicChance);
-    bool isShining = random(100) < shinyChance;
-    uint32 metadata = isShining ? 0x1 : 0x0;
-    if (rarityRandom < commonChance) {
-      mintCommonCard(_expansion, metadata);
-    } else if (rarityRandom < commonChance + rareChance) {
-      mintRareCard(_expansion, metadata);
-    } else {
-      mintEpicCard(_expansion, metadata);
-    }
-  }
+    uint32 metadata = (random(100) < shinyChance) ? 0x1 : 0x0;
 
-  function mintCommonCard (Expansion _expansion, uint32 _metadata) private {
     uint64 offset = _expansion.offset;
-    mintCardFromRange(offset, _expansion.commonCount, _metadata);
-  }
+    uint range = _expansion.commonCount;
+    if (rarityRandom >= commonChance) {
+      offset += _expansion.commonCount;
+      range = _expansion.rareCount;
+    }
+    if (rarityRandom >= commonChance + rareChance) {
+      offset += _expansion.rareCount;
+      range = _expansion.epicCount;
+    }
 
-  function mintRareCard (Expansion _expansion, uint32 _metadata) private {
-    uint64 offset = _expansion.offset + _expansion.commonCount;
-    mintCardFromRange(offset, _expansion.rareCount, _metadata);
-  }
-
-  function mintEpicCard (Expansion _expansion, uint32 _metadata) private {
-    uint64 offset = _expansion.offset + _expansion.commonCount + _expansion.rareCount;
-    mintCardFromRange(offset, _expansion.epicCount, _metadata);
-  }
-
-  function mintCardFromRange (uint64 _offset, uint32 _range, uint32 _metadata) private {
-    uint64 number = uint64(_offset + random(_range));
-    cards.mint(msg.sender, number, 1, _metadata);
+    uint64 number = uint64(offset + random(range));
+    return cards.mint(msg.sender, number, 1, metadata);
   }
 }
