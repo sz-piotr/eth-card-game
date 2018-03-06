@@ -14,6 +14,7 @@ contract Minter is Ownable, Random {
     uint32 epicCount;
   }
   Expansion[] public expansions;
+  uint64 private nextOffset = 0;
 
   uint public commonChance = 60;
   uint public rareChance = 30;
@@ -28,6 +29,11 @@ contract Minter is Ownable, Random {
     cards = Cards(cardsAddress);
   }
 
+  function createExpansion (uint32 _commonCount, uint32 _rareCount, uint32 _epicCount) public onlyOwner {
+    expansions.push(Expansion(nextOffset, _commonCount, _rareCount, _epicCount));
+    nextOffset += _commonCount + _rareCount + _epicCount;
+  }
+
   function updateChances (uint _commonChance, uint _rareChance, uint _epicChance, uint _shinyChance) public onlyOwner {
     commonChance = _commonChance;
     rareChance = _rareChance;
@@ -39,6 +45,10 @@ contract Minter is Ownable, Random {
   function updatePrice (uint _packPrice) public onlyOwner {
     packPrice = _packPrice;
     PriceUpdated(packPrice);
+  }
+
+  function mintAnyCard (address _to, uint64 _number, uint32 _level, uint32 _metadata) public onlyOwner {
+    cards.mint(_to, _number, _level, _metadata);
   }
 
   function purchasePack (uint _expansionId) public payable {
