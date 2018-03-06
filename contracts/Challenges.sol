@@ -5,24 +5,28 @@ import "./CardTypes.sol";
 import "./Cards.sol";
 
 
-contract Challenges is ERC721 {
+contract Challenges is Ownable {
+
+  enum challengeResultEnum {INITIATOR_WIN, CHALLENGER_WIN, DRAFT, UNKNOWN}
 
   struct Challenge {
     address initiator;
     address challenger;
-    address winner;
+    challengeResultEnum challengeResult;
     uint initiatorHero;
     uint challengerHero;
     uint[5] initiatorCards;
     uint[5] challengerCards;
-  }
+}
 
   uint constant cardAmount = 5;
 
   Cards cards;
   CardTypes cardTypes;
 
-  Challenge[] challenges;
+  Challenge[] public challenges;
+
+  mapping(uint => address) challengeToInitiator;
 
   function Challenges(address cardsAddress, address cardTypesAddress) public {
     cards = Cards(cardsAddress);
@@ -31,40 +35,41 @@ contract Challenges is ERC721 {
 
   function challenge(uint hero, uint[cardAmount] _cards) public returns (uint){
     uint[5] memory emptyArray;
-    uint id = challenges.push(Challenge(msg.sender, address(0), address(0), hero, 0, _cards, emptyArray)) - 1;
-    giveTokenTo(msg.sender, id);
+    uint id = challenges.push(Challenge(msg.sender, address(0), challengeResultEnum.UNKNOWN, hero, 0, _cards, emptyArray)) - 1;
+    challengeToInitiator[id] = msg.sender;
     return id;
   }
 
   function accept(uint id, uint hero, uint[cardAmount] _cards) public {
     Challenge storage _challenge = challenges[id];
-    require(_challenge.initiator != msg.sender);
+    //require(_challenge.initiator != msg.sender);
     require(_challenge.challenger == address(0));
     _challenge.challenger = msg.sender;
     _challenge.challengerHero = hero;
     _challenge.challengerCards = _cards;
   }
 
-  function battle(uint id) public returns (address) {
+  function battle(uint id) public {
     Challenge storage _challenge = challenges[id];
     require(_challenge.initiator == msg.sender);
     uint initiatorHeroHealth = getHero(_challenge.initiatorHero);
     uint challengerHeroHealth = getHero(_challenge.challengerHero);
     uint8 elementAmount = cardTypes.elementAmount();
     uint initiatorElement;
-    uint challengerDamage;
     uint challengerElement;
     uint initiatorDamage;
-    for (uint i = 0; i != cardAmount; i++) {
-      (, initiatorElement, challengerDamage) = getCard(_challenge.initiatorCards[i]);
-      (, challengerElement, challengerDamage) = getCard(_challenge.challengerCards[i]);
+    uint challengerDamage;
+    for (uint i = 0; i != elementAmount; i++) {
+      (, challengerElement, challengerDamage) = getCard(_challenge.challengerCards[0]);
+      (, initiatorElement, initiatorDamage) = getCard(_challenge.initiatorCards[0]);
       uint result = (elementAmount + initiatorElement - challengerElement) % elementAmount;
-      if (result % 2 == 1) {
-        initiatorDamage *= 2;
-      } else if (result % 2 == 0) {
-        challengerDamage *= 2;
+      if(result != 0) {
+        if (result % 2 == 1) {
+          initiatorDamage *= 2;
+        } else if (result % 2 == 0) {
+          challengerDamage *= 2;
+        }
       }
-
       initiatorHeroHealth -= challengerDamage;
       challengerHeroHealth -= initiatorDamage;
       if (initiatorHeroHealth <= 0 || challengerHeroHealth <= 0) {
@@ -72,15 +77,20 @@ contract Challenges is ERC721 {
       }
     }
     if (initiatorHeroHealth > challengerHeroHealth) {
-      _challenge.winner = _challenge.initiator;
+      _challenge.challengeResult = challengeResultEnum.INITIATOR_WIN;
     } else if (challengerHeroHealth > initiatorHeroHealth) {
-      _challenge.winner = _challenge.challenger;
+      _challenge.challengeResult = challengeResultEnum.CHALLENGER_WIN;
+    } else {
+      _challenge.challengeResult = challengeResultEnum.DRAFT;
     }
-    return _challenge.winner;
   }
 
-  function checkWinner(uint id) public view returns (address) {
-    return challenges[id].winner;
+  function getInitiatorCards(uint id) public view returns (uint[5]) {
+    return challenges[id].initiatorCards;
+  }
+
+  function getChallengerCards(uint id) public view returns (uint[5]) {
+    return challenges[id].challengerCards;
   }
 
   function getHero(uint id) private view returns (uint) {
@@ -91,10 +101,14 @@ contract Challenges is ERC721 {
     return heroHealth;
   }
 
-  function getCard(uint id) private view returns (uint, uint, uint) {
+  function getCard(uint id) public view returns (uint, uint, uint) {
     uint cardTypeId;
     (cardTypeId, ,) = cards.cards(id);
     return cardTypes.getCardType(cardTypeId);
+  }
+
+  function getResult(uint id) public view returns (challengeResultEnum) {
+   return challenges[id].challengeResult;
   }
 
 }

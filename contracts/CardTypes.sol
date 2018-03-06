@@ -4,7 +4,7 @@ import "./lib/Ownable.sol";
 
 contract CardTypes is Ownable {
 
-  uint8 public elementAmount;
+  uint8 public elementAmount = 5;
 
   struct CardType {
     uint dataId;
