@@ -4,6 +4,13 @@ import { connect } from 'react-redux'
 import { getCardsFor } from '../../contracts/CardsContract'
 
 class Collection extends React.Component {
+  constructor (props) {
+    super(props)
+    if (props.account) {
+      getCardsFor(props.account)
+    }
+  }
+
   componentWillReceiveProps (nextProps) {
     if (this.props.account !== nextProps.account) {
       getCardsFor(nextProps.account)
