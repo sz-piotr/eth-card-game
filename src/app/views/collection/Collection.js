@@ -1,30 +1,32 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getCardsFor } from '../../contracts/CardsContract'
+import { fetchCollection } from '../../contracts/CardsContract'
 
 class Collection extends React.Component {
   constructor (props) {
     super(props)
     if (props.account) {
-      getCardsFor(props.account)
+      fetchCollection(props.account)
     }
   }
 
   componentWillReceiveProps (nextProps) {
     if (this.props.account !== nextProps.account) {
-      getCardsFor(nextProps.account)
+      fetchCollection(nextProps.account)
     }
   }
 
   render () {
-    const { cards } = this.props
+    const { isFetching, data, error } = this.props.collection
     return (
       <section className='container'>
         <h1>My Cards</h1>
-        <ul>
-          {cards.map((cardId, index) => <li key={index}>{cardId}</li>)}
-        </ul>
+        {isFetching && !data && 'Loading...'}
+        {error}
+        {data && <ul>
+          {data.map((cardId, index) => <li key={index}>{cardId}</li>)}
+        </ul>}
       </section>
     )
   }
@@ -33,6 +35,6 @@ class Collection extends React.Component {
 export default connect(
   state => ({
     account: state.user.account,
-    cards: state.cards[state.user.account] || []
+    collection: state.collection[state.user.account] || {}
   })
 )(Collection)

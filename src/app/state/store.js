@@ -1,10 +1,10 @@
 import { createStore, combineReducers } from 'redux'
 import { reducer as user } from './user/user'
-import { reducer as cards } from './cards/cards'
+import { reducer as collection } from './collection/collection'
 
 const rootReducer = combineReducers({
   user,
-  cards
+  collection
 })
 
 const store = createStore(
