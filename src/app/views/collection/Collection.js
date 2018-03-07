@@ -25,7 +25,7 @@ class Collection extends React.Component {
         <h1>My Cards</h1>
         {isFetching && !data && 'Loading...'}
         {error}
-        {data && <ul>
+        {data && <ul className='card-collection'>
           {data.map((cardId, index) =>
             <li key={index}>
               <Card cardId={cardId} />

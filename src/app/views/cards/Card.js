@@ -4,13 +4,13 @@ import { connect } from 'react-redux'
 import { fetchCardDetails } from '../../contracts/CardsContract'
 
 const LoadingCard = () =>
-  <div class='card-loading'>Loading...</div>
+  <div className='card-loading'>Loading...</div>
 
 const ErrorCard = () =>
-  <div class='card-error'>Error</div>
+  <div className='card-error'>Error</div>
 
 const CardDisplay = (props) =>
-  <div class='card-display'>{JSON.stringify(props)}</div>
+  <div className='card-display'>{JSON.stringify(props)}</div>
 
 class Card extends React.Component {
   constructor (props) {

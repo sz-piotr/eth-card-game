@@ -1,0 +1,13 @@
+@color-loading-light: #efefef;
+@color-loading-dark: #dadada;
+
+@keyframes loading {
+  from {
+    background-color: @color-loading-light;
+  }
+  to {
+    background-color: @color-loading-dark;
+  }
+}
+
+@animation-loading: ~"loading 1s repeat";

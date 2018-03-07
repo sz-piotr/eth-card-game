@@ -33,10 +33,14 @@ export function fetchCardDetails (cardId) {
   store.dispatch(fetchCardDetailsRequest(cardId))
   CardsContract.getCard(cardId)
     .then(
-      data => store.dispatch(fetchCardDetailsSuccess(
-        cardId,
-        data // .map(value => value.toString())
-      )),
+      data => {
+        setTimeout(() => {
+          store.dispatch(fetchCardDetailsSuccess(
+            cardId,
+            data // .map(value => value.toString())
+          ))
+        }, 4000 + Math.random() * 2000)
+      },
       error => store.dispatch(fetchCardDetailsFailure(
         cardId,
         error
