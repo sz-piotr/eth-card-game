@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { fetchCollection } from '../../contracts/CardsContract'
+import Card from '../cards/Card'
 
 class Collection extends React.Component {
   constructor (props) {
@@ -25,7 +26,11 @@ class Collection extends React.Component {
         {isFetching && !data && 'Loading...'}
         {error}
         {data && <ul>
-          {data.map((cardId, index) => <li key={index}>{cardId}</li>)}
+          {data.map((cardId, index) =>
+            <li key={index}>
+              <Card cardId={cardId} />
+            </li>
+          )}
         </ul>}
       </section>
     )
