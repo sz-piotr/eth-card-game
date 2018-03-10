@@ -9,7 +9,7 @@ import {
 } from '../actions'
 
 function * fetchCollection ({ account }) {
-  yield delay(2000) // artificial delay for testing
+  yield delay(1500) // artificial delay for testing
   try {
     let data = yield call(CardsContract.tokensOf, account)
     data = data.map(value => value.toString())
