@@ -18,7 +18,7 @@ export const FETCH_COLLECTION_SUCCESS = 'FETCH_COLLECTION_SUCCESS'
 export const fetchCollectionSuccess = makeActionCreator(FETCH_COLLECTION_SUCCESS, 'account', 'data')
 
 export const FETCH_COLLECTION_FAILURE = 'FETCH_COLLECTION_FAILURE'
-export const fetchCollectionFailure = makeActionCreator(FETCH_COLLECTION_SUCCESS, 'account', 'error')
+export const fetchCollectionFailure = makeActionCreator(FETCH_COLLECTION_FAILURE, 'account', 'error')
 
 // FETCH CARD DETAILS
 
@@ -29,4 +29,4 @@ export const FETCH_CARD_DETAILS_SUCCESS = 'FETCH_CARD_DETAILS_SUCCESS'
 export const fetchCardDetailsSuccess = makeActionCreator(FETCH_CARD_DETAILS_SUCCESS, 'cardId', 'data')
 
 export const FETCH_CARD_DETAILS_FAILURE = 'FETCH_CARD_DETAILS_FAILURE'
-export const fetchCardDetailsFailure = makeActionCreator(FETCH_CARD_DETAILS_REQUEST, 'cardId', 'error')
+export const fetchCardDetailsFailure = makeActionCreator(FETCH_CARD_DETAILS_FAILURE, 'cardId', 'error')
