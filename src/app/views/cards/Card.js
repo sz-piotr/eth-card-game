@@ -3,14 +3,9 @@ import { connect } from 'react-redux'
 
 import { fetchCardDetailsRequest } from '../../state/actions'
 
-const LoadingCard = () =>
-  <div className='card-loading'>Loading...</div>
-
-const ErrorCard = () =>
-  <div className='card-error'>Error</div>
-
-const CardDisplay = (props) =>
-  <div className='card-display'>{JSON.stringify(props)}</div>
+import CardDisplay from './CardDisplay'
+import CardPlaceholder from './CardPlaceholder'
+import CardError from './CardError'
 
 class Card extends React.Component {
   constructor (props) {
@@ -22,13 +17,13 @@ class Card extends React.Component {
 
   render () {
     const { isFetching, data, error } = this.props
-    return (
-      <div className='card-wrapper'>
-        {isFetching && <LoadingCard />}
-        {!isFetching && error && <ErrorCard />}
-        {data && <CardDisplay {...data} />}
-      </div>
-    )
+    if (isFetching) {
+      return <CardPlaceholder />
+    } else if (error) {
+      return <CardError />
+    } else {
+      return <CardDisplay {...data} />
+    }
   }
 }
 

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { fetchCollectionRequest } from '../../state/actions'
 import Card from '../cards/Card'
+import CollectionPlaceholder from './CollectionPlaceholder'
 
 class Collection extends React.Component {
   constructor (props) {
@@ -23,7 +24,7 @@ class Collection extends React.Component {
     return (
       <section className='container'>
         <h1>My Cards</h1>
-        {isFetching && !data && 'Loading...'}
+        {isFetching && !data && <CollectionPlaceholder />}
         {error}
         {data && <ul className='card-collection'>
           {data.map((cardId, index) =>
