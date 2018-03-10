@@ -1,3 +1,9 @@
+import { all } from 'redux-saga/effects'
+
+import { saga as cards } from './cards'
+
 export function * saga () {
-  console.log('Hello Saga!')
+  yield all([
+    cards()
+  ])
 }

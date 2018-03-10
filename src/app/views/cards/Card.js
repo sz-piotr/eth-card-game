@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchCardDetails } from '../../contracts/CardsContract'
+import { fetchCardDetailsRequest } from '../../state/actions'
 
 const LoadingCard = () =>
   <div className='card-loading'>Loading...</div>
@@ -16,7 +16,7 @@ class Card extends React.Component {
   constructor (props) {
     super(props)
     if (!props.data && !props.isFetching) {
-      fetchCardDetails(props.cardId)
+      props.fetchCardDetailsRequest(props.cardId)
     }
   }
 
@@ -33,5 +33,6 @@ class Card extends React.Component {
 }
 
 export default connect(
-  (state, props) => state.cards[props.cardId] || {}
+  (state, props) => state.cards[props.cardId] || {},
+  { fetchCardDetailsRequest }
 )(Card)

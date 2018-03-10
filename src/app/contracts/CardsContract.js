@@ -5,11 +5,7 @@ import { store } from '../state/store'
 import {
   fetchCollectionRequest,
   fetchCollectionSuccess,
-  fetchCollectionFailure,
-
-  fetchCardDetailsRequest,
-  fetchCardDetailsSuccess,
-  fetchCardDetailsFailure
+  fetchCollectionFailure
 } from '../state/actions'
 
 export const CardsContract = new ContractInterface(artifact)
@@ -24,25 +20,6 @@ export function fetchCollection (account) {
       )),
       error => store.dispatch(fetchCollectionFailure(
         account,
-        error
-      ))
-    )
-}
-
-export function fetchCardDetails (cardId) {
-  store.dispatch(fetchCardDetailsRequest(cardId))
-  CardsContract.getCard(cardId)
-    .then(
-      data => {
-        setTimeout(() => {
-          store.dispatch(fetchCardDetailsSuccess(
-            cardId,
-            data // .map(value => value.toString())
-          ))
-        }, 4000 + Math.random() * 2000)
-      },
-      error => store.dispatch(fetchCardDetailsFailure(
-        cardId,
         error
       ))
     )
