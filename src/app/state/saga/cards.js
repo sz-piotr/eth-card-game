@@ -1,7 +1,7 @@
 import { delay } from 'redux-saga'
 import { takeEvery, call, put } from 'redux-saga/effects'
 
-import { CardsContract } from '../../contracts/CardsContract'
+import { CardsContract } from '../../contracts'
 import {
   FETCH_CARD_DETAILS_REQUEST,
   fetchCardDetailsSuccess,

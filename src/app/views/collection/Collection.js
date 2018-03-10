@@ -1,20 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchCollection } from '../../contracts/CardsContract'
+import { fetchCollectionRequest } from '../../state/actions'
 import Card from '../cards/Card'
 
 class Collection extends React.Component {
   constructor (props) {
     super(props)
     if (props.account) {
-      fetchCollection(props.account)
+      props.fetchCollectionRequest(props.account)
     }
   }
 
   componentWillReceiveProps (nextProps) {
     if (this.props.account !== nextProps.account) {
-      fetchCollection(nextProps.account)
+      this.props.fetchCollectionRequest(nextProps.account)
     }
   }
 
@@ -41,5 +41,6 @@ export default connect(
   state => ({
     account: state.user.account,
     collection: state.collection[state.user.account] || {}
-  })
+  }),
+  { fetchCollectionRequest }
 )(Collection)
