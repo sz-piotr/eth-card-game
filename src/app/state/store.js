@@ -1,16 +1,9 @@
-import { createStore, combineReducers } from 'redux'
-import { reducer as user } from './reducers/user'
-import { reducer as collection } from './reducers/collection'
-import { reducer as cards } from './reducers/cards'
+import { createStore } from 'redux'
 
-const rootReducer = combineReducers({
-  user,
-  collection,
-  cards
-})
+import { reducer } from './reducer'
 
 const store = createStore(
-  rootReducer,
+  reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
