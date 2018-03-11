@@ -1,4 +1,4 @@
-import { takeEvery, call } from 'redux-saga/effects'
+import { takeEvery, call, select } from 'redux-saga/effects'
 
 import { MinterContract } from '../../contracts'
 import {
@@ -6,11 +6,11 @@ import {
 } from '../actions'
 
 function * purchasePack () {
+  const packPrice = yield select(state => state.packPrice.data)
   try {
     yield call(MinterContract.purchasePack, 1, {
-      // dummy values
-      value: '200000000000000000000',
-      gas: 1200000
+      value: packPrice,
+      gas: 1200000 // dummy value
     })
   } catch (error) {
     console.error(error)
