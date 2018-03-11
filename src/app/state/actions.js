@@ -31,6 +31,17 @@ export const fetchCardDetailsSuccess = makeActionCreator(FETCH_CARD_DETAILS_SUCC
 export const FETCH_CARD_DETAILS_FAILURE = 'FETCH_CARD_DETAILS_FAILURE'
 export const fetchCardDetailsFailure = makeActionCreator(FETCH_CARD_DETAILS_FAILURE, 'cardId', 'error')
 
+// FETCH PACK PRICE
+
+export const FETCH_PACK_PRICE_REQUEST = 'FETCH_PACK_PRICE_REQUEST'
+export const fetchPackPriceRequest = makeActionCreator(FETCH_PACK_PRICE_REQUEST)
+
+export const FETCH_PACK_PRICE_SUCCESS = 'FETCH_PACK_PRICE_SUCCESS'
+export const fetchPackPriceSuccess = makeActionCreator(FETCH_PACK_PRICE_SUCCESS, 'data')
+
+export const FETCH_PACK_PRICE_FAILURE = 'FETCH_PACK_PRICE_FAILURE'
+export const fetchPackPriceFailure = makeActionCreator(FETCH_PACK_PRICE_FAILURE, 'error')
+
 // PURCHASE PACK TRANSACTION
 
 export const PURCHASE_PACK_TRANSACTION = 'PURCHASE_PACK_TRANSACTION'
