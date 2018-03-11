@@ -1,5 +1,6 @@
-import artifact from '../../../build/contracts/Cards'
 import { ContractInterface } from './ContractInterface'
+import cardsArtifact from '../../../build/contracts/Cards'
+import minterArtifact from '../../../build/contracts/Minter'
 
-export const CardsContract = new ContractInterface(artifact)
-window.CardsContract = CardsContract
+export const CardsContract = new ContractInterface(cardsArtifact)
+export const MinterContract = new ContractInterface(minterArtifact)

@@ -30,3 +30,8 @@ export const fetchCardDetailsSuccess = makeActionCreator(FETCH_CARD_DETAILS_SUCC
 
 export const FETCH_CARD_DETAILS_FAILURE = 'FETCH_CARD_DETAILS_FAILURE'
 export const fetchCardDetailsFailure = makeActionCreator(FETCH_CARD_DETAILS_FAILURE, 'cardId', 'error')
+
+// PURCHASE PACK TRANSACTION
+
+export const PURCHASE_PACK_TRANSACTION = 'PURCHASE_PACK_TRANSACTION'
+export const purchasePackTransaction = makeActionCreator(PURCHASE_PACK_TRANSACTION)
