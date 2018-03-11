@@ -64,7 +64,7 @@ describe('user reducer', () => {
   })
 
   it('correcty handles the accountChanged action when account is undefined', () => {
-    const state = reducer({ network: UNSUPPORTED_NETWORK }, accountChanged())
+    const state = reducer({ network: UNSUPPORTED_NETWORK }, accountChanged(undefined))
     expect(state.canTransact).toBeFalsy()
     expect(state.account).toBe(undefined)
     expect(state.metamask.unlocked).toBeFalsy()
