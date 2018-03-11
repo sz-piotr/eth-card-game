@@ -11,12 +11,14 @@
   },
   "dependencies": {
     "core-js": "^2.5.3",
+    "localforage": "^1.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
     "web3": "^0.20.5"
   },
   "devDependencies": {
@@ -47,10 +49,18 @@
       "jest": true,
       "mocha": true
     },
-    "globals": ["artifacts", "contract", "assert"],
-    "ignore": ["dist/"]
+    "globals": [
+      "artifacts",
+      "contract",
+      "assert"
+    ],
+    "ignore": [
+      "dist/"
+    ]
   },
   "jest": {
-    "roots": ["./src"]
+    "roots": [
+      "./src"
+    ]
   }
 }

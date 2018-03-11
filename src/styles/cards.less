@@ -1,0 +1,45 @@
+@card-border-radius: 5%;
+
+.card-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-top: 140%;
+
+  & > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.card-collection {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: @space-l;
+
+  @media @device-s {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  li {
+    padding: 0;
+  }
+}
+
+.card-display {
+  background-color: #f5e8ac;
+  border-radius: @card-border-radius;
+}
+
+.card-placeholder {
+  border-radius: @card-border-radius;
+  animation: @animation-loading;
+  color: transparent;
+}

@@ -8,28 +8,25 @@ const AlertBar = ({ message }) => message &&
     </div>
   </div>
 
-const METAMASK_NOT_INSTALLED = <React.Fragment>
-  Metamask is not installed and you cannot make transactions.
-  Install Metamask{' '}
-  <a href='https://metamask.io/' className='link' target='_blank'>here</a>.
-</React.Fragment>
-
-const METAMASK_LOCKED = 'Your Metamask is locked. Unlock it to make transactions.'
-
-const METAMASK_WRONG_NETWORK = 'Please set the network in Metamask to truffle develop (http://localhost:9545)'
+export default connect(
+  state => ({ message: getAlertMessage(state.user) || null })
+)(AlertBar)
 
 function getAlertMessage ({ canTransact, metamask }) {
   if (metamask.loaded) {
     if (!metamask.installed) {
-      return METAMASK_NOT_INSTALLED
+      return METAMASK_INSTALL_MESSAGE
     } else if (!metamask.unlocked) {
-      return METAMASK_LOCKED
+      return 'Your Metamask is locked. Unlock it to make transactions.'
     } else if (!canTransact) {
-      return METAMASK_WRONG_NETWORK
+      return 'Please set the network in Metamask to truffle develop (http://localhost:9545)'
     }
   }
 }
 
-export default connect(
-  state => ({ message: getAlertMessage(state.web3) || null })
-)(AlertBar)
+const METAMASK_INSTALL_MESSAGE =
+  <React.Fragment>
+    Metamask is not installed and you cannot make transactions.
+    Install Metamask{' '}
+    <a href='https://metamask.io/' className='link' target='_blank'>here</a>.
+  </React.Fragment>

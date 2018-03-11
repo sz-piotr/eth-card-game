@@ -1,17 +1,19 @@
-import { createStore, combineReducers } from 'redux'
-import { reducer as web3 } from './web3'
-import { reducer as counter } from './counter'
-import { reducer as cardStore } from './cardStore'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 
-const rootReducer = combineReducers({
-  web3,
-  counter,
-  cardStore
-})
+import { composeEnchancers } from './devtools'
+import { reducer } from './reducer'
+import { saga } from './saga'
+
+const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  reducer,
+  composeEnchancers(
+    applyMiddleware(sagaMiddleware)
+  )
 )
+
+sagaMiddleware.run(saga)
 
 export { store }
