@@ -50,16 +50,16 @@ contract ERC721 {
     performTransfer(ownerOf(_tokenId), msg.sender, _tokenId);
   }
 
-  function unsafeTransfer (address _from, address _to, uint256 _tokenId) public onlyApprovedFor(_tokenId) {
+  function transferFrom (address _from, address _to, uint256 _tokenId) public onlyApprovedFor(_tokenId) {
     performTransfer(_from, _to, _tokenId);
   }
 
-  // function transferFrom (address _from, address _to, uint256 _tokenId, bytes[] data) public onlyApprovedFor(_tokenId) {
-  //   performTransfer(_from, _to, _tokenId);
-  //   checkERC721TokenReceiver(_from, _to, _tokenId);
-  // }
+  function safeTransferFrom (address _from, address _to, uint256 _tokenId, bytes) public onlyApprovedFor(_tokenId) {
+    performTransfer(_from, _to, _tokenId);
+    checkERC721TokenReceiver(_from, _to, _tokenId);
+  }
 
-  function transferFrom (address _from, address _to, uint256 _tokenId) public onlyApprovedFor(_tokenId) {
+  function safeTransferFrom (address _from, address _to, uint256 _tokenId) public onlyApprovedFor(_tokenId) {
     performTransfer(_from, _to, _tokenId);
     checkERC721TokenReceiver(_from, _to, _tokenId);
   }
