@@ -7,8 +7,37 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  z-index: 100;
+  max-width: 300px;
 }
 
 .notification {
+  position: relative;
+  padding: @space-m (@space-xl + @space-m) @space-m @space-l;
+  margin-bottom: @space-m;
+  border-radius: @border-radius;
+  background-color: @color-bg-red;
+  color: @color-text-red;
 
+  .notification-close {
+    grid-area: close;
+    position: absolute;
+    right: @space-s;
+    top: @space-s;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: @color-text-red;
+  }
+
+  .notification-title {
+    font-size: 1.1em; // TODO: unify font-sizes
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  .notification-description {
+    margin-bottom: 0;
+  }
 }

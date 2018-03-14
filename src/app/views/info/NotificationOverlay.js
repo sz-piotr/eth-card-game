@@ -1,11 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Notification = ({ title, description }) =>
-  <li className='notification'>
-    <div>{title}</div>
-    {description}
-  </li>
+import Notification from './Notification'
 
 const NotificationOverlay = ({ notifications }) =>
   <ul className='notification-overlay'>
