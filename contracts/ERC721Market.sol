@@ -8,8 +8,8 @@ contract ERC721Market {
   mapping (uint => address) public sellerOf;
   mapping (uint => uint) public priceOf;
 
-  event OfferCreated (address indexed from, uint indexed tokenId, uint price);
-  event OfferCanceled (address indexed from, uint indexed tokenId);
+  event OfferCreated (address indexed seller, uint indexed tokenId, uint price);
+  event OfferCanceled (address indexed seller, uint indexed tokenId);
   event TokenPurchased (address indexed seller, address indexed buyer, uint indexed tokenId, uint price);
 
   function ERC721Market (address tokenContractAddress) public {
