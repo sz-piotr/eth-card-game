@@ -6,12 +6,8 @@ import {
 } from '../actions'
 
 const defaultState = {
-  nextId: 3,
-  list: [
-    { id: 0, title: 'Title 0', description: 'description' },
-    { id: 1, title: 'Title 1', description: 'description' },
-    { id: 2, title: 'Title 2', description: 'description' }
-  ]
+  nextId: 0,
+  list: []
 }
 
 export function reducer (state = defaultState, action) {
