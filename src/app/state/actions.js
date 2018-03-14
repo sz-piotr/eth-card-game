@@ -51,3 +51,6 @@ export const fetchPackPriceFailure = makeActionCreator(FETCH_PACK_PRICE_FAILURE,
 
 export const PURCHASE_PACK_TRANSACTION = 'PURCHASE_PACK_TRANSACTION'
 export const purchasePackTransaction = makeActionCreator(PURCHASE_PACK_TRANSACTION)
+
+export const MOVE_CARD = 'MOVE_CARD'
+export const moveCard = makeActionCreator(MOVE_CARD, 'position')

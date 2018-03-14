@@ -9,6 +9,7 @@ const Navbar = () =>
       <h1>Eth Card Game</h1>
       <NavbarLinks>
         <NavLink exact to='/'>Collection</NavLink>
+        <NavLink to='/init'>Fight</NavLink>
         <NavLink to='/shop'>Shop</NavLink>
       </NavbarLinks>
     </div>
