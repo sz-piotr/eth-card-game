@@ -13,7 +13,7 @@ function * fetchPackPrice ({ account }) {
     yield put(fetchPackPriceSuccess(data.toString()))
   } catch (error) {
     console.error(error)
-    yield put(fetchPackPriceFailure(error))
+    yield put(fetchPackPriceFailure(error.message))
   }
 }
 

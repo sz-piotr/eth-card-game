@@ -32,7 +32,7 @@ function * fetchCardDetails ({ cardId }) {
     const data = yield call(getCardWithCache, cardId, network)
     yield put(fetchCardDetailsSuccess(cardId, data))
   } catch (error) {
-    yield put(fetchCardDetailsFailure(cardId, error))
+    yield put(fetchCardDetailsFailure(cardId, error.message))
   }
 }
 

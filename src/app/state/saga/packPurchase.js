@@ -15,7 +15,7 @@ function * purchasePack () {
       gas: 1200000 // dummy value
     })
   } catch (error) {
-    console.error(error)
+    console.error(error.message)
   }
 }
 

@@ -15,7 +15,7 @@ function * fetchCollection ({ account }) {
     data = data.map(value => value.toString())
     yield put(fetchCollectionSuccess(account, data))
   } catch (error) {
-    yield put(fetchCollectionFailure(account, error))
+    yield put(fetchCollectionFailure(account, error.message))
   }
 }
 

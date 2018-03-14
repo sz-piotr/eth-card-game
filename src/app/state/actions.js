@@ -9,6 +9,11 @@ export const metamaskNotPresent = makeActionCreator(METAMASK_NOT_PRESENT)
 export const ACCOUNT_CHANGED = 'ACCOUNT_CHANGED'
 export const accountChanged = makeActionCreator(ACCOUNT_CHANGED, 'account')
 
+// NOTIFICATIONS
+
+export const DISMISS_NOTIFICATION = 'DISMISS_NOTIFICATION'
+export const dismissNotification = makeActionCreator(DISMISS_NOTIFICATION, 'id')
+
 // FETCH COLLECTION
 
 export const FETCH_COLLECTION_REQUEST = 'FETCH_COLLECTION_REQUEST'
