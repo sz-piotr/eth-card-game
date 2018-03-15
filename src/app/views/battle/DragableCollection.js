@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchCollectionRequest } from '../../state/actions'
+import { fetchCollectionRequest, pickCard } from '../../state/actions'
 import SelectionPlaceholder from './SelectionPlaceholder'
 import DragableCard from './DragableCard'
 
@@ -21,6 +21,7 @@ class DragableCollection extends React.Component {
 
   render () {
     const {isFetching, data, error} = this.props.collection
+    const {pickCard} = this.props
     return (
       <section className='container'>
         <h1>Select Cards</h1>
@@ -30,7 +31,7 @@ class DragableCollection extends React.Component {
           {data.map((cardId, index) =>
             <li key={index}>
               <DragableCard
-                cardId={cardId} />
+                cardId={cardId} pickCard={pickCard} />
             </li>
           )}
         </ul>}
@@ -39,10 +40,17 @@ class DragableCollection extends React.Component {
   }
 }
 
+const collection = connect(
+  state => ({
+    picked: state.pickedCards
+  }),
+  {pickCard}
+)(DragableCollection)
+
 export default connect(
   state => ({
     account: state.user.account,
     collection: state.collection[state.user.account] || {}
   }),
   {fetchCollectionRequest}
-)(DragableCollection)
+)(collection)

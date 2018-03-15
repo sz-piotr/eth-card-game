@@ -3,7 +3,6 @@ import React from 'react'
 import { DragSource } from 'react-dnd'
 import { ItemTypes } from './constants'
 import Card from '../cards/Card'
-import { pickCard } from '../../state/actions'
 
 const cardSource = {
   beginDrag ({cardId}) {
@@ -12,9 +11,9 @@ const cardSource = {
     }
   },
 
-  endDrag ({cardId}, monitor) {
+  endDrag ({cardId, pickCard}, monitor) {
     const dropResult = monitor.getDropResult()
-    pickCard(cardId, dropResult)
+    dropResult && pickCard(cardId, dropResult.index)
   }
 
 }
