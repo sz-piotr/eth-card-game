@@ -1,26 +1,35 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { moveCard } from '../../state/actions'
-import { DragDropContext } from 'react-dnd'
-import HTML5Backend from 'react-dnd-html5-backend'
-import BattleCard from './BattleCard'
+import { fetchCollectionRequest } from '../../state/actions'
+import SelectionPlaceholder from './SelectionPlaceholder'
+import DragableCard from './DragableCard'
 
 class DragableCollection extends React.Component {
-  moveCard (x, y) {
-    console.log(x, y)
-    this.props.moveCard(x, y)
+  constructor (props) {
+    super(props)
+    if (props.account) {
+      props.fetchCollectionRequest(props.account)
+    }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (this.props.account !== nextProps.account) {
+      this.props.fetchCollectionRequest(nextProps.account)
+    }
   }
 
   render () {
-    const {data} = this.props
+    const {isFetching, data, error} = this.props.collection
     return (
       <section className='container'>
+        <h1>Select Cards</h1>
+        {isFetching && !data && <SelectionPlaceholder />}
+        {error}
         {data && <ul className='card-collection'>
           {data.map((cardId, index) =>
             <li key={index}>
-              <BattleCard
-                moveCard={this.moveCard}
+              <DragableCard
                 cardId={cardId} />
             </li>
           )}
@@ -30,9 +39,10 @@ class DragableCollection extends React.Component {
   }
 }
 
-const collection = DragDropContext(HTML5Backend)(DragableCollection)
-
 export default connect(
-  state => state,
-  {moveCard}
-)(collection)
+  state => ({
+    account: state.user.account,
+    collection: state.collection[state.user.account] || {}
+  }),
+  {fetchCollectionRequest}
+)(DragableCollection)

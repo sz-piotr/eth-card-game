@@ -16,18 +16,18 @@ class Card extends React.Component {
   }
 
   render () {
-    const { isFetching, data, error } = this.props
+    const {isFetching, data, error, cardClass} = this.props
     if (isFetching) {
       return <CardPlaceholder />
     } else if (error) {
       return <CardError />
     } else {
-      return <CardDisplay {...data} />
+      return <CardDisplay cardClass={cardClass || 'card-display'} data={data} />
     }
   }
 }
 
 export default connect(
   (state, props) => state.cards[props.cardId] || {},
-  { fetchCardDetailsRequest }
+  {fetchCardDetailsRequest}
 )(Card)

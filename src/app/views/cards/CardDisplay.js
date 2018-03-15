@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CardDisplay = (props) =>
+const CardDisplay = ({cardClass, data}) =>
   <div className='card-wrapper'>
-    <div className='card-display'>{JSON.stringify(props)}</div>
+    <div className={cardClass}>{JSON.stringify(data)}</div>
   </div>
 
 export default CardDisplay
