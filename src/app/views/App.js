@@ -9,6 +9,7 @@ import Shop from './shop/Shop'
 import Collection from './collection/Collection'
 import ErrorBoundary from './ErrorBoundary'
 import InitBattle from './battle/InitBattle'
+import Market from './market/Market'
 
 const App = () =>
   <ErrorBoundary>
@@ -19,6 +20,7 @@ const App = () =>
       <Route exact path='/' component={Collection} />
       <Route exact path='/shop' component={Shop} />
       <Route exact path='/init' component={InitBattle} />
+      <Route exact path='/market' component={Market} />
     </main>
   </ErrorBoundary>
 
