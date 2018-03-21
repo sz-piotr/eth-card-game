@@ -52,5 +52,18 @@ export const fetchPackPriceFailure = makeActionCreator(FETCH_PACK_PRICE_FAILURE,
 export const PURCHASE_PACK_TRANSACTION = 'PURCHASE_PACK_TRANSACTION'
 export const purchasePackTransaction = makeActionCreator(PURCHASE_PACK_TRANSACTION)
 
+// PICK CARD
+
 export const PICK_CARD = 'PICK_CARD'
 export const pickCard = makeActionCreator(PICK_CARD, 'cardId', 'index')
+
+// MARKET
+
+export const MARKET_OFFER_CREATED = 'MARKET_OFFER_CREATED'
+export const marketOfferCreated = makeActionCreator(MARKET_OFFER_CREATED, 'block', 'seller', 'tokenId', 'price')
+
+export const MARKET_OFFER_CANCELED = 'MARKET_OFFER_CANCELED'
+export const marketOfferCanceled = makeActionCreator(MARKET_OFFER_CANCELED, 'block', 'tokenId')
+
+export const MARKET_TOKEN_PURCHASED = 'MARKET_TOKEN_PURCHASED'
+export const marketTokenPurchased = makeActionCreator(MARKET_TOKEN_PURCHASED, 'block', 'tokenId')
