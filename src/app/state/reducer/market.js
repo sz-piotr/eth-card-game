@@ -7,13 +7,13 @@ import {
 export function reducer (state = {}, action) {
   switch (action.type) {
     case MARKET_OFFER_CREATED:
-      if (state[action.tokenId].block < action.block) {
+      if (isNewer(action, state[action.tokenId])) {
         return {
           ...state,
           [action.tokenId]: {
             canPurchase: true,
             seller: action.seller,
-            block: action.block,
+            at: action.at,
             price: action.price
           }
         }
@@ -22,12 +22,12 @@ export function reducer (state = {}, action) {
       }
     case MARKET_OFFER_CANCELED:
     case MARKET_TOKEN_PURCHASED:
-      if (state[action.tokenId].block < action.block) {
+      if (isNewer(action, state[action.tokenId])) {
         return {
           ...state,
           [action.tokenId]: {
             canPurchase: false,
-            block: action.block
+            at: action.at
           }
         }
       } else {
@@ -36,4 +36,8 @@ export function reducer (state = {}, action) {
     default:
       return state
   }
+}
+
+function isNewer (action, state) {
+  return true // TODO: actually check
 }

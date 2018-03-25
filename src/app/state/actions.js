@@ -60,10 +60,10 @@ export const pickCard = makeActionCreator(PICK_CARD, 'cardId', 'index')
 // MARKET
 
 export const MARKET_OFFER_CREATED = 'MARKET_OFFER_CREATED'
-export const marketOfferCreated = makeActionCreator(MARKET_OFFER_CREATED, 'block', 'seller', 'tokenId', 'price')
+export const marketOfferCreated = makeActionCreator(MARKET_OFFER_CREATED, 'at', 'seller', 'tokenId', 'price')
 
 export const MARKET_OFFER_CANCELED = 'MARKET_OFFER_CANCELED'
-export const marketOfferCanceled = makeActionCreator(MARKET_OFFER_CANCELED, 'block', 'tokenId')
+export const marketOfferCanceled = makeActionCreator(MARKET_OFFER_CANCELED, 'at', 'tokenId')
 
 export const MARKET_TOKEN_PURCHASED = 'MARKET_TOKEN_PURCHASED'
-export const marketTokenPurchased = makeActionCreator(MARKET_TOKEN_PURCHASED, 'block', 'tokenId')
+export const marketTokenPurchased = makeActionCreator(MARKET_TOKEN_PURCHASED, 'at', 'tokenId')
