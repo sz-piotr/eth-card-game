@@ -1,16 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { pickCard } from '../../state/actions'
-import DroppableCard from './DroppableCard'
+import PickedCard from './PickedCard'
 
-const PickedCards = ({ collection }) =>
+const PickedCards = ({ pickedCards }) =>
   <section className='container'>
     <h1>Selected Cards</h1>
-    {collection && <ul className='card-collection'>
-      {collection.map((cardId, index) =>
+    {pickedCards && <ul className='card-collection'>
+      {pickedCards.map((cardId, index) =>
         <li key={index}>
-          <DroppableCard cardId={cardId} index={index} />
+          <PickedCard cardId={cardId} index={index} />
         </li>
       )}
     </ul>}
@@ -18,7 +17,6 @@ const PickedCards = ({ collection }) =>
 
 export default connect(
   state => ({
-    collection: state.pickedCards
-  }),
-  { pickCard }
+    pickedCards: state.pickedCards
+  })
 )(PickedCards)

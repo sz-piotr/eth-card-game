@@ -4,12 +4,14 @@ import { saga as cards } from './cards'
 import { saga as collection } from './collection'
 import { saga as packPrice } from './packPrice'
 import { saga as packPurchase } from './packPurchase'
+import { saga as battle } from './battle'
 
 export function * saga () {
   yield all([
     cards(),
     collection(),
     packPrice(),
-    packPurchase()
+    packPurchase(),
+    battle()
   ])
 }

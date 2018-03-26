@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CardPlaceholder = () =>
+const CardPlaceholder = ({ onClick }) =>
   <div className='card-wrapper'>
-    <div className='card-placeholder' />
+    <div className='card-placeholder' onClick={onClick} />
   </div>
 
 export default CardPlaceholder

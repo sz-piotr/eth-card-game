@@ -1,16 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { selectCard } from '../../state/actions'
+import { selectCard, unselectCard } from '../../state/actions'
 import Card from '../cards/Card'
 
-const SelectableCard = ({ selectCard, selectedCard, cardId }) =>
+const SelectableCard = ({ selectCard, unselectCard, selectedCard, cardId }) =>
   <Card cardClass={selectedCard === cardId ? 'selected-card-display' : 'card-display'}
-    cardId={cardId} onClick={() => selectCard(cardId)} sele />
+    cardId={cardId} onClick={() => selectedCard === cardId ? unselectCard() : selectCard(cardId)} />
 
 export default connect(
   state => ({
     selectedCard: state.selectedCard
-  }), { selectCard }
+  }), { selectCard, unselectCard }
 
 )(SelectableCard)
