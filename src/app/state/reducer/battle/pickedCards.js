@@ -1,6 +1,6 @@
 import {
   PICK_CARD
-} from '../actions'
+} from '../../actions'
 
 export function reducer (state = new Array(3).fill(-1), action) {
   switch (action.type) {

@@ -52,7 +52,10 @@ export const fetchPackPriceFailure = makeActionCreator(FETCH_PACK_PRICE_FAILURE,
 export const PURCHASE_PACK_TRANSACTION = 'PURCHASE_PACK_TRANSACTION'
 export const purchasePackTransaction = makeActionCreator(PURCHASE_PACK_TRANSACTION)
 
-// PICK CARD
+// PICK CARD TO BATTLE
+
+export const SELECT_CARD = 'SELECT_CARD'
+export const selectCard = makeActionCreator(SELECT_CARD, 'cardId')
 
 export const PICK_CARD = 'PICK_CARD'
 export const pickCard = makeActionCreator(PICK_CARD, 'cardId', 'index')

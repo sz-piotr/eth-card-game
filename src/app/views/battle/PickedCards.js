@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import { pickCard } from '../../state/actions'
 import DroppableCard from './DroppableCard'
 
-const DroppableCollection = ({collection}) =>
-  console.log(collection) ||
+const PickedCards = ({ collection }) =>
   <section className='container'>
     <h1>Selected Cards</h1>
     {collection && <ul className='card-collection'>
@@ -21,5 +20,5 @@ export default connect(
   state => ({
     collection: state.pickedCards
   }),
-  {pickCard}
-)(DroppableCollection)
+  { pickCard }
+)(PickedCards)

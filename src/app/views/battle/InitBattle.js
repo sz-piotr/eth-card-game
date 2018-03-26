@@ -1,17 +1,16 @@
 import React from 'react'
-import HTML5Backend from 'react-dnd-html5-backend'
-import { DragDropContext } from 'react-dnd'
-import DroppableCollection from './DroppableCollection'
-import DragableCollection from './DragableCollection'
+
+import SelectableCollection from './SelectableCollection'
+import PickedCards from './PickedCards'
 
 class InitBattle extends React.Component {
   render () {
     return (
       <div>
-        <DragableCollection />
-        <DroppableCollection />
+        <SelectableCollection />
+        <PickedCards />
       </div>
     )
   }
 }
-export default DragDropContext(HTML5Backend)(InitBattle)
+export default InitBattle
