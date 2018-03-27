@@ -17,6 +17,6 @@ const PickedCards = ({ pickedCards }) =>
 
 export default connect(
   state => ({
-    pickedCards: state.pickedCards
+    pickedCards: state.pickCards.picked
   })
 )(PickedCards)

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CardDisplay = ({ cardClass, data, onClick }) =>
+const CardDisplay = ({ className, data, onClick }) =>
   <div className='card-wrapper' >
-    <div className={cardClass} onClick={onClick}>{JSON.stringify(data)} </div>
+    <div className={className} onClick={onClick}>{JSON.stringify(data)} </div>
   </div>
 
 export default CardDisplay

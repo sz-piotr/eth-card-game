@@ -57,14 +57,8 @@ export const purchasePackTransaction = makeActionCreator(PURCHASE_PACK_TRANSACTI
 export const SELECT_CARD = 'SELECT_CARD'
 export const selectCard = makeActionCreator(SELECT_CARD, 'cardId')
 
-export const UNSELECT_CARD = 'UNSELECT_CARD'
-export const unselectCard = makeActionCreator(UNSELECT_CARD)
-
 export const PICK_CARD = 'PICK_CARD'
-export const pickCard = makeActionCreator(PICK_CARD, 'cardId', 'index')
-
-export const UNPICK_CARD = 'UNPICK_CARD'
-export const unpickCard = makeActionCreator(UNPICK_CARD, 'cardId')
+export const pickCard = makeActionCreator(PICK_CARD, 'index')
 
 // MARKET
 

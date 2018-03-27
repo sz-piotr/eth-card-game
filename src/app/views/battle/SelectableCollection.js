@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchCollectionRequest, pickCard } from '../../state/actions'
+import { fetchCollectionRequest } from '../../state/actions'
 import SelectionPlaceholder from './SelectionPlaceholder'
 import SelectableCard from './SelectableCard'
 import Card from '../cards/Card'
@@ -22,7 +22,7 @@ class SelectableCollection extends React.Component {
 
   render () {
     const { isFetching, data, error } = this.props.collection
-    const { pickCard, pickedCards } = this.props
+    const { pickedCards } = this.props
     return (
       <section className='container'>
         <h1>Select Cards</h1>
@@ -32,8 +32,8 @@ class SelectableCollection extends React.Component {
           {data.map((cardId, index) =>
             <li key={index}>
               {pickedCards.indexOf(cardId) === -1
-                ? <SelectableCard cardId={cardId} pickCard={pickCard} />
-                : <Card cardClass='picked-card-display' cardId={cardId} />}
+                ? <SelectableCard cardId={cardId}s />
+                : <Card className='picked-card-display' cardId={cardId} />}
             </li>
           )}
         </ul>}
@@ -46,7 +46,7 @@ export default connect(
   state => ({
     account: state.user.account,
     collection: state.collection[state.user.account] || {},
-    pickedCards: state.pickedCards
+    pickedCards: state.pickCards.picked
   }),
-  { fetchCollectionRequest, pickCard }
+  { fetchCollectionRequest }
 )(SelectableCollection)
