@@ -1,9 +1,9 @@
-import { reducer } from './user'
+import { reducer } from '../../../app/state/reducer/user'
 import {
   metamaskLoaded,
   metamaskNotPresent,
   accountChanged
-} from '../actions'
+} from '../../../app/state/actions'
 
 const SUPPORTED_NETWORK = '4447'
 const UNSUPPORTED_NETWORK = 'unsupported'

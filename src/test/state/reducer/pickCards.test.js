@@ -1,7 +1,8 @@
-import { reducer } from './pickCards'
+import { reducer } from '../../../app/state/reducer/pickCards'
 import {
-  selectCard, pickCard
-} from '../../actions'
+  selectCard,
+  pickCard
+} from '../../../app/state/actions'
 
 describe('pickCards reducer', () => {
   it('should select card', () => {

@@ -1,6 +1,4 @@
-import {
-  PICK_CARD, SELECT_CARD
-} from '../../actions'
+import { PICK_CARD, SELECT_CARD } from '../actions'
 
 export function reducer (state = {
   picked: new Array(3).fill(null),

@@ -1,9 +1,9 @@
-import { reducer } from './packPrice'
+import { reducer } from '../../../app/state/reducer/packPrice'
 import {
   fetchPackPriceRequest,
   fetchPackPriceSuccess,
   fetchPackPriceFailure
-} from '../actions'
+} from '../../../app/state/actions'
 
 describe('packPrice reducer', () => {
   it('correcty handles the fetchPackPriceRequest action', () => {
