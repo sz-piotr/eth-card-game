@@ -1,36 +1,36 @@
 import {
-  FETCH_COLLECTION_REQUEST,
-  FETCH_COLLECTION_SUCCESS,
-  FETCH_COLLECTION_FAILURE
-} from '../actions'
+  FETCH_CARD_DETAILS_REQUEST,
+  FETCH_CARD_DETAILS_SUCCESS,
+  FETCH_CARD_DETAILS_FAILURE
+} from '../../actions'
 
 export function reducer (state = {}, action) {
   switch (action.type) {
-    case FETCH_COLLECTION_REQUEST:
+    case FETCH_CARD_DETAILS_REQUEST:
       return {
         ...state,
-        [action.account]: {
+        [action.cardId]: {
           isFetching: true,
           error: false,
-          data: state[action.account] && state[action.account].data
+          data: state[action.cardId] && state[action.cardId].data
         }
       }
-    case FETCH_COLLECTION_SUCCESS:
+    case FETCH_CARD_DETAILS_SUCCESS:
       return {
         ...state,
-        [action.account]: {
+        [action.cardId]: {
           isFetching: false,
           error: false,
           data: action.data
         }
       }
-    case FETCH_COLLECTION_FAILURE:
+    case FETCH_CARD_DETAILS_FAILURE:
       return {
         ...state,
-        [action.account]: {
+        [action.cardId]: {
           isFetching: false,
           error: action.error,
-          data: state[action.account] && state[action.account].data
+          data: state[action.cardId] && state[action.cardId].data
         }
       }
     default:

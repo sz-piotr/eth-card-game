@@ -1,6 +1,6 @@
 import React from 'react'
 
-import fetchingCollection from './FetchingCollection'
+import fetchingCollection from './fetchingCollection'
 import Card from '../cards/Card'
 import CollectionPlaceholder from './CollectionPlaceholder'
 

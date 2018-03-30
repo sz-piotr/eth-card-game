@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import fetchingColection from '../collection/FetchingCollection'
+import fetchingColection from '../collection/fetchingCollection'
 import SelectionPlaceholder from './SelectionPlaceholder'
 import SelectableCard from './SelectableCard'
 import Card from '../cards/Card'

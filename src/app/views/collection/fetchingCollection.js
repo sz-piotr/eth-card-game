@@ -26,7 +26,7 @@ function fetchingCollection (Collection) {
   return connect(
     state => ({
       account: state.user.account,
-      collection: state.collection[state.user.account] || {}
+      collection: state.cards.byOwner[state.user.account] || {}
     }),
     { fetchCollectionRequest }
   )(FetchingCollection)

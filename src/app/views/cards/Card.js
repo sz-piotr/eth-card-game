@@ -17,7 +17,7 @@ class Card extends React.Component {
 
   render () {
     const { isFetching, data, error, className, onClick } = this.props
-    if (isFetching) {
+    if (isFetching || data == null) {
       return <CardPlaceholder />
     } else if (error) {
       return <CardError />
@@ -28,6 +28,6 @@ class Card extends React.Component {
 }
 
 export default connect(
-  (state, props) => state.cards[props.cardId] || {},
+  (state, props) => state.cards.details[props.cardId] || {},
   { fetchCardDetailsRequest }
 )(Card)
