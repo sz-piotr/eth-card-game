@@ -1,6 +1,6 @@
 import { takeEvery, call, put } from 'redux-saga/effects'
 
-import { MinterContract } from '../../contracts'
+import { Minter } from '../../contracts'
 import {
   FETCH_PACK_PRICE_REQUEST,
   fetchPackPriceSuccess,
@@ -9,8 +9,8 @@ import {
 
 function * fetchPackPrice ({ account }) {
   try {
-    let data = yield call(MinterContract.packPrice)
-    yield put(fetchPackPriceSuccess(data.toString()))
+    const data = yield call(Minter.packPrice)
+    yield put(fetchPackPriceSuccess(data))
   } catch (error) {
     console.error(error)
     yield put(fetchPackPriceFailure(error.message))

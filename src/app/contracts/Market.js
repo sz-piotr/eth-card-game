@@ -1,5 +1,5 @@
-import { ContractInterface } from './ContractInterface'
-import marketArtifact from '../../../build/contracts/ERC721Market'
+import { createContractInstance, createWeb3Function } from './utils'
+import { abi, networks } from '../../../build/contracts/ERC721Market'
 import { store } from '../state/store'
 import {
   marketOfferCreated,
@@ -7,14 +7,20 @@ import {
   marketTokenPurchased
 } from '../state/actions'
 
-export const Market = new ContractInterface(marketArtifact)
+const instance = createContractInstance(abi, networks)
 
-Market._web3Contract.then(instance => {
-  instance.allEvents({ fromBlock: 0 })
+export const Market = {
+  createOffer: createWeb3Function(instance, 'createOffer'),
+  cancelOffer: createWeb3Function(instance, 'cancelOffer'),
+  purchase: createWeb3Function(instance, 'purchase')
+}
+
+instance
+  .then(instance => instance.allEvents({ fromBlock: 0 })
     .watch(function (err, data) {
       !err && onMarketEvent(data)
     })
-})
+  )
 
 function onMarketEvent (data) {
   const at = [data.blockNumber, data.transactionIndex, data.logIndex]

@@ -1,10 +1,10 @@
 import * as Web3 from 'web3'
-import { store } from '../state/store'
+import { store } from '../../state/store'
 import {
   metamaskLoaded,
   metamaskNotPresent,
   accountChanged
-} from '../state/actions'
+} from '../../state/actions'
 
 const web3 = new Promise((resolve, reject) => {
   window.addEventListener('load', function () {
