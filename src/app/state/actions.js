@@ -74,7 +74,7 @@ export const marketTokenPurchased = makeActionCreator(MARKET_TOKEN_PURCHASED, 'a
 // COLLECTION FILTERING
 
 export const COLLECTION_FILTER_CHANGE = 'COLLECTION_FILTER_CHANGE'
-export const collectioFilterChange = makeActionCreator(COLLECTION_FILTER_CHANGE, 'filter')
+export const collectionFilterChange = makeActionCreator(COLLECTION_FILTER_CHANGE, 'filter')
 
 export const COLLECTION_FILTER_RESET = 'COLLECTION_FILTER_RESET'
-export const collectioFilterReset = makeActionCreator(COLLECTION_FILTER_RESET)
+export const collectionFilterReset = makeActionCreator(COLLECTION_FILTER_RESET)
