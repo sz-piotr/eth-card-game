@@ -70,3 +70,11 @@ export const marketOfferCanceled = makeActionCreator(MARKET_OFFER_CANCELED, 'at'
 
 export const MARKET_TOKEN_PURCHASED = 'MARKET_TOKEN_PURCHASED'
 export const marketTokenPurchased = makeActionCreator(MARKET_TOKEN_PURCHASED, 'at', 'tokenId')
+
+// COLLECTION FILTERING
+
+export const COLLECTION_FILTER_CHANGE = 'COLLECTION_FILTER_CHANGE'
+export const collectioFilterChange = makeActionCreator(COLLECTION_FILTER_CHANGE, 'filter')
+
+export const COLLECTION_FILTER_RESET = 'COLLECTION_FILTER_RESET'
+export const collectioFilterReset = makeActionCreator(COLLECTION_FILTER_RESET)
