@@ -1,5 +1,8 @@
 import React from 'react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 
+import { selectFilteredCollection } from '../../state/selectors'
 import { fetchingCollection } from './fetchingCollection'
 import Card from '../cards/Card'
 import CollectionPlaceholder from './CollectionPlaceholder'
@@ -7,7 +10,8 @@ import CollectionFilter from './CollectionFilter'
 
 class Collection extends React.Component {
   render () {
-    const { isFetching, data, error } = this.props.collection
+    const { isFetching, error } = this.props.collection
+    const data = this.props.data
     return (
       <section className='container'>
         <h1>My Cards</h1>
@@ -27,4 +31,7 @@ class Collection extends React.Component {
   }
 }
 
-export default fetchingCollection(Collection)
+export default compose(
+  fetchingCollection,
+  connect(state => ({ data: selectFilteredCollection(state) }))
+)(Collection)

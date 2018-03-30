@@ -1,0 +1,1 @@
+export { selectFilteredCollection } from './filteredCollection'

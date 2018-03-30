@@ -11,7 +11,7 @@ const Pagination = ({ page, count }) =>
 class CollectionFilter extends React.Component {
   render () {
     const { children, count, filter, collectionFilterChange } = this.props
-    const pageCount = count && Math.max(Math.ceil(count / filter.itemsPerPage), 1)
+    const pageCount = (count != null) && Math.max(Math.ceil(count / filter.itemsPerPage), 1)
     const pagination = <Pagination page={filter.page + 1} count={pageCount} />
     return (
       <React.Fragment>
