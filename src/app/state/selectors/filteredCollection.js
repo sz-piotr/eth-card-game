@@ -1,7 +1,7 @@
 import cardAttributes from '../../data/cardAttributes'
 
 export function selectFilteredCollection (state) {
-  const search = state.cards.filter.search
+  const search = state.cards.filter.search.toLowerCase()
   const collection = (state.cards.byOwner[state.user.account] || {}).data
   const details = state.cards.details
   if (!collection) {
