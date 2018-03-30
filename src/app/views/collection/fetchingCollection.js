@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { fetchCollectionRequest } from '../../state/actions'
 
-function fetchingCollection (Collection) {
+export function fetchingCollection (Component) {
   class FetchingCollection extends React.Component {
     constructor (props) {
       super(props)
@@ -19,7 +19,7 @@ function fetchingCollection (Collection) {
     }
 
     render () {
-      return <Collection {...this.props} />
+      return <Component {...this.props} />
     }
   }
 
@@ -31,5 +31,3 @@ function fetchingCollection (Collection) {
     { fetchCollectionRequest }
   )(FetchingCollection)
 }
-
-export default fetchingCollection
