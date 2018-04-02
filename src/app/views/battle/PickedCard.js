@@ -7,7 +7,7 @@ import { pickCard } from '../../state/actions'
 
 const PickedCard = ({ pickCard, cardId, index }) =>
   cardId
-    ? <Card cardClass='card-display' cardId={cardId} onClick={() => pickCard(index)} />
+    ? <Card cardId={cardId} onClick={() => pickCard(index)} />
     : <CardPlaceholder onClick={() => pickCard(index)} />
 
 export default connect(

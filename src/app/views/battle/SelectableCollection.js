@@ -14,15 +14,18 @@ class SelectableCollection extends React.Component {
         <h1>Select Cards</h1>
         {isFetching && !data && <SelectionPlaceholder />}
         {error}
-        {data && <ul className='card-collection'>
-          {data.map((cardId, index) =>
-            <li key={index}>
-              {pickedCards.indexOf(cardId) === -1
-                ? <SelectableCard cardId={cardId} s />
-                : <Card className='picked-card-display' cardId={cardId} />}
-            </li>
-          )}
-        </ul>}
+        {data &&
+          <ul className='card-collection'>
+            {data.map((cardId, index) =>
+              <li key={index}>
+                {pickedCards.indexOf(cardId) === -1
+                  ? <SelectableCard cardId={cardId} s />
+                  : <Card className='card-display--picked' cardId={cardId} />
+                }
+              </li>
+            )}
+          </ul>
+        }
       </section>
     )
   }

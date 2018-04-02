@@ -22,7 +22,11 @@ class Card extends React.Component {
     } else if (error) {
       return <CardError />
     } else {
-      return <CardDisplay className={className || 'card-display'} data={data} onClick={onClick} />
+      return <CardDisplay
+        className={className}
+        data={data}
+        onClick={onClick}
+      />
     }
   }
 }
