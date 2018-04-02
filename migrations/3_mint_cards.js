@@ -8,18 +8,25 @@ module.exports = function (deployer, network, accounts) {
 
 async function deploy (deployer, network, accounts) {
   const minter = await Minter.deployed()
-  await minter.createExpansion(20, 10, 5)
+  await minter.createExpansion(3, 2, 1)
 
-  await minter.mintAnyCard(accounts[0], 0, 1, 0)
-  await minter.mintAnyCard(accounts[0], 1, 1, 0)
-  await minter.mintAnyCard(accounts[0], 2, 1, 0)
+  await minter.purchasePack(0, {
+    from: accounts[0],
+    value: '10000000000000000' // 0.01 ETH
+  })
+  await minter.purchasePack(0, {
+    from: accounts[0],
+    value: '10000000000000000' // 0.01 ETH
+  })
 
-  await minter.mintAnyCard(accounts[1], 3, 1, 0)
-  await minter.mintAnyCard(accounts[1], 4, 1, 0)
-  await minter.mintAnyCard(accounts[1], 5, 1, 0)
+  await minter.purchasePack(0, {
+    from: accounts[1],
+    value: '10000000000000000' // 0.01 ETH
+  })
 
   const cards = await Cards.deployed()
   const market = await ERC721Market.deployed()
+
   await cards.approve(ERC721Market.address, 0)
   await cards.approve(ERC721Market.address, 1)
   await cards.approve(ERC721Market.address, 2)

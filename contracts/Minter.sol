@@ -12,13 +12,16 @@ contract Minter is Ownable, Random {
   Cards cards;
 
   struct Expansion {
-    uint64 offset;
     uint32 commonCount;
     uint32 rareCount;
     uint32 epicCount;
   }
   Expansion[] public expansions;
-  uint64 private nextOffset = 0;
+
+  uint constant private EXPANSION_OFFSET = 1000;
+  uint constant private COMMON_OFFSET = 100;
+  uint constant private RARE_OFFSET = 200;
+  uint constant private EPIC_OFFSET = 300;
 
   uint public commonChance = 60;
   uint public rareChance = 30;
@@ -32,8 +35,7 @@ contract Minter is Ownable, Random {
   }
 
   function createExpansion (uint32 _commonCount, uint32 _rareCount, uint32 _epicCount) public onlyOwner {
-    expansions.push(Expansion(nextOffset, _commonCount, _rareCount, _epicCount));
-    nextOffset += _commonCount + _rareCount + _epicCount;
+    expansions.push(Expansion(_commonCount, _rareCount, _epicCount));
   }
 
   function updateChances (uint _commonChance, uint _rareChance, uint _epicChance, uint _shinyChance) public onlyOwner {
@@ -57,26 +59,28 @@ contract Minter is Ownable, Random {
     require(msg.value == packPrice);
 
     Expansion storage expansion = expansions[_expansionId];
+    uint offset = (_expansionId + 1) * EXPANSION_OFFSET;
 
-    uint firstCardId = mintRandomCard(expansion);
-    mintRandomCard(expansion);
-    mintRandomCard(expansion);
+    uint firstCardId = mintRandomCard(expansion, offset);
+    mintRandomCard(expansion, offset);
+    mintRandomCard(expansion, offset);
 
     PackPurchased(msg.sender, firstCardId);
   }
 
-  function mintRandomCard (Expansion _expansion) private returns (uint) {
+  function mintRandomCard (Expansion _expansion, uint offset) private returns (uint) {
     uint rarityRandom = random(commonChance + rareChance + epicChance);
     uint32 metadata = (random(100) < shinyChance) ? 0x1 : 0x0;
 
-    uint64 offset = _expansion.offset;
     uint range = _expansion.commonCount;
-    if (rarityRandom >= commonChance) {
-      offset += _expansion.commonCount;
+    if (rarityRandom < commonChance) {
+      offset += COMMON_OFFSET;
+      range = _expansion.commonCount;
+    } else if (rarityRandom < commonChance + rareChance) {
+      offset += RARE_OFFSET;
       range = _expansion.rareCount;
-    }
-    if (rarityRandom >= commonChance + rareChance) {
-      offset += _expansion.rareCount;
+    } else {
+      offset += EPIC_OFFSET;
       range = _expansion.epicCount;
     }
 
