@@ -1,0 +1,53 @@
+{
+  "expansions": [
+    {
+      "name": "core-set",
+      "displayName": "Core Set",
+      "heroes": {
+        "common": [
+          {
+            "name": "hero-dog",
+            "displayName": "Dog",
+            "hitPoints": 200
+          },
+          {
+            "name": "hero-cat",
+            "displayName": "Cat",
+            "hitPoints": 404
+          }
+        ],
+        "uncommon": [
+          {
+            "name": "hero-goose",
+            "displayName": "Goose",
+            "hitPoints": 503
+          }
+        ],
+        "rare": [
+          {
+            "name": "hero-unicorn",
+            "displayName": "Unicorn",
+            "hitPoints": 418
+          }
+        ]
+      },
+      "actions": {
+        "common": [
+          {
+            "name": "action-punch",
+            "displayName": "Punch",
+            "damage": 13
+          }
+        ],
+        "uncommon": [
+          {
+            "name": "action-fireball",
+            "displayName": "Fireball",
+            "damage": 13
+          }
+        ],
+        "rare": []
+      }
+    }
+  ]
+}

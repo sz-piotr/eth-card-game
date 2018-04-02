@@ -1,4 +1,4 @@
-import cardAttributes from '../../data/cardAttributes'
+import { getCardAttributes } from '../../data'
 
 export function selectFilteredCollection (state) {
   const search = state.cards.filter.search.toLowerCase()
@@ -19,6 +19,6 @@ function filterCollection (collection, search, details) {
   })
 }
 
-const cardName = card => (cardAttributes[card[0]] || cardAttributes.default).name
+const cardName = card => getCardAttributes(card[0]).displayName
 const cardNameIncludes = (card, text) =>
   cardName(card).toLowerCase().includes(text)

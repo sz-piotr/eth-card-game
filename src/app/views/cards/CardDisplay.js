@@ -1,12 +1,12 @@
 import React from 'react'
-import cardAttributes from '../../data/cardAttributes'
+import { getCardAttributes } from '../../data'
 
 const CardDisplay = ({ className, data, onClick }) => {
-  const attributes = cardAttributes[data[0]] || cardAttributes.default
+  const attributes = getCardAttributes(data[0])
   return (
     <div className='card-wrapper' >
       <div className={className} onClick={onClick}>
-        {attributes.name}
+        {attributes.displayName}
       </div>
     </div>
   )
