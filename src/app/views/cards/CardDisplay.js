@@ -6,7 +6,8 @@ const CardDisplay = ({ className, data, onClick }) => {
   return (
     <div className='card-wrapper' >
       <div className={`card-display ${className || ''}`} onClick={onClick}>
-        {attributes.displayName}
+        {attributes.image && <img className='card-image' src={attributes.image} />}
+        <div className='card-name'>{attributes.displayName}</div>
       </div>
     </div>
   )

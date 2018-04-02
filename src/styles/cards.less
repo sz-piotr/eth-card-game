@@ -34,8 +34,26 @@
 }
 
 .card-display {
-  background-color: #f5e8ac;
   border-radius: @card-border-radius;
+  overflow: hidden;
+  user-select: none;
+}
+
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-name {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .card-display--selected {
