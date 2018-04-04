@@ -18,7 +18,8 @@ class CollectionFilter extends React.Component {
     />
     return (
       <React.Fragment>
-        <input className='collection-filter'
+        <input className='input'
+          placeholder='Search'
           value={filter.search}
           onChange={e => collectionFilterChange({ search: e.target.value })}
         />
