@@ -1,15 +1,17 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import Navbar from './navigation/Navbar'
-import AlertBar from './info/AlertBar'
-import NotificationOverlay from './info/NotificationOverlay'
-
-import Shop from './shop/Shop'
-import Collection from './collection/Collection'
-import ErrorBoundary from './ErrorBoundary'
-import InitBattle from './battle/InitBattle'
-import Market from './market/Market'
+import Navbar from './components/navigation/Navbar'
+import AlertBar from './components/info/AlertBar'
+import NotificationOverlay from './components/info/NotificationOverlay'
+import ErrorBoundary from './components/ErrorBoundary'
+import {
+  Arena,
+  Collection,
+  Home,
+  Market,
+  Shop
+} from './pages'
 
 const App = () =>
   <ErrorBoundary>
@@ -17,9 +19,10 @@ const App = () =>
     <AlertBar />
     <main className='app'>
       <NotificationOverlay />
-      <Route exact path='/' component={Collection} />
+      <Route exact path='/home' component={Home} />
       <Route exact path='/shop' component={Shop} />
-      <Route exact path='/init' component={InitBattle} />
+      <Route exact path='/collection' component={Collection} />
+      <Route exact path='/arena' component={Arena} />
       <Route exact path='/market' component={Market} />
     </main>
   </ErrorBoundary>

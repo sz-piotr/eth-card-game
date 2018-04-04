@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { getCardAttributes } from '../../data'
+import { getCardAttributes } from '../../../data'
 
 const CardDisplay = ({ className, data, onClick }) => {
   const attributes = getCardAttributes(data[0])

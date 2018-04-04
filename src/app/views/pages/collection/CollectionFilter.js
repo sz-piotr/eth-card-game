@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Pager from '../pagination/Pager'
+import Pager from '../../components/Pager'
 import {
   collectionFilterChange,
   collectionFilterReset
-} from '../../state/actions'
+} from '../../../state/actions'
 
 class CollectionFilter extends React.Component {
   render () {

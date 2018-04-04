@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchCardDetailsRequest } from '../../state/actions'
+import { fetchCardDetailsRequest } from '../../../state/actions'
 
 import CardDisplay from './CardDisplay'
 import CardPlaceholder from './CardPlaceholder'

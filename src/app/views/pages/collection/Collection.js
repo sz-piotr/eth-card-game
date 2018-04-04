@@ -2,11 +2,11 @@ import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-import { selectFilteredCollection } from '../../state/selectors'
+import { selectFilteredCollection } from '../../../state/selectors'
 import { fetchingCollection } from './fetchingCollection'
-import Card from '../cards/Card'
 import CollectionPlaceholder from './CollectionPlaceholder'
 import CollectionFilter from './CollectionFilter'
+import Card from '../../components/cards/Card'
 
 class Collection extends React.Component {
   render () {

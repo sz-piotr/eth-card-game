@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import {
   fetchPackPriceRequest,
   purchasePackTransaction
-} from '../../state/actions'
+} from '../../../state/actions'
 
 class Shop extends React.Component {
   componentDidMount () {

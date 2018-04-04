@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { dismissNotification } from '../../state/actions'
+import { dismissNotification } from '../../../state/actions'
 
 const Notification = ({ id, title, description, dismissNotification }) =>
   <li className='notification'>

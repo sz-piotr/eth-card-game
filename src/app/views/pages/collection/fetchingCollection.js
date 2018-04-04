@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchCollectionRequest } from '../../state/actions'
+import { fetchCollectionRequest } from '../../../state/actions'
 
 export function fetchingCollection (Component) {
   class FetchingCollection extends React.Component {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchingCollection } from '../collection/fetchingCollection'
 import SelectionPlaceholder from './SelectionPlaceholder'
 import SelectableCard from './SelectableCard'
-import Card from '../cards/Card'
+import Card from '../../components/cards/Card'
 
 class SelectableCollection extends React.Component {
   render () {

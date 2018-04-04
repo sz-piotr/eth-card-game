@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CardPlaceholder from '../cards/CardPlaceholder'
+import CardPlaceholder from '../../components/cards/CardPlaceholder'
 
 const SelectionPlaceholder = () =>
   <ul className='card-collection'>

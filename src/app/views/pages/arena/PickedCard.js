@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Card from '../cards/Card'
-import CardPlaceholder from '../cards/CardPlaceholder'
-import { pickCard } from '../../state/actions'
+import Card from '../../components/cards/Card'
+import CardPlaceholder from '../../components/cards/CardPlaceholder'
+import { pickCard } from '../../../state/actions'
 
 const PickedCard = ({ pickCard, cardId, index }) =>
   cardId

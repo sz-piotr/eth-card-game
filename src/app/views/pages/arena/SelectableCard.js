@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { selectCard } from '../../state/actions'
-import Card from '../cards/Card'
+import { selectCard } from '../../../state/actions'
+import Card from '../../components/cards/Card'
 
 const SelectableCard = ({ selectCard, selectedCard, cardId }) =>
   <Card
