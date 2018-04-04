@@ -14,9 +14,7 @@ contract Challenges is Ownable {
     address challenger;
     challengeResultEnum challengeResult;
     uint initiatorCardsHash;
-    uint initiatorHero;
     uint challengerHero;
-    uint[5] initiatorCards;
     uint[5] challengerCards;
 }
 
@@ -35,17 +33,10 @@ contract Challenges is Ownable {
   }
 
   function challenge(uint cardsHash) public {
-    uint[5] memory emptyArray;
+      uint[5] memory emptyArray;
     uint id = challenges.push(Challenge(msg.sender, address(0), challengeResultEnum.UNKNOWN,
-      cardsHash, 0, 0, emptyArray, emptyArray)) - 1;
+      cardsHash, 0, emptyArray)) - 1;
     challengeToInitiator[id] = msg.sender;
-  }
-
-  function challenge2(uint hero, uint[cardAmount] _cards) public returns (uint){
-    uint[5] memory emptyArray;
-    uint id = challenges.push(Challenge(msg.sender, address(0), challengeResultEnum.UNKNOWN,0, hero, 0, _cards, emptyArray)) - 1;
-    challengeToInitiator[id] = msg.sender;
-    return id;
   }
 
   function accept(uint id, uint hero, uint[cardAmount] _cards) public {
@@ -57,10 +48,10 @@ contract Challenges is Ownable {
     _challenge.challengerCards = _cards;
   }
 
-  function battle(uint id) public {
+  function battle(uint id, uint initiatorHero, uint[cardAmount] initiatorCards) public {
     Challenge storage _challenge = challenges[id];
     require(_challenge.initiator == msg.sender);
-    uint initiatorHeroHealth = getHero(_challenge.initiatorHero);
+    uint initiatorHeroHealth = getHero(initiatorHero);
     uint challengerHeroHealth = getHero(_challenge.challengerHero);
     uint8 elementAmount = cardTypes.elementAmount();
     uint initiatorElement;
@@ -69,7 +60,7 @@ contract Challenges is Ownable {
     uint challengerDamage;
     for (uint i = 0; i != elementAmount; i++) {
       (, challengerElement, challengerDamage) = getCard(_challenge.challengerCards[0]);
-      (, initiatorElement, initiatorDamage) = getCard(_challenge.initiatorCards[0]);
+      (, initiatorElement, initiatorDamage) = getCard(initiatorCards[0]);
       uint result = (elementAmount + initiatorElement - challengerElement) % elementAmount;
       if(result != 0) {
         if (result % 2 == 1) {
@@ -91,14 +82,6 @@ contract Challenges is Ownable {
     } else {
       _challenge.challengeResult = challengeResultEnum.DRAFT;
     }
-  }
-
-  function getInitiatorCards(uint id) public view returns (uint[5]) {
-    return challenges[id].initiatorCards;
-  }
-
-  function getChallengerCards(uint id) public view returns (uint[5]) {
-    return challenges[id].challengerCards;
   }
 
   function getHero(uint id) private view returns (uint) {
