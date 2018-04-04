@@ -1,27 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
+import Pager from '../pagination/Pager'
 import {
   collectionFilterChange,
   collectionFilterReset
 } from '../../state/actions'
 
-const Pagination = ({ page, count }) =>
-  <div>{page} of {count}</div>
-
 class CollectionFilter extends React.Component {
   render () {
     const { children, count, filter, collectionFilterChange } = this.props
     const pageCount = (count != null) && Math.max(Math.ceil(count / filter.itemsPerPage), 1)
-    const pagination = <Pagination page={filter.page + 1} count={pageCount} />
+    const pager = <Pager
+      page={filter.page}
+      count={pageCount}
+      onChange={page => collectionFilterChange({ page })}
+    />
     return (
       <React.Fragment>
         <input className='collection-filter'
           value={filter.search}
           onChange={e => collectionFilterChange({ search: e.target.value })}
         />
-        {pagination}
+        {pager}
         {children}
-        {pagination}
+        {pager}
       </React.Fragment>
     )
   }

@@ -10,6 +10,7 @@
     "testrpc": "ganache-cli -d --db data -i 123456"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "core-js": "^2.5.3",
     "localforage": "^1.6.0",
     "react": "^16.2.0",
