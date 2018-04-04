@@ -9,23 +9,23 @@ const Navbar = () =>
       <h1>Eth Card Game</h1>
       <NavbarLinks>
         <NavLink exact to='/'>
-          <i className='icon-home' />
+          <img src='images/placeholders/square.svg' />
           <span>Home</span>
         </NavLink>
         <NavLink to='/shop'>
-          <i className='icon-shop' />
+          <img src='images/placeholders/square.svg' />
           <span>Shop</span>
         </NavLink>
         <NavLink exact to='/collection'>
-          <i className='icon-collection' />
+          <img src='images/placeholders/square.svg' />
           <span>Collection</span>
         </NavLink>
         <NavLink to='/arena'>
-          <i className='icon-arena' />
+          <img src='images/placeholders/square.svg' />
           <span>Arena</span>
         </NavLink>
         <NavLink to='/market'>
-          <i className='icon-shop' />
+          <img src='images/placeholders/square.svg' />
           <span>Market</span>
         </NavLink>
       </NavbarLinks>

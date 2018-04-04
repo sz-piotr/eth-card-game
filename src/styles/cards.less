@@ -24,7 +24,7 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: @space-l;
 
-  @media @device-s {
+  @media @device-phone {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 
@@ -37,6 +37,7 @@
   border-radius: @card-border-radius;
   overflow: hidden;
   user-select: none;
+  box-shadow: 0px (@space-xs / 2) @space-xs 0 @color-shadow;
 }
 
 .card-image {
