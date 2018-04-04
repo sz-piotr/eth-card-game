@@ -2,7 +2,8 @@
 /* global contract */
 /* global assert */
 const Challenges = artifacts.require('./Challenges.sol')
-const Cards = artifacts.require('./Cards.sol')
+// const Cards = artifacts.require('./Cards.sol')
+const Minter = artifacts.require('./Minter.sol')
 const CardTypes = artifacts.require('./CardTypes.sol')
 
 const heroId = 1
@@ -13,9 +14,10 @@ const DRAFT = 2
 contract('Challenges', (accounts) => {
   it('should perform challenge', async () => {
     async function prepareCardTypes () {
-      const cards = await Cards.deployed()
-      await cards.mint(accounts[0], 0, 1, 1)
-      await cards.mint(accounts[0], heroId, 1, 1)
+      // const cards = await Cards.deployed()
+      const minter = await Minter.deployed()
+      await minter.mintAnyCard(accounts[0], 0, 1, 1)
+      await minter.mintAnyCard(accounts[0], heroId, 1, 1)
     }
     async function prepareCards () {
       const cardTypes = await CardTypes.deployed()
@@ -27,7 +29,7 @@ contract('Challenges', (accounts) => {
     await prepareCards()
 
     const challenges = await Challenges.deployed()
-    await challenges.challenge(heroId, cardsXD)
+    await challenges.challenge()
     await challenges.accept(0, heroId, cardsXD)
     await challenges.battle(0)
     const result = await challenges.getResult(0)

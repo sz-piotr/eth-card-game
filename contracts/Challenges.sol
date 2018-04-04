@@ -13,6 +13,7 @@ contract Challenges is Ownable {
     address initiator;
     address challenger;
     challengeResultEnum challengeResult;
+    uint initiatorCardsHash;
     uint initiatorHero;
     uint challengerHero;
     uint[5] initiatorCards;
@@ -33,9 +34,16 @@ contract Challenges is Ownable {
     cardTypes = CardTypes(cardTypesAddress);
   }
 
-  function challenge(uint hero, uint[cardAmount] _cards) public returns (uint){
+  function challenge(uint cardsHash) public {
     uint[5] memory emptyArray;
-    uint id = challenges.push(Challenge(msg.sender, address(0), challengeResultEnum.UNKNOWN, hero, 0, _cards, emptyArray)) - 1;
+    uint id = challenges.push(Challenge(msg.sender, address(0), challengeResultEnum.UNKNOWN,
+      cardsHash, 0, 0, emptyArray, emptyArray)) - 1;
+    challengeToInitiator[id] = msg.sender;
+  }
+
+  function challenge2(uint hero, uint[cardAmount] _cards) public returns (uint){
+    uint[5] memory emptyArray;
+    uint id = challenges.push(Challenge(msg.sender, address(0), challengeResultEnum.UNKNOWN,0, hero, 0, _cards, emptyArray)) - 1;
     challengeToInitiator[id] = msg.sender;
     return id;
   }

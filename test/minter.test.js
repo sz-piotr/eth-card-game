@@ -5,13 +5,25 @@ contract('Minter', (accounts) => {
   it('should create arbitrary cards ', async () => {
     const cards = await Cards.deployed()
     const minter = await Minter.deployed()
-
     await minter.mintAnyCard(accounts[0], 1234, 1, 0)
-    const card = await cards.getCard(0)
-
+    const id = await getLastCreatedCardId(cards)
+    const card = await cards.getCard(id)
     assert.deepEqual(
       card.map(x => x.toNumber()),
       [1234, 1, 0]
     )
   })
 })
+
+const getLastCreatedCardId = async (cards) => {
+  const result = await new Promise(function (resolve, reject) {
+    cards.allEvents({ fromBlock: 0, toBlock: 'latest' }).get(function (error, data) {
+      if (error) {
+        reject(error)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+  return result.slice(-1)[0].args._tokenId.toString()
+}
