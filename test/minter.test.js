@@ -1,3 +1,5 @@
+const {getLastCreatedTokenId} = require('./utlis')
+
 const Minter = artifacts.require('./Minter.sol')
 const Cards = artifacts.require('./Cards.sol')
 
@@ -6,7 +8,7 @@ contract('Minter', (accounts) => {
     const cards = await Cards.deployed()
     const minter = await Minter.deployed()
     await minter.mintAnyCard(accounts[0], 1234, 1, 0)
-    const id = await getLastCreatedCardId(cards)
+    const id = await getLastCreatedTokenId(cards)
     const card = await cards.getCard(id)
     assert.deepEqual(
       card.map(x => x.toNumber()),
@@ -14,16 +16,3 @@ contract('Minter', (accounts) => {
     )
   })
 })
-
-const getLastCreatedCardId = async (cards) => {
-  const result = await new Promise(function (resolve, reject) {
-    cards.allEvents({ fromBlock: 0, toBlock: 'latest' }).get(function (error, data) {
-      if (error) {
-        reject(error)
-      } else {
-        resolve(data)
-      }
-    })
-  })
-  return result.slice(-1)[0].args._tokenId.toString()
-}
