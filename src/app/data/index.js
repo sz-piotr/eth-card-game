@@ -1,8 +1,9 @@
 import { cardAttributes } from './cardAttributes'
 
 const DEFAULT_CARD = {
-  type: 'error',
-  displayName: ''
+  type: 'unknown',
+  displayName: '',
+  searchText: ''
 }
 
 window.cardAttributes = cardAttributes
