@@ -24,7 +24,6 @@ const PagerDots = () =>
   </li>
 
 const Pager = ({ page, count, onChange }) => {
-  // count = 40
   const pages = []
   for (let i = page - 2; i <= page + 2; i++) {
     if (i >= 0 && i < count) {

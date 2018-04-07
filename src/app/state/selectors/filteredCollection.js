@@ -16,7 +16,7 @@ const filterCollection = memoize((collection, filter, details) => {
   return collection.filter(cardId => {
     const cardDetails = details[cardId] || {}
     if (cardDetails.isFetching) {
-      return false
+      return true
     }
 
     const card = getCardAttributes(cardDetails.data)
