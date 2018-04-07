@@ -1,3 +1,4 @@
+
 exports.getLastCreatedTokenId = async (cards) => {
   const result = await toPromise(cards)
   return result.slice(-1)[0].args._tokenId.toString()

@@ -1,6 +1,7 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.18;
 
 import "./lib/Ownable.sol";
+import "./lib/Convert.sol";
 import "./CardTypes.sol";
 import "./Cards.sol";
 
@@ -13,7 +14,7 @@ contract Challenges is Ownable {
     address initiator;
     address challenger;
     challengeResultEnum challengeResult;
-    uint initiatorCardsHash;
+    bytes32 initiatorCardsHash;
     uint challengerHero;
     uint[5] challengerCards;
 }
@@ -32,8 +33,8 @@ contract Challenges is Ownable {
     cardTypes = CardTypes(cardTypesAddress);
   }
 
-  function challenge(uint cardsHash) public {
-      uint[5] memory emptyArray;
+  function challenge(bytes32 cardsHash) public {
+    uint[5] memory emptyArray;
     uint id = challenges.push(Challenge(msg.sender, address(0), challengeResultEnum.UNKNOWN,
       cardsHash, 0, emptyArray)) - 1;
     challengeToInitiator[id] = msg.sender;
@@ -48,9 +49,10 @@ contract Challenges is Ownable {
     _challenge.challengerCards = _cards;
   }
 
-  function battle(uint id, uint initiatorHero, uint[cardAmount] initiatorCards) public {
+  function battle(uint id, uint initiatorHero, uint[cardAmount] initiatorCards, string salt) public {
     Challenge storage _challenge = challenges[id];
     require(_challenge.initiator == msg.sender);
+    checkHash(_challenge.initiatorCardsHash, initiatorHero, initiatorCards, salt);
     uint initiatorHeroHealth = getHero(initiatorHero);
     uint challengerHeroHealth = getHero(_challenge.challengerHero);
     uint8 elementAmount = cardTypes.elementAmount();
@@ -100,6 +102,13 @@ contract Challenges is Ownable {
 
   function getResult(uint id) public view returns (challengeResultEnum) {
    return challenges[id].challengeResult;
+  }
+
+  function checkHash(bytes32 initiatorCardsHash, uint initiatorHero, uint[cardAmount] initiatorCards, string salt) private pure {
+    string memory cardIds = Convert.uintConcat(initiatorCards[0], initiatorCards[1], initiatorCards[2],
+      initiatorCards[3],initiatorCards[4]);
+    bytes32 cardsHash = keccak256(Convert.uint2str(initiatorHero), cardIds, salt);
+    require(initiatorCardsHash == cardsHash);
   }
 
 }
