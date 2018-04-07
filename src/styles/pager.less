@@ -10,6 +10,24 @@
   }
 
   .pager-item {
-    margin: 0 @space-s;
+    margin: 0 @space-xs;
+    a {
+      display: inline-block;
+      padding: @space-s;
+    }
+
+    &.pager-item--active {
+      a {
+        padding: @space-s @space-m;
+      }
+      background-color: @color-foreground;
+      border-radius: @border-radius;
+      box-shadow: 0px 1px @space-s 0 @color-shadow;
+    }
+
+    &.pager-item--next,
+    &.pager-item--prev {
+      font-weight: bold;
+    }
   }
 }
