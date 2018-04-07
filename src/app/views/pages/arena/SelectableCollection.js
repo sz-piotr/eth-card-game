@@ -33,6 +33,7 @@ class SelectableCollection extends React.Component {
 
 export default connect(
   state => ({
+    collection: state.cards.byOwner[state.user.account] || {},
     pickedCards: state.pickCards.picked
   })
 )(fetchingCollection(SelectableCollection))
