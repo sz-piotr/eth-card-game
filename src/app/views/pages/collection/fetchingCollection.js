@@ -5,15 +5,18 @@ import { fetchCollectionRequest } from '../../../state/actions'
 
 export function fetchingCollection (Component) {
   class FetchingCollection extends React.Component {
-    constructor (props) {
-      super(props)
-      if (props.account) {
-        props.fetchCollectionRequest(props.account)
+    componentDidMount (props) {
+      const { account, fetchCollectionRequest } = this.props
+      if (account) {
+        fetchCollectionRequest(account)
       }
     }
 
     componentWillReceiveProps (nextProps) {
-      if (this.props.account !== nextProps.account) {
+      if (
+        this.props.account !== nextProps.account &&
+        nextProps.account != null
+      ) {
         this.props.fetchCollectionRequest(nextProps.account)
       }
     }
@@ -24,10 +27,7 @@ export function fetchingCollection (Component) {
   }
 
   return connect(
-    state => ({
-      account: state.user.account,
-      collection: state.cards.byOwner[state.user.account] || {}
-    }),
+    state => ({ account: state.user.account }),
     { fetchCollectionRequest }
   )(FetchingCollection)
 }

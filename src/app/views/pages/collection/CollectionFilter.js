@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Pager from '../../components/Pager'
 import {
   collectionFilterChange,
   collectionFilterReset
@@ -9,24 +8,13 @@ import {
 
 class CollectionFilter extends React.Component {
   render () {
-    const { children, count, filter, collectionFilterChange } = this.props
-    const pageCount = (count != null) && Math.max(Math.ceil(count / filter.itemsPerPage), 1)
-    const pager = <Pager
-      page={filter.page}
-      count={pageCount}
-      onChange={page => collectionFilterChange({ page })}
-    />
+    const { filter, collectionFilterChange } = this.props
     return (
-      <React.Fragment>
-        <input className='input'
-          placeholder='Search'
-          value={filter.search}
-          onChange={e => collectionFilterChange({ search: e.target.value })}
-        />
-        {pager}
-        {children}
-        {pager}
-      </React.Fragment>
+      <input className='input'
+        placeholder='Search'
+        value={filter.search}
+        onChange={e => collectionFilterChange({ search: e.target.value })}
+      />
     )
   }
 
