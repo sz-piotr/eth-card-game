@@ -7,6 +7,7 @@ const DEFAULT_CARD = {
 
 window.cardAttributes = cardAttributes
 
-export function getCardAttributes (cardId) {
+export function getCardAttributes (details = []) {
+  const cardId = details[0]
   return cardAttributes[cardId] || DEFAULT_CARD
 }

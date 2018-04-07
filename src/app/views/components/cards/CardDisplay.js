@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { getCardAttributes } from '../../../data'
 
 const CardDisplay = ({ className, data, onClick }) => {
-  const attributes = getCardAttributes(data[0])
+  const attributes = getCardAttributes(data)
   return (
     <div className='card-wrapper' >
       <div className={classnames('card-display', className)} onClick={onClick}>
