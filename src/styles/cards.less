@@ -21,11 +21,15 @@
   padding: 0;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: @space-l;
 
+  @media @device-tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   @media @device-phone {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
   li {

@@ -2,18 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import {
-  collectionFilterChange,
+  collectionFilterChangeSearch,
   collectionFilterReset
 } from '../../../state/actions'
 
 class CollectionFilter extends React.Component {
   render () {
-    const { filter, collectionFilterChange } = this.props
+    const { filter, collectionFilterChangeSearch } = this.props
     return (
       <input className='input'
         placeholder='Search'
         value={filter.search}
-        onChange={e => collectionFilterChange({ search: e.target.value })}
+        onChange={e => collectionFilterChangeSearch(e.target.value)}
       />
     )
   }
@@ -25,5 +25,5 @@ class CollectionFilter extends React.Component {
 
 export default connect(
   state => ({ filter: state.cards.filter }),
-  { collectionFilterChange, collectionFilterReset }
+  { collectionFilterChangeSearch, collectionFilterReset }
 )(CollectionFilter)

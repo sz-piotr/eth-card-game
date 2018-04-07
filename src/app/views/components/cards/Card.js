@@ -8,10 +8,10 @@ import CardPlaceholder from './CardPlaceholder'
 import CardError from './CardError'
 
 class Card extends React.Component {
-  constructor (props) {
-    super(props)
-    if (!props.data && !props.isFetching) {
-      props.fetchCardDetailsRequest(props.cardId)
+  componentDidMount (props) {
+    const { cardId, data, isFetching, fetchCardDetailsRequest } = this.props
+    if (!data && !isFetching) {
+      fetchCardDetailsRequest(cardId)
     }
   }
 

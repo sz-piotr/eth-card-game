@@ -20,7 +20,7 @@ const PagerItem = ({ children, active, onClick }) =>
 
 const Pager = ({ page, count, onChange }) => {
   const pages = []
-  for (let i = page - 2; i < page + 2; i++) {
+  for (let i = page - 2; i <= page + 2; i++) {
     if (i >= 0 && i < count) {
       pages.push(i)
     }

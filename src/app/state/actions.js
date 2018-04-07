@@ -77,8 +77,16 @@ export const marketTokenPurchased = makeActionCreator(MARKET_TOKEN_PURCHASED, 'a
 
 // COLLECTION FILTERING
 
-export const COLLECTION_FILTER_CHANGE = 'COLLECTION_FILTER_CHANGE'
-export const collectionFilterChange = makeActionCreator(COLLECTION_FILTER_CHANGE, 'filter')
+export const COLLECTION_FILTER_CHANGE_SEARCH = 'COLLECTION_FILTER_CHANGE_SEARCH'
+export const collectionFilterChangeSearch = makeActionCreator(COLLECTION_FILTER_CHANGE_SEARCH, 'value')
+
+export const COLLECTION_FILTER_CHANGE_PAGE = 'COLLECTION_FILTER_CHANGE_PAGE'
+export const collectionFilterChangePage = makeActionCreator(COLLECTION_FILTER_CHANGE_PAGE, 'value')
 
 export const COLLECTION_FILTER_RESET = 'COLLECTION_FILTER_RESET'
 export const collectionFilterReset = makeActionCreator(COLLECTION_FILTER_RESET)
+
+// RESOLUTION
+
+export const RESOULUTION_CHANGE = 'RESOULUTION_CHANGE'
+export const resolutionChange = makeActionCreator(RESOULUTION_CHANGE, 'width', 'height')
