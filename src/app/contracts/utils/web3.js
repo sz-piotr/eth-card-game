@@ -1,10 +1,4 @@
 import * as Web3 from 'web3'
-import { store } from '../../state/store'
-import {
-  metamaskLoaded,
-  metamaskNotPresent,
-  accountChanged
-} from '../../state/actions'
 
 const web3 = new Promise((resolve, reject) => {
   window.addEventListener('load', function () {
@@ -22,22 +16,4 @@ const web3 = new Promise((resolve, reject) => {
 
 export function getWeb3 () {
   return web3
-}
-
-getWeb3().then(onWeb3Load, onWeb3Fail)
-
-function onWeb3Load (web3) {
-  store.dispatch(metamaskLoaded(web3.eth.defaultAccount, web3.version.network))
-
-  setInterval(function () {
-    const account = web3.eth.accounts[0]
-    web3.eth.defaultAccount = account
-    if (account !== store.getState().user.account) {
-      store.dispatch(accountChanged(account))
-    }
-  }, 1000)
-}
-
-function onWeb3Fail () {
-  store.dispatch(metamaskNotPresent())
 }
