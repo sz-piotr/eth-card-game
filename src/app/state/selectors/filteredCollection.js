@@ -14,18 +14,20 @@ export function selectFilteredCollection (state) {
 const filterCollection = memoize((collection, filter, details) => {
   const filters = getFilters(filter)
   return collection.filter(cardId => {
-    const cardDetails = (details[cardId] || {}).data
-    const card = getCardAttributes(cardDetails)
+    const cardDetails = details[cardId] || {}
+    if (cardDetails.isFetching) {
+      return false
+    }
+
+    const card = getCardAttributes(cardDetails.data)
     return filters.every(filter => filter(card))
   })
 })
 
 function getFilters (filter) {
-  const filters = []
-  if (filter.search) {
-    filters.push(textFilter(filter.search))
-  }
-  return filters
+  return [
+    textFilter(filter.search)
+  ]
 }
 
 const isNotEmptyString = x => x !== 'x'
