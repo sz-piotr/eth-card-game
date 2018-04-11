@@ -1,17 +1,43 @@
 import React from 'react'
 import classnames from 'classnames'
+import CardPlaceholder from './CardPlaceholder'
 import { getCardAttributes } from '../../../data'
+import { fetchResourcesFor, createCardDisplay } from '../../../cards'
 
-const CardDisplay = ({ className, data, onClick }) => {
-  const attributes = getCardAttributes(data)
-  return (
-    <div className='card-wrapper' >
-      <div className={classnames('card-display', className)} onClick={onClick}>
-        {attributes.image && <img className='card-image' src={attributes.image} />}
-        <div className='card-name'>{attributes.displayName}</div>
+class CardDisplay extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      isLoading: true
+    }
+    this.attributes = getCardAttributes(props.data)
+    this.display = null
+    fetchResourcesFor(this.attributes)
+      .then(() => this.setState({ isLoading: false }))
+  }
+
+  canvasRef (ref) {
+    if (ref) {
+      this.display = createCardDisplay(this.attributes, ref)
+    } else if (this.display) {
+      this.display.stopUpdating()
+    }
+  }
+
+  render () {
+    const { className, onClick } = this.props
+    if (this.state.isLoading) {
+      return <CardPlaceholder />
+    } else {
+      return <div className='card-wrapper'>
+        <canvas
+          ref={ref => this.canvasRef(ref)}
+          className={classnames('card-display', className)}
+          onClick={onClick}
+        />
       </div>
-    </div>
-  )
+    }
+  }
 }
 
 export default CardDisplay

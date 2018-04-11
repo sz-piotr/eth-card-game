@@ -33,8 +33,7 @@ function heroCardAttributes (definition, number, expansion, rarity) {
     number,
     expansion,
     rarity,
-    hitPoints: definition.hitPoints,
-    image: `cards/${expansion}/${definition.name}.png`
+    hitPoints: definition.hitPoints
   }
 }
 
@@ -47,8 +46,7 @@ function actionCardAttributes (definition, number, expansion, rarity) {
     number,
     expansion,
     rarity,
-    damage: definition.damage,
-    image: `cards/${expansion}/${definition.name}.png`
+    damage: definition.damage
   }
 }
 
