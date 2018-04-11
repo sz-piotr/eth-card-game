@@ -9,13 +9,13 @@ const Market = () =>
   <section className='container'>
     <h1>Market</h1>
     <CollectionFilter /> {/* TODO: replace with market specific component */}
-    <ul className='market-items'>
-      <Paginated data={mockData} page={3} itemsPerPage={10} onChange={() => {}}>
-        {data => data.map((item, index) =>
-          <MarketItem key={index} />
-        )}
-      </Paginated>
-    </ul>
+    <Paginated data={mockData} page={3} itemsPerPage={10} onChange={() => {}}>
+      {data =>
+        <ul className='market-items'>
+          {data.map((item, index) => <MarketItem key={index} />)}
+        </ul>
+      }
+    </Paginated>
   </section>
 
 export default Market

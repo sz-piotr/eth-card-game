@@ -1,0 +1,47 @@
+.market-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.market-item {
+  .foreground-item();
+  padding: @space-m;
+  display: grid;
+  grid-template-areas:
+    "image name price"
+    "image seller price";
+  grid-auto-columns: auto 1fr auto;
+  grid-gap: @space-m;
+
+  &:not(:last-child) {
+    margin-bottom: @space-m;
+  }
+}
+
+.market-item-image {
+  grid-area: image;
+  width: 44px;
+}
+
+.market-item-name {
+  grid-area: name;
+}
+
+.market-item-seller {
+  grid-area: seller;
+  font-family: monospace;
+  color: @color-text-blue;
+}
+
+.market-item-price {
+  grid-area: price;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.market-item-value {
+  font-weight: bold;
+}
