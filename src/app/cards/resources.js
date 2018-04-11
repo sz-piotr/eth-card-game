@@ -2,6 +2,7 @@ const resources = Object.create(null)
 
 export function fetchResourcesFor (card) {
   return Promise.all([
+    fetchResource(backgroundUrl(card)),
     fetchResource(cardImageUrl(card))
   ])
 }
@@ -27,5 +28,10 @@ export function getResource (url) {
 }
 
 export function cardImageUrl (card) {
-  return `cards/${card.expansion}/${card.name}.png`
+  const folder = card.type === 'hero' ? 'heroes' : 'actions'
+  return `cards/${card.expansion}/${folder}/${card.name}-${card.level}.png`
+}
+
+export function backgroundUrl (card) {
+  return 'cards/backgrounds/example.png'
 }

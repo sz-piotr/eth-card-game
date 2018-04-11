@@ -10,5 +10,8 @@ window.cardAttributes = cardAttributes
 
 export function getCardAttributes (details = []) {
   const cardId = details[0]
-  return cardAttributes[cardId] || DEFAULT_CARD
+  return {
+    ...(cardAttributes[cardId] || DEFAULT_CARD),
+    level: parseInt(details[1])
+  }
 }

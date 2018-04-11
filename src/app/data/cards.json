@@ -6,46 +6,38 @@
       "heroes": {
         "common": [
           {
-            "name": "hero-dog",
-            "displayName": "Dog",
-            "hitPoints": 200
+            "name": "archangel",
+            "displayName": "Archangel"
           },
           {
-            "name": "hero-cat",
-            "displayName": "Cat",
-            "hitPoints": 404
+            "name": "hiveguardian",
+            "displayName": "Hive Guardian"
+          },
+          {
+            "name": "spectre",
+            "displayName": "Spectre"
           }
         ],
         "uncommon": [
           {
-            "name": "hero-goose",
-            "displayName": "Goose",
-            "hitPoints": 503
+            "name": "katerina",
+            "displayName": "Katerina"
+          },
+          {
+            "name": "skullcrasher",
+            "displayName": "Skullcrasher"
           }
         ],
         "rare": [
           {
-            "name": "hero-unicorn",
-            "displayName": "Unicorn",
-            "hitPoints": 418
+            "name": "quark",
+            "displayName": "Quark"
           }
         ]
       },
       "actions": {
-        "common": [
-          {
-            "name": "action-punch",
-            "displayName": "Punch",
-            "damage": 13
-          }
-        ],
-        "uncommon": [
-          {
-            "name": "action-fireball",
-            "displayName": "Fireball",
-            "damage": 13
-          }
-        ],
+        "common": [],
+        "uncommon": [],
         "rare": []
       }
     }

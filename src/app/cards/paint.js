@@ -1,6 +1,7 @@
 import {
   getResource,
-  cardImageUrl
+  cardImageUrl,
+  backgroundUrl
 } from './resources'
 
 export const WIDTH = 375
@@ -19,8 +20,11 @@ export function createCardDisplay (card, canvas) {
 }
 
 function paint (ctx, card) {
-  const image = getResource(cardImageUrl(card))
-  ctx.drawImage(image, 0, 0, WIDTH, HEIGHT)
+  const cardImage = getResource(cardImageUrl(card))
+  const background = getResource(backgroundUrl(card))
+  ctx.drawImage(background, 0, 0, WIDTH, HEIGHT)
+
+  ctx.drawImage(cardImage, 0, 0)
 
   ctx.font = '52px sans-serif'
   ctx.textAlign = 'center'

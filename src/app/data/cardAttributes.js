@@ -32,8 +32,7 @@ function heroCardAttributes (definition, number, expansion, rarity) {
     searchText: definition.displayName.toLowerCase(),
     number,
     expansion,
-    rarity,
-    hitPoints: definition.hitPoints
+    rarity
   }
 }
 
@@ -45,8 +44,7 @@ function actionCardAttributes (definition, number, expansion, rarity) {
     searchText: definition.displayName.toLowerCase(),
     number,
     expansion,
-    rarity,
-    damage: definition.damage
+    rarity
   }
 }
 
