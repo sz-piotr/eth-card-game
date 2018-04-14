@@ -21,7 +21,7 @@ export function * saga () {
 function * listenForAccountChanges (web3) {
   const accountChannel = yield call(createAccountChannel, web3)
   while (true) {
-    const account = yield take(accountChannel)
+    const { account } = yield take(accountChannel)
     yield put(accountChanged(account))
   }
 }
@@ -35,7 +35,7 @@ function createAccountChannel (web3) {
       if (account !== previousAccount) {
         previousAccount = account
         web3.eth.defaultAccount = account
-        emitter(account)
+        emitter({ account }) // must be wrapped to not be undefined
       }
     }, 1000)
 
