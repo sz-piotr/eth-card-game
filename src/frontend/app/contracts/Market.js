@@ -1,5 +1,5 @@
 import { createContractInstance, createWeb3Function } from './utils'
-import { abi, networks } from '../../../build/contracts/ERC721Market'
+import { abi, networks } from '../../../../build/contracts/ERC721Market'
 
 const instance = createContractInstance(abi, networks)
 

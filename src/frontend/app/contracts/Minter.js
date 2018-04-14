@@ -1,5 +1,5 @@
 import { createContractInstance, createWeb3Function } from './utils'
-import { abi, networks } from '../../../build/contracts/Minter'
+import { abi, networks } from '../../../../build/contracts/Minter'
 
 const instance = createContractInstance(abi, networks)
 

@@ -11,7 +11,7 @@ const extractLess = new ExtractTextPlugin({
 })
 
 const config = {
-  entry: './src',
+  entry: './src/frontend',
   output: {
     path: path.resolve(__dirname, 'build/webpack'),
     filename: 'app.[chunkhash].js'
@@ -38,7 +38,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'src/frontend/index.html'
     }),
     extractLess
   ],
@@ -49,7 +49,7 @@ const config = {
   },
   devServer: {
     stats: 'minimal',
-    contentBase: 'src/assets',
+    contentBase: 'src/frontend/assets',
     overlay: true,
     historyApiFallback: true
   },
@@ -61,7 +61,7 @@ const config = {
 if (isProduction) {
   config.plugins = config.plugins.concat([
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new CopyWebpackPlugin([{ from: 'src/assets' }])
+    new CopyWebpackPlugin([{ from: 'src/frontend/assets' }])
   ])
 }
 
