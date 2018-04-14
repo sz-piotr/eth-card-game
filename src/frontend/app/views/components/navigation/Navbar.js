@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+import { Icon } from '../Icon'
 import NavbarLinks from './NavbarLinks'
 
 const Navbar = () =>
@@ -9,19 +10,19 @@ const Navbar = () =>
       <h1>Eth Card Game</h1>
       <NavbarLinks>
         <NavLink to='/shop'>
-          <img src='images/placeholders/square.svg' />
+          <Icon name='cart' />
           <span>Shop</span>
         </NavLink>
         <NavLink exact to='/collection'>
-          <img src='images/placeholders/square.svg' />
+          <Icon name='collection' />
           <span>Collection</span>
         </NavLink>
         <NavLink to='/arena'>
-          <img src='images/placeholders/square.svg' />
+          <Icon name='arena' />
           <span>Arena</span>
         </NavLink>
         <NavLink to='/market'>
-          <img src='images/placeholders/square.svg' />
+          <Icon name='market' />
           <span>Market</span>
         </NavLink>
       </NavbarLinks>

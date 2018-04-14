@@ -47,9 +47,10 @@
 
   a.active {
     font-weight: bold;
+    color: @color-text;
   }
 
-  img {
+  .icon {
     display: none;
   }
 
@@ -70,9 +71,11 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      color: @color-text-dim;
+      transition: color .2s ease-in;
     }
 
-    img {
+    .icon {
       display: block;
     }
 
@@ -85,4 +88,8 @@
 
 .navbar h1 {
   margin: 0;
+}
+
+.navbar .icon {
+  font-size: 24px;
 }
