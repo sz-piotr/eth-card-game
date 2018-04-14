@@ -1,8 +1,10 @@
 @font-face {
 	font-family: "icons";
-	src: url("icons.eot?2923b759bf097009f28ea236a7f05572?#iefix") format("embedded-opentype"),
-url("icons.woff2?2923b759bf097009f28ea236a7f05572") format("woff2"),
-url("icons.woff?2923b759bf097009f28ea236a7f05572") format("woff");
+	src: url("icons.eot?c9526b7a6ec2dc5f11e08b71390a20de?#iefix") format("embedded-opentype"),
+url("icons.woff2?c9526b7a6ec2dc5f11e08b71390a20de") format("woff2"),
+url("icons.woff?c9526b7a6ec2dc5f11e08b71390a20de") format("woff"),
+url("icons.ttf?c9526b7a6ec2dc5f11e08b71390a20de") format("truetype"),
+url("icons.svg?c9526b7a6ec2dc5f11e08b71390a20de#icons") format("svg");
 }
 
 .icon {
