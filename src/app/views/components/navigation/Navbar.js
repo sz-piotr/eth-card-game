@@ -8,10 +8,6 @@ const Navbar = () =>
     <div className='navbar-container'>
       <h1>Eth Card Game</h1>
       <NavbarLinks>
-        <NavLink exact to='/'>
-          <img src='images/placeholders/square.svg' />
-          <span>Home</span>
-        </NavLink>
         <NavLink to='/shop'>
           <img src='images/placeholders/square.svg' />
           <span>Shop</span>
