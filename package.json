@@ -5,6 +5,7 @@
     "start": "webpack-dev-server --progress",
     "build": "rimraf dist && webpack -p --progress",
     "build:dev": "webpack --progress",
+    "build:icons": "node src/frontend/icon-font/index.js",
     "test": "standard && jest",
     "test:watch": "jest --watch",
     "testrpc": "ganache-cli -d --db data -i 123456"
