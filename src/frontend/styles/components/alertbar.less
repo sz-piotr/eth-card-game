@@ -8,4 +8,10 @@
   color: @color-text-red;
   background-color: @color-bg-red;
   font-weight: bold;
+  z-index: @z-index-alerts;
+
+  @media @device-phone {
+    top: unset;
+    bottom: @navbar-height;
+  }
 }

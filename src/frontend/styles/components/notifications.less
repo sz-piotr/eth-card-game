@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  z-index: 100;
+  z-index: @z-index-alerts;
   max-width: 300px;
 }
 
@@ -22,13 +22,14 @@
   .notification-close {
     grid-area: close;
     position: absolute;
-    right: @space-s;
-    top: @space-s;
+    top: 0;
+    right: @space-xs;
     background: none;
     border: none;
     outline: none;
     cursor: pointer;
-    color: @color-text-red;
+    color: #690000;
+    font-size: 1.6rem;
   }
 
   .notification-title {

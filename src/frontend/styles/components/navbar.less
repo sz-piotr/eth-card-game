@@ -50,6 +50,11 @@
     color: @color-text;
   }
 
+  a:active {
+    padding: 0;
+    border-style: none;
+  }
+
   .icon {
     display: none;
   }
@@ -72,16 +77,13 @@
       display: flex;
       flex-direction: column;
       color: @color-text-dim;
-      transition: color .2s ease-in;
+      transition: color .2s ease-out;
+      -moz-outline-style: none !important;
+      outline-style: none !important;
     }
 
     .icon {
       display: block;
-    }
-
-    span {
-      position: relative;
-      bottom: -4px;
     }
   }
 }
