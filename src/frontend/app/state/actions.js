@@ -77,17 +77,17 @@ export const marketTokenPurchased = makeActionCreator(MARKET_TOKEN_PURCHASED, 'a
 
 // COLLECTION FILTERING
 
-export const COLLECTION_FILTER_CHANGE_SEARCH = 'COLLECTION_FILTER_CHANGE_SEARCH'
-export const collectionFilterChangeSearch = makeActionCreator(COLLECTION_FILTER_CHANGE_SEARCH, 'value')
+export const CHANGE_CARD_SEARCH = 'CHANGE_CARD_SEARCH'
+export const changeCardSearch = makeActionCreator(CHANGE_CARD_SEARCH, 'value')
 
-export const COLLECTION_FILTER_CHANGE_PAGE = 'COLLECTION_FILTER_CHANGE_PAGE'
-export const collectionFilterChangePage = makeActionCreator(COLLECTION_FILTER_CHANGE_PAGE, 'value')
+export const CHANGE_CARDS_PAGE = 'CHANGE_CARDS_PAGE'
+export const collectionFilterChangePage = makeActionCreator(CHANGE_CARDS_PAGE, 'value')
 
-export const COLLECTION_FILTER_RESET = 'COLLECTION_FILTER_RESET'
-export const collectionFilterReset = makeActionCreator(COLLECTION_FILTER_RESET)
+export const CHANGE_CARD_SORT = 'CHANGE_CARD_SORT'
+export const changeCardSort = makeActionCreator(CHANGE_CARD_SORT, 'sort')
 
-export const COLLECTION_FILTER_CHANGE_SORT = 'COLLECTION_FILTER_CHANGE_SORT'
-export const collectionFilterChangeSort = makeActionCreator(COLLECTION_FILTER_CHANGE_SORT, 'sort')
+export const RESET_CARD_VIEW = 'RESET_CARD_VIEW'
+export const resetCardView = makeActionCreator(RESET_CARD_VIEW)
 
 // RESOLUTION
 

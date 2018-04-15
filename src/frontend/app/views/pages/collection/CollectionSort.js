@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { collectionFilterChangeSort } from '../../../state/actions'
+import { changeCardSort } from '../../../state/actions'
 
-const CollectionSort = ({ value, collectionFilterChangeSort }) =>
-  <select value={value} onChange={e => collectionFilterChangeSort(e.target.value)}>
+const CollectionSort = ({ value, changeCardSort }) =>
+  <select value={value} onChange={e => changeCardSort(e.target.value)}>
     <option value='id descending'>
       Time descending
     </option>
@@ -14,5 +14,5 @@ const CollectionSort = ({ value, collectionFilterChangeSort }) =>
 
 export default connect(
   state => ({ value: state.cards.view.sort }),
-  { collectionFilterChangeSort }
+  { changeCardSort }
 )(CollectionSort)

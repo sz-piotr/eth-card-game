@@ -1,9 +1,9 @@
 import {
-  COLLECTION_FILTER_CHANGE_SEARCH,
-  COLLECTION_FILTER_CHANGE_PAGE,
+  CHANGE_CARD_SEARCH,
+  CHANGE_CARDS_PAGE,
   RESOULUTION_CHANGE,
-  COLLECTION_FILTER_RESET,
-  COLLECTION_FILTER_CHANGE_SORT
+  RESET_CARD_VIEW,
+  CHANGE_CARD_SORT
 } from '../../actions'
 
 const defaultState = {
@@ -13,24 +13,14 @@ const defaultState = {
   sort: 'id descending'
 }
 
-function widthToItemsPerPage (width) {
-  if (width < 650) { // @device-phone
-    return 2 * 3
-  } else if (width < 800) { // @device-tablet
-    return 3 * 2
-  } else {
-    return 4 * 2
-  }
-}
-
 export function reducer (state = defaultState, action) {
   switch (action.type) {
-    case COLLECTION_FILTER_CHANGE_SEARCH:
+    case CHANGE_CARD_SEARCH:
       return {
         ...state,
         search: action.value
       }
-    case COLLECTION_FILTER_CHANGE_PAGE:
+    case CHANGE_CARDS_PAGE:
       return {
         ...state,
         page: action.value
@@ -40,14 +30,27 @@ export function reducer (state = defaultState, action) {
         ...state,
         itemsPerPage: widthToItemsPerPage(action.width)
       }
-    case COLLECTION_FILTER_CHANGE_SORT:
+    case CHANGE_CARD_SORT:
       return {
         ...state,
         sort: action.sort
       }
-    case COLLECTION_FILTER_RESET:
-      return defaultState
+    case RESET_CARD_VIEW:
+      return {
+        ...defaultState,
+        sort: state.sort
+      }
     default:
       return state
+  }
+}
+
+function widthToItemsPerPage (width) {
+  if (width < 650) { // @device-phone
+    return 2 * 3
+  } else if (width < 800) { // @device-tablet
+    return 3 * 2
+  } else {
+    return 4 * 2
   }
 }

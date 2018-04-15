@@ -2,28 +2,28 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import {
-  collectionFilterChangeSearch,
-  collectionFilterReset
+  changeCardSearch,
+  resetCardView
 } from '../../../state/actions'
 
 class CollectionFilter extends React.Component {
   render () {
-    const { view, collectionFilterChangeSearch } = this.props
+    const { view, changeCardSearch } = this.props
     return (
       <input className='input'
         placeholder='Search'
         value={view.search}
-        onChange={e => collectionFilterChangeSearch(e.target.value)}
+        onChange={e => changeCardSearch(e.target.value)}
       />
     )
   }
 
   componentWillUnmount () {
-    this.props.collectionFilterReset()
+    this.props.resetCardView()
   }
 }
 
 export default connect(
   state => ({ view: state.cards.view }),
-  { collectionFilterChangeSearch, collectionFilterReset }
+  { changeCardSearch, resetCardView }
 )(CollectionFilter)
