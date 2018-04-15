@@ -3,6 +3,7 @@ import {
   cardImageUrl,
   backgroundUrl
 } from './resources'
+import { onCardHover, onCardMouseLeave } from './hover'
 
 export const WIDTH = 375
 export const HEIGHT = 525
@@ -14,8 +15,13 @@ export function createCardDisplay (card, canvas) {
 
   paint(ctx, card)
 
+  canvas.addEventListener('mousemove', onCardHover, false)
+  canvas.addEventListener('mouseleave', onCardMouseLeave, false)
   return {
-    stopUpdating: () => {}
+    stopUpdating () {
+      canvas.removeEventListener('mousemove', onCardHover, false)
+      canvas.removeEventListener('mouseleave', onCardMouseLeave, false)
+    }
   }
 }
 
