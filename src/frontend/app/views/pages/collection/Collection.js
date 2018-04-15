@@ -11,7 +11,7 @@ import Card from '../../components/cards/Card'
 import Paginated from '../../components/pagination/Paginated'
 import CollectionSort from './CollectionSort'
 
-const Collection = ({ data, filter, collectionFilterChangePage }) =>
+const Collection = ({ data, view, collectionFilterChangePage }) =>
   <section className='container'>
     <h1>My Cards</h1>
     <div>
@@ -20,8 +20,8 @@ const Collection = ({ data, filter, collectionFilterChangePage }) =>
     </div>
     {!data && <CollectionPlaceholder />}
     {data &&
-      <Paginated data={data} page={filter.page}
-        itemsPerPage={filter.itemsPerPage}
+      <Paginated data={data} page={view.page}
+        itemsPerPage={view.itemsPerPage}
         onChange={page => collectionFilterChangePage(page)}
       >
         {cards =>
@@ -42,7 +42,7 @@ export default compose(
   connect(
     state => ({
       data: selectFilteredCollection(state),
-      filter: state.cards.filter
+      view: state.cards.view
     }),
     { collectionFilterChangePage }
   )

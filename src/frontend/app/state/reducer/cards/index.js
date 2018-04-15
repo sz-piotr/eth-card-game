@@ -2,10 +2,10 @@ import { combineReducers } from 'redux'
 
 import { reducer as details } from './details'
 import { reducer as byOwner } from './byOwner'
-import { reducer as filter } from './filter'
+import { reducer as view } from './view'
 
 export const reducer = combineReducers({
   details,
   byOwner,
-  filter
+  view
 })

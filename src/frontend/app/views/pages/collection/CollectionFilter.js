@@ -8,11 +8,11 @@ import {
 
 class CollectionFilter extends React.Component {
   render () {
-    const { filter, collectionFilterChangeSearch } = this.props
+    const { view, collectionFilterChangeSearch } = this.props
     return (
       <input className='input'
         placeholder='Search'
-        value={filter.search}
+        value={view.search}
         onChange={e => collectionFilterChangeSearch(e.target.value)}
       />
     )
@@ -24,6 +24,6 @@ class CollectionFilter extends React.Component {
 }
 
 export default connect(
-  state => ({ filter: state.cards.filter }),
+  state => ({ view: state.cards.view }),
   { collectionFilterChangeSearch, collectionFilterReset }
 )(CollectionFilter)

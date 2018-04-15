@@ -13,6 +13,6 @@ const CollectionSort = ({ value, collectionFilterChangeSort }) =>
   </select>
 
 export default connect(
-  state => ({ value: state.cards.filter.sort }),
+  state => ({ value: state.cards.view.sort }),
   { collectionFilterChangeSort }
 )(CollectionSort)

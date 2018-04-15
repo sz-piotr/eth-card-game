@@ -16,5 +16,5 @@ const CollectionPlaceholder = ({ items }) =>
   </React.Fragment>
 
 export default connect(
-  state => ({ items: state.cards.filter.itemsPerPage })
+  state => ({ items: state.cards.view.itemsPerPage })
 )(CollectionPlaceholder)
