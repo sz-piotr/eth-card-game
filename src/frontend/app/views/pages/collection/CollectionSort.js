@@ -10,6 +10,12 @@ const CollectionSort = ({ value, changeCardSort }) =>
     <option value='id ascending'>
       Time ascending
     </option>
+    <option value='name ascending'>
+      A-Z
+    </option>
+    <option value='name descending'>
+      Z-A
+    </option>
   </select>
 
 export default connect(

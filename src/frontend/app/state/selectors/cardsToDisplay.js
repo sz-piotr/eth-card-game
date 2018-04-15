@@ -32,11 +32,19 @@ function getFilters (view) {
 
 function getSort (view) {
   switch (view.sort) {
-    case 'id descending':
-      return (a, b) => parseInt(b.id) - parseInt(a.id)
     case 'id ascending':
       return (a, b) => parseInt(a.id) - parseInt(b.id)
+    case 'id descending':
+      return (a, b) => parseInt(b.id) - parseInt(a.id)
+    case 'name ascending':
+      return (a, b) => stringCompare(a.attributes.displayName, b.attributes.displayName)
+    case 'name descending':
+      return (a, b) => stringCompare(b.attributes.displayName, a.attributes.displayName)
   }
+}
+
+function stringCompare (a, b) {
+  return a > b ? 1 : (a < b ? -1 : 0)
 }
 
 const isNotEmptyString = x => x !== 'x'
