@@ -9,9 +9,9 @@ const DEFAULT_CARD = {
 window.cardAttributes = cardAttributes
 
 export function getCardAttributes (details = []) {
-  const cardId = details[0]
+  const cardNumber = details[0]
   return {
-    ...(cardAttributes[cardId] || DEFAULT_CARD),
+    ...(cardAttributes[cardNumber] || DEFAULT_CARD),
     level: parseInt(details[1])
   }
 }

@@ -2,32 +2,41 @@ import { getCardAttributes } from '../../data'
 import { memoize } from './memoize'
 
 export function selectCardsToDisplay (state) {
-  const filter = state.cards.view
+  const view = state.cards.view
   const collection = (state.cards.byOwner[state.user.account] || {}).data
   const details = state.cards.details
   if (!collection) {
     return null
   }
-  return filterCollection(collection, filter, details)
+  return cardsToDisplay(collection, view, details)
 }
 
-const filterCollection = memoize((collection, filter, details) => {
-  const filters = getFilters(filter)
-  return collection.filter(cardId => {
-    const cardDetails = details[cardId] || {}
-    if (cardDetails.isFetching) {
-      return true
-    }
-
-    const card = getCardAttributes(cardDetails.data)
-    return filters.every(filter => filter(card))
-  })
+const cardsToDisplay = memoize((collection, view, details) => {
+  const filters = getFilters(view)
+  const filtered = collection
+    .map(cardId => ({
+      id: cardId,
+      attributes: getCardAttributes((details[cardId] || {}).data)
+    }))
+    .filter(data => filters.every(filter => filter(data.attributes)))
+  return filtered
+    .sort(getSort(view))
+    .map(data => data.id)
 })
 
-function getFilters (filter) {
+function getFilters (view) {
   return [
-    textFilter(filter.search)
+    textFilter(view.search)
   ]
+}
+
+function getSort (view) {
+  switch (view.sort) {
+    case 'id descending':
+      return (a, b) => parseInt(b.id) - parseInt(a.id)
+    case 'id ascending':
+      return (a, b) => parseInt(a.id) - parseInt(b.id)
+  }
 }
 
 const isNotEmptyString = x => x !== 'x'
