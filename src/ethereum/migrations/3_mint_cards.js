@@ -10,19 +10,12 @@ async function deploy (deployer, network, accounts) {
   const minter = await Minter.deployed()
   await minter.createExpansion(3, 2, 1)
 
-  await minter.purchasePack(0, {
-    from: accounts[0],
-    value: '10000000000000000' // 0.01 ETH
-  })
-  await minter.purchasePack(0, {
-    from: accounts[0],
-    value: '10000000000000000' // 0.01 ETH
-  })
-
-  await minter.purchasePack(0, {
-    from: accounts[1],
-    value: '10000000000000000' // 0.01 ETH
-  })
+  for (let i = 0; i < 5; i++) {
+    await minter.purchasePack(0, {
+      from: accounts[0],
+      value: '10000000000000000' // 0.01 ETH
+    })
+  }
 
   const cards = await Cards.deployed()
   const market = await ERC721Market.deployed()
