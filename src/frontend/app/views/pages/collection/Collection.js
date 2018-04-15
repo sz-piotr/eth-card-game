@@ -9,11 +9,15 @@ import CollectionPlaceholder from './CollectionPlaceholder'
 import CollectionFilter from './CollectionFilter'
 import Card from '../../components/cards/Card'
 import Paginated from '../../components/pagination/Paginated'
+import CollectionSort from './CollectionSort'
 
 const Collection = ({ data, filter, collectionFilterChangePage }) =>
   <section className='container'>
     <h1>My Cards</h1>
-    <CollectionFilter />
+    <div>
+      <CollectionFilter />
+      <CollectionSort />
+    </div>
     {!data && <CollectionPlaceholder />}
     {data &&
       <Paginated data={data} page={filter.page}

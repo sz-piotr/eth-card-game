@@ -2,13 +2,15 @@ import {
   COLLECTION_FILTER_CHANGE_SEARCH,
   COLLECTION_FILTER_CHANGE_PAGE,
   RESOULUTION_CHANGE,
-  COLLECTION_FILTER_RESET
+  COLLECTION_FILTER_RESET,
+  COLLECTION_FILTER_CHANGE_SORT
 } from '../../actions'
 
 const defaultState = {
   search: '',
   page: 0,
-  itemsPerPage: 4 * 2
+  itemsPerPage: 4 * 2,
+  sort: 'id descending'
 }
 
 function widthToItemsPerPage (width) {
@@ -37,6 +39,11 @@ export function reducer (state = defaultState, action) {
       return {
         ...state,
         itemsPerPage: widthToItemsPerPage(action.width)
+      }
+    case COLLECTION_FILTER_CHANGE_SORT:
+      return {
+        ...state,
+        sort: action.sort
       }
     case COLLECTION_FILTER_RESET:
       return defaultState

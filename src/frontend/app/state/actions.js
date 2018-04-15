@@ -86,6 +86,9 @@ export const collectionFilterChangePage = makeActionCreator(COLLECTION_FILTER_CH
 export const COLLECTION_FILTER_RESET = 'COLLECTION_FILTER_RESET'
 export const collectionFilterReset = makeActionCreator(COLLECTION_FILTER_RESET)
 
+export const COLLECTION_FILTER_CHANGE_SORT = 'COLLECTION_FILTER_CHANGE_SORT'
+export const collectionFilterChangeSort = makeActionCreator(COLLECTION_FILTER_CHANGE_SORT, 'sort')
+
 // RESOLUTION
 
 export const RESOULUTION_CHANGE = 'RESOULUTION_CHANGE'
