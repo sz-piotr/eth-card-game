@@ -2,7 +2,7 @@ import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-import { selectFilteredCollection } from '../../../state/selectors'
+import { selectCardsToDisplay } from '../../../state/selectors'
 import { collectionFilterChangePage } from '../../../state/actions'
 import { fetchingCollection } from './fetchingCollection'
 import CollectionPlaceholder from './CollectionPlaceholder'
@@ -41,7 +41,7 @@ export default compose(
   fetchingCollection,
   connect(
     state => ({
-      data: selectFilteredCollection(state),
+      data: selectCardsToDisplay(state),
       view: state.cards.view
     }),
     { collectionFilterChangePage }

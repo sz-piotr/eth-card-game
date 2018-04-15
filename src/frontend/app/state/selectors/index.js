@@ -1,1 +1,1 @@
-export { selectFilteredCollection } from './filteredCollection'
+export { selectCardsToDisplay } from './cardsToDisplay'

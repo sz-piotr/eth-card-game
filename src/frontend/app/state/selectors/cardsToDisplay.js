@@ -1,7 +1,7 @@
 import { getCardAttributes } from '../../data'
 import { memoize } from './memoize'
 
-export function selectFilteredCollection (state) {
+export function selectCardsToDisplay (state) {
   const filter = state.cards.view
   const collection = (state.cards.byOwner[state.user.account] || {}).data
   const details = state.cards.details
