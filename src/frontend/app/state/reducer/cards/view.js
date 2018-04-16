@@ -1,9 +1,9 @@
 import {
-  CHANGE_CARD_SEARCH,
-  CHANGE_CARDS_PAGE,
+  CARD_SEARCH_CHANGED,
+  CARDS_PAGE_CHANGED,
   RESOULUTION_CHANGE,
-  RESET_CARD_VIEW,
-  CHANGE_CARD_SORT
+  CARD_VIEW_RESET,
+  CARD_SORT_CHANGED
 } from '../../actions'
 
 const defaultState = {
@@ -15,12 +15,12 @@ const defaultState = {
 
 export function reducer (state = defaultState, action) {
   switch (action.type) {
-    case CHANGE_CARD_SEARCH:
+    case CARD_SEARCH_CHANGED:
       return {
         ...state,
         search: action.value
       }
-    case CHANGE_CARDS_PAGE:
+    case CARDS_PAGE_CHANGED:
       return {
         ...state,
         page: action.value
@@ -30,12 +30,12 @@ export function reducer (state = defaultState, action) {
         ...state,
         itemsPerPage: widthToItemsPerPage(action.width)
       }
-    case CHANGE_CARD_SORT:
+    case CARD_SORT_CHANGED:
       return {
         ...state,
         sort: action.sort
       }
-    case RESET_CARD_VIEW:
+    case CARD_VIEW_RESET:
       return {
         ...defaultState,
         sort: state.sort

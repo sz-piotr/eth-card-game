@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import { selectCardsToDisplay } from '../../../state/selectors'
-import { collectionFilterChangePage } from '../../../state/actions'
+import { cardsPageChanged } from '../../../state/actions'
 import { fetchingCollection } from './fetchingCollection'
 import CollectionPlaceholder from './CollectionPlaceholder'
 import CollectionFilter from './CollectionFilter'
@@ -11,7 +11,7 @@ import Card from '../../components/cards/Card'
 import Paginated from '../../components/pagination/Paginated'
 import CollectionSort from './CollectionSort'
 
-const Collection = ({ data, view, collectionFilterChangePage }) =>
+const Collection = ({ data, view, cardsPageChanged }) =>
   <section className='container'>
     <h1>My Cards</h1>
     <div>
@@ -22,7 +22,7 @@ const Collection = ({ data, view, collectionFilterChangePage }) =>
     {data &&
       <Paginated data={data} page={view.page}
         itemsPerPage={view.itemsPerPage}
-        onChange={page => collectionFilterChangePage(page)}
+        onChange={page => cardsPageChanged(page)}
       >
         {cards =>
           <ul className='card-collection'>
@@ -44,6 +44,6 @@ export default compose(
       data: selectCardsToDisplay(state),
       view: state.cards.view
     }),
-    { collectionFilterChangePage }
+    { cardsPageChanged }
   )
 )(Collection)
