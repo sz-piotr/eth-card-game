@@ -2,7 +2,7 @@ import { takeEvery, call, select } from 'redux-saga/effects'
 
 import { Minter } from '../../contracts'
 import {
-  PURCHASE_PACK_TRANSACTION
+  PURCHASE_PACK_CLICKED
 } from '../actions'
 
 const BASE_EXPANSION_ID = 0
@@ -20,5 +20,5 @@ function * purchasePack () {
 }
 
 export function * saga () {
-  yield takeEvery(PURCHASE_PACK_TRANSACTION, purchasePack)
+  yield takeEvery(PURCHASE_PACK_CLICKED, purchasePack)
 }

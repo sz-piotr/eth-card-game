@@ -3,14 +3,14 @@ import { connect } from 'react-redux'
 
 import Card from '../../components/cards/Card'
 import CardPlaceholder from '../../components/cards/CardPlaceholder'
-import { pickCard } from '../../../state/actions'
+import { cardPicked } from '../../../state/actions'
 
-const PickedCard = ({ pickCard, cardId, index }) =>
+const PickedCard = ({ cardPicked, cardId, index }) =>
   cardId
-    ? <Card cardId={cardId} onClick={() => pickCard(index)} />
-    : <CardPlaceholder onClick={() => pickCard(index)} />
+    ? <Card cardId={cardId} onClick={() => cardPicked(index)} />
+    : <CardPlaceholder onClick={() => cardPicked(index)} />
 
 export default connect(
   state => ({}),
-  { pickCard }
+  { cardPicked }
 )(PickedCard)

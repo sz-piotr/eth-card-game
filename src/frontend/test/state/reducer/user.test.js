@@ -1,8 +1,8 @@
 import { reducer } from '../../../app/state/reducer/user'
 import {
   metamaskLoaded,
-  metamaskNotPresent,
-  accountChanged
+  metamaskNotFound,
+  metamaskAccountChanged
 } from '../../../app/state/actions'
 
 const SUPPORTED_NETWORK = '4447'
@@ -42,29 +42,29 @@ describe('user reducer', () => {
     expect(state.metamask.unlocked).toBeFalsy()
   })
 
-  it('correcty handles the metamaskNotPresent action', () => {
-    const state = reducer({}, metamaskNotPresent())
+  it('correcty handles the metamaskNotFound action', () => {
+    const state = reducer({}, metamaskNotFound())
     expect(state.canTransact).toBeFalsy()
     expect(state.metamask.loaded).toBeTruthy()
     expect(state.metamask.installed).toBeFalsy()
   })
 
-  it('correcty handles the accountChanged action with unsupported network', () => {
-    const state = reducer({ network: 'unsupported' }, accountChanged('0x123'))
+  it('correcty handles the metamaskAccountChanged action with unsupported network', () => {
+    const state = reducer({ network: 'unsupported' }, metamaskAccountChanged('0x123'))
     expect(state.canTransact).toBeFalsy()
     expect(state.account).toEqual('0x123')
     expect(state.metamask.unlocked).toBeTruthy()
   })
 
-  it('correcty handles the accountChanged action with supported network', () => {
-    const state = reducer({ network: SUPPORTED_NETWORK }, accountChanged('0x123'))
+  it('correcty handles the metamaskAccountChanged action with supported network', () => {
+    const state = reducer({ network: SUPPORTED_NETWORK }, metamaskAccountChanged('0x123'))
     expect(state.canTransact).toBeTruthy()
     expect(state.account).toEqual('0x123')
     expect(state.metamask.unlocked).toBeTruthy()
   })
 
-  it('correcty handles the accountChanged action when account is undefined', () => {
-    const state = reducer({ network: UNSUPPORTED_NETWORK }, accountChanged(undefined))
+  it('correcty handles the metamaskAccountChanged action when account is undefined', () => {
+    const state = reducer({ network: UNSUPPORTED_NETWORK }, metamaskAccountChanged(undefined))
     expect(state.canTransact).toBeFalsy()
     expect(state.account).toBe(undefined)
     expect(state.metamask.unlocked).toBeFalsy()

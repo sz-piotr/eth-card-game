@@ -1,12 +1,12 @@
 import { takeEvery, select, put } from 'redux-saga/effects'
 
 import {
-  FETCH_COLLECTION_SUCCESS,
+  COLLECTION_FETCH_SUCCEDED,
   MARKET_OFFER_CREATED,
-  fetchCardDetailsRequest
+  cardDetailsFetchRequested
 } from '../actions'
 
-function * onFetchCollectionSuccess ({ data }) {
+function * onCollectionFetchSucceded ({ data }) {
   for (const cardId of data) {
     yield * fetchCardDetailsIfNew(cardId)
   }
@@ -19,7 +19,7 @@ function * onMarketOfferCreated ({ tokenId }) {
 function * fetchCardDetailsIfNew (cardId) {
   const cardDetails = yield select(state => state.cards.details[cardId])
   if (shouldFetch(cardDetails)) {
-    yield put(fetchCardDetailsRequest(cardId))
+    yield put(cardDetailsFetchRequested(cardId))
   }
 }
 
@@ -29,6 +29,6 @@ function shouldFetch (cardDetails) {
 }
 
 export function * saga () {
-  yield takeEvery(FETCH_COLLECTION_SUCCESS, onFetchCollectionSuccess)
+  yield takeEvery(COLLECTION_FETCH_SUCCEDED, onCollectionFetchSucceded)
   yield takeEvery(MARKET_OFFER_CREATED, onMarketOfferCreated)
 }

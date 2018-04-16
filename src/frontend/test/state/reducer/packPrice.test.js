@@ -1,15 +1,15 @@
 import { reducer } from '../../../app/state/reducer/packPrice'
 import {
-  fetchPackPriceRequest,
-  fetchPackPriceSuccess,
-  fetchPackPriceFailure
+  packPriceFetchRequested,
+  packPriceFetchSucceded,
+  packPriceFetchFailed
 } from '../../../app/state/actions'
 
 describe('packPrice reducer', () => {
-  it('correcty handles the fetchPackPriceRequest action', () => {
+  it('correcty handles the packPriceFetchRequested action', () => {
     const state = reducer({
       data: 123
-    }, fetchPackPriceRequest())
+    }, packPriceFetchRequested())
 
     expect(state).toEqual({
       isFetching: true,
@@ -18,8 +18,8 @@ describe('packPrice reducer', () => {
     })
   })
 
-  it('correcty handles the fetchPackPriceSuccess action', () => {
-    const state = reducer({}, fetchPackPriceSuccess(123))
+  it('correcty handles the packPriceFetchSucceded action', () => {
+    const state = reducer({}, packPriceFetchSucceded(123))
 
     expect(state).toEqual({
       isFetching: false,
@@ -28,10 +28,10 @@ describe('packPrice reducer', () => {
     })
   })
 
-  it('correcty handles the fetchPackPriceSuccess action', () => {
+  it('correcty handles the packPriceFetchSucceded action', () => {
     const state = reducer({
       data: 123
-    }, fetchPackPriceFailure('Error'))
+    }, packPriceFetchFailed('Error'))
 
     expect(state).toEqual({
       isFetching: false,

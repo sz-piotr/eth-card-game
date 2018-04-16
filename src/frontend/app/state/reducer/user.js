@@ -1,7 +1,7 @@
 import {
   METAMASK_LOADED,
-  METAMASK_NOT_PRESENT,
-  ACCOUNT_CHANGED
+  METAMASK_NOT_FOUND,
+  METAMASK_ACCOUNT_CHANGED
 } from '../actions'
 
 const defaultState = {
@@ -24,7 +24,7 @@ export function reducer (state = defaultState, action) {
           unlocked: !!action.account
         }
       }
-    case METAMASK_NOT_PRESENT:
+    case METAMASK_NOT_FOUND:
       return {
         canTransact: false,
         metamask: {
@@ -32,7 +32,7 @@ export function reducer (state = defaultState, action) {
           installed: false
         }
       }
-    case ACCOUNT_CHANGED:
+    case METAMASK_ACCOUNT_CHANGED:
       return {
         canTransact: action.account && isSupported(state.network),
         network: state.network,

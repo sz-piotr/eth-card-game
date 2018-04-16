@@ -1,24 +1,24 @@
 import {
-  FETCH_PACK_PRICE_REQUEST,
-  FETCH_PACK_PRICE_SUCCESS,
-  FETCH_PACK_PRICE_FAILURE
+  PACK_PRICE_FETCH_REQUESTED,
+  PACK_PRICE_FETCH_SUCCEDED,
+  PACK_PRICE_FETCH_FAILED
 } from '../actions'
 
 export function reducer (state = {}, action) {
   switch (action.type) {
-    case FETCH_PACK_PRICE_REQUEST:
+    case PACK_PRICE_FETCH_REQUESTED:
       return {
         isFetching: true,
         error: false,
         data: state.data
       }
-    case FETCH_PACK_PRICE_SUCCESS:
+    case PACK_PRICE_FETCH_SUCCEDED:
       return {
         isFetching: false,
         error: false,
         data: action.data
       }
-    case FETCH_PACK_PRICE_FAILURE:
+    case PACK_PRICE_FETCH_FAILED:
       return {
         isFetching: false,
         error: action.error,

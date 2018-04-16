@@ -1,7 +1,7 @@
 import {
   CARD_SEARCH_CHANGED,
   CARDS_PAGE_CHANGED,
-  RESOULUTION_CHANGE,
+  RESOULUTION_CHANGED,
   CARD_VIEW_RESET,
   CARD_SORT_CHANGED
 } from '../../actions'
@@ -25,7 +25,7 @@ export function reducer (state = defaultState, action) {
         ...state,
         page: action.value
       }
-    case RESOULUTION_CHANGE:
+    case RESOULUTION_CHANGED:
       return {
         ...state,
         itemsPerPage: widthToItemsPerPage(action.width)

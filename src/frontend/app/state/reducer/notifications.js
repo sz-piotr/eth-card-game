@@ -1,8 +1,8 @@
 import {
-  FETCH_COLLECTION_FAILURE,
-  FETCH_CARD_DETAILS_FAILURE,
-  FETCH_PACK_PRICE_FAILURE,
-  DISMISS_NOTIFICATION
+  COLLECTION_FETCH_FAILED,
+  CARD_DETAILS_FETCH_FAILED,
+  PACK_PRICE_FETCH_FAILED,
+  NOTIFICATION_DISMISSED
 } from '../actions'
 
 const defaultState = {
@@ -12,22 +12,22 @@ const defaultState = {
 
 export function reducer (state = defaultState, action) {
   switch (action.type) {
-    case FETCH_COLLECTION_FAILURE:
+    case COLLECTION_FETCH_FAILED:
       return addNotification(state, {
         title: 'Failed to fetch collection',
         description: action.error
       })
-    case FETCH_CARD_DETAILS_FAILURE:
+    case CARD_DETAILS_FETCH_FAILED:
       return addNotification(state, {
         title: 'Failed to fetch card details',
         description: action.error
       })
-    case FETCH_PACK_PRICE_FAILURE:
+    case PACK_PRICE_FETCH_FAILED:
       return addNotification(state, {
         title: 'Failed to fetch pack price',
         description: action.error
       })
-    case DISMISS_NOTIFICATION:
+    case NOTIFICATION_DISMISSED:
       return {
         nextId: state.nextId,
         list: state.list.filter(({ id }) => id !== action.id)

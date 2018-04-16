@@ -1,12 +1,12 @@
 import {
-  FETCH_CARD_DETAILS_REQUEST,
-  FETCH_CARD_DETAILS_SUCCESS,
-  FETCH_CARD_DETAILS_FAILURE
+  CARD_DETAILS_FETCH_REQUESTED,
+  CARD_DETAILS_FETCH_SUCCEDED,
+  CARD_DETAILS_FETCH_FAILED
 } from '../../actions'
 
 export function reducer (state = {}, action) {
   switch (action.type) {
-    case FETCH_CARD_DETAILS_REQUEST:
+    case CARD_DETAILS_FETCH_REQUESTED:
       return {
         ...state,
         [action.cardId]: {
@@ -15,7 +15,7 @@ export function reducer (state = {}, action) {
           data: state[action.cardId] && state[action.cardId].data
         }
       }
-    case FETCH_CARD_DETAILS_SUCCESS:
+    case CARD_DETAILS_FETCH_SUCCEDED:
       return {
         ...state,
         [action.cardId]: {
@@ -24,7 +24,7 @@ export function reducer (state = {}, action) {
           data: action.data
         }
       }
-    case FETCH_CARD_DETAILS_FAILURE:
+    case CARD_DETAILS_FETCH_FAILED:
       return {
         ...state,
         [action.cardId]: {

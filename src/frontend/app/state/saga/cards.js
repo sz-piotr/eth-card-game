@@ -2,20 +2,20 @@ import { takeEvery, call, put } from 'redux-saga/effects'
 
 import { Cards } from '../../contracts'
 import {
-  FETCH_CARD_DETAILS_REQUEST,
-  fetchCardDetailsSuccess,
-  fetchCardDetailsFailure
+  CARD_DETAILS_FETCH_REQUESTED,
+  cardDetailsFetchSucceded,
+  cardDetailsFetchFailed
 } from '../actions'
 
 function * fetchCardDetails ({ cardId }) {
   try {
     const data = yield call(Cards.getCard, cardId)
-    yield put(fetchCardDetailsSuccess(cardId, data))
+    yield put(cardDetailsFetchSucceded(cardId, data))
   } catch (error) {
-    yield put(fetchCardDetailsFailure(cardId, error.message))
+    yield put(cardDetailsFetchFailed(cardId, error.message))
   }
 }
 
 export function * saga () {
-  yield takeEvery(FETCH_CARD_DETAILS_REQUEST, fetchCardDetails)
+  yield takeEvery(CARD_DETAILS_FETCH_REQUESTED, fetchCardDetails)
 }

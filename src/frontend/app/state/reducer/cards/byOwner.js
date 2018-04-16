@@ -1,12 +1,12 @@
 import {
-  FETCH_COLLECTION_REQUEST,
-  FETCH_COLLECTION_SUCCESS,
-  FETCH_COLLECTION_FAILURE
+  COLLECTION_FETCH_REQUESTED,
+  COLLECTION_FETCH_SUCCEDED,
+  COLLECTION_FETCH_FAILED
 } from '../../actions'
 
 export function reducer (state = {}, action) {
   switch (action.type) {
-    case FETCH_COLLECTION_REQUEST:
+    case COLLECTION_FETCH_REQUESTED:
       return {
         ...state,
         [action.account]: {
@@ -15,7 +15,7 @@ export function reducer (state = {}, action) {
           data: state[action.account] && state[action.account].data
         }
       }
-    case FETCH_COLLECTION_SUCCESS:
+    case COLLECTION_FETCH_SUCCEDED:
       return {
         ...state,
         [action.account]: {
@@ -24,7 +24,7 @@ export function reducer (state = {}, action) {
           data: action.data
         }
       }
-    case FETCH_COLLECTION_FAILURE:
+    case COLLECTION_FETCH_FAILED:
       return {
         ...state,
         [action.account]: {

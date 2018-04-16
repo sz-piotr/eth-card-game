@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchCollectionRequest } from '../../../state/actions'
+import { collectionFetchRequested } from '../../../state/actions'
 
 export function fetchingCollection (Component) {
   class FetchingCollection extends React.Component {
     componentDidMount (props) {
-      const { account, fetchCollectionRequest } = this.props
+      const { account, collectionFetchRequested } = this.props
       if (account) {
-        fetchCollectionRequest(account)
+        collectionFetchRequested(account)
       }
     }
 
@@ -17,7 +17,7 @@ export function fetchingCollection (Component) {
         this.props.account !== nextProps.account &&
         nextProps.account != null
       ) {
-        this.props.fetchCollectionRequest(nextProps.account)
+        this.props.collectionFetchRequested(nextProps.account)
       }
     }
 
@@ -28,6 +28,6 @@ export function fetchingCollection (Component) {
 
   return connect(
     state => ({ account: state.user.account }),
-    { fetchCollectionRequest }
+    { collectionFetchRequested }
   )(FetchingCollection)
 }

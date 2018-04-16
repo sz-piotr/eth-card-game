@@ -1,7 +1,7 @@
 import { reducer } from '../../../app/state/reducer/pickCards'
 import {
-  selectCard,
-  pickCard
+  cardSelected,
+  cardPicked
 } from '../../../app/state/actions'
 
 describe('pickCards reducer', () => {
@@ -9,7 +9,7 @@ describe('pickCards reducer', () => {
     const state = reducer({
       picked: [1, 2, null, 4],
       selected: 2
-    }, selectCard(3))
+    }, cardSelected(3))
 
     expect(state).toEqual({
       picked: [1, 2, null, 4],
@@ -21,7 +21,7 @@ describe('pickCards reducer', () => {
     const state = reducer({
       picked: [1, 2, null, 4],
       selected: 2
-    }, selectCard(null))
+    }, cardSelected(null))
 
     expect(state).toEqual({
       picked: [1, 2, null, 4],
@@ -29,11 +29,11 @@ describe('pickCards reducer', () => {
     })
   })
 
-  it('correcty handles the pickCard action', () => {
+  it('correcty handles the cardPicked action', () => {
     const state = reducer({
       picked: [1, null, null, 5],
       selected: 4
-    }, pickCard(2))
+    }, cardPicked(2))
 
     expect(state).toEqual({
       picked: [1, null, 4, 5],

@@ -1,7 +1,7 @@
 import { eventChannel } from 'redux-saga'
 import { call, take, put } from 'redux-saga/effects'
 
-import { resolutionChange } from '../actions'
+import { resolutionChanged } from '../actions'
 
 function createResizeChannel () {
   return eventChannel(function (emitter) {
@@ -23,6 +23,6 @@ export function * saga () {
   const resizeChannel = yield call(createResizeChannel)
   while (true) {
     const { width, height } = yield take(resizeChannel)
-    yield put(resolutionChange(width, height))
+    yield put(resolutionChanged(width, height))
   }
 }

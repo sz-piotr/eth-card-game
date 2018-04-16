@@ -1,11 +1,11 @@
-import { PICK_CARD, SELECT_CARD } from '../actions'
+import { CARD_PICKED, CARD_SELECTED } from '../actions'
 
 export function reducer (state = {
   picked: new Array(3).fill(null),
   selected: null
 }, action) {
   switch (action.type) {
-    case PICK_CARD:
+    case CARD_PICKED:
       return {
         picked: state.picked.map((item, index) => index === action.index
           ? state.selected
@@ -13,7 +13,7 @@ export function reducer (state = {
         ),
         selected: null
       }
-    case SELECT_CARD:
+    case CARD_SELECTED:
       return {
         ...state,
         selected: action.cardId

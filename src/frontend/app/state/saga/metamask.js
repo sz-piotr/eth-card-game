@@ -4,8 +4,8 @@ import { call, take, put } from 'redux-saga/effects'
 import { getWeb3 } from '../../contracts/utils/web3'
 import {
   metamaskLoaded,
-  metamaskNotPresent,
-  accountChanged
+  metamaskNotFound,
+  metamaskAccountChanged
 } from '../actions'
 
 export function * saga () {
@@ -14,7 +14,7 @@ export function * saga () {
     yield put(metamaskLoaded(web3.eth.defaultAccount, web3.version.network))
     yield * listenForAccountChanges(web3)
   } catch (e) {
-    yield put(metamaskNotPresent())
+    yield put(metamaskNotFound())
   }
 }
 
@@ -22,7 +22,7 @@ function * listenForAccountChanges (web3) {
   const accountChannel = yield call(createAccountChannel, web3)
   while (true) {
     const { account } = yield take(accountChannel)
-    yield put(accountChanged(account))
+    yield put(metamaskAccountChanged(account))
   }
 }
 

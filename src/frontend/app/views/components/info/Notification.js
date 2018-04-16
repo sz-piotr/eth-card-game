@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { dismissNotification } from '../../../state/actions'
+import { notificationDismissed } from '../../../state/actions'
 
-const Notification = ({ id, title, description, dismissNotification }) =>
+const Notification = ({ id, title, description, notificationDismissed }) =>
   <li className='notification'>
-    <button className='notification-close' onClick={() => dismissNotification(id)}>
+    <button className='notification-close' onClick={() => notificationDismissed(id)}>
       &times;
     </button>
     <p className='notification-title'>{title}</p>
@@ -14,5 +14,5 @@ const Notification = ({ id, title, description, dismissNotification }) =>
 
 export default connect(
   null,
-  { dismissNotification }
+  { notificationDismissed }
 )(Notification)
