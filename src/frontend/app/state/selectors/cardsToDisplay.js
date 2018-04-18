@@ -47,7 +47,7 @@ function stringCompare (a, b) {
   return a > b ? 1 : (a < b ? -1 : 0)
 }
 
-const isNotEmptyString = x => x !== 'x'
+const isNotEmptyString = x => x !== ''
 function textFilter (text) {
   const keywords = text
     .toLowerCase()
