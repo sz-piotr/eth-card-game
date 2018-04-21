@@ -3,7 +3,6 @@
 /* global assert */
 const { getLastCreatedTokenId } = require('./utlis')
 
-const Mnemonic = require('bitcore-mnemonic')
 const createKeccakHash = require('keccak')
 
 const Challenges = artifacts.require('./Challenges.sol')
@@ -15,8 +14,8 @@ let heroId
 // sconst initiatorCardsIds = [...Array(5).keys()]
 const cardList = []
 const DRAFT = 2
+const SALT = '16h7ls11w562ac195h1631tsru501aqwemj514k54mqgdz0e4kup7'
 
-var code = new Mnemonic()
 contract('Challenges', (accounts) => {
   it('should perform challenge', async () => {
     async function prepareCardTypes () {
@@ -40,20 +39,20 @@ contract('Challenges', (accounts) => {
     await prepareCardTypes()
     await prepareCards()
     const challenges = await Challenges.deployed()
-    await challenges.challenge(createHash())
+    await challenges.challenge(createHash(SALT))
     await challenges.accept(0, heroId, cardList)
-    await challenges.battle(0, heroId, cardList, code.toHDPrivateKey().toString())
+    await challenges.battle(0, heroId, cardList, SALT)
     const result = await challenges.getResult(0)
     assert.equal(result.toNumber(), DRAFT)
   })
 })
 
-function createHash () {
+function createHash (salt) {
   let value = '' + heroId
   let i
   for (i = 0; i !== 5; i++) {
     value += cardList[i]
   }
-  value += code.toHDPrivateKey().toString()
+  value += salt
   return '0x' + createKeccakHash('keccak256').update(value).digest().toString('hex')
 }
