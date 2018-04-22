@@ -1,6 +1,7 @@
 import { CARD_PICKED, CARD_SELECTED } from '../actions'
 
 export function reducer (state = {
+  hero: null,
   picked: new Array(3).fill(null),
   selected: null
 }, action) {
