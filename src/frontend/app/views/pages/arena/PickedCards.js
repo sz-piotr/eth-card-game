@@ -7,8 +7,8 @@ const PickedCards = ({ pickedCards }) =>
   <section className='container'>
     <h1>Selected Cards</h1>
     {pickedCards && <ul className='card-collection'>
-      {pickedCards.map((cardId, index) =>
-        <li key={index}>
+      {pickedCards.map((cardId, index) => console.log(cardId) ||
+        <li key={cardId || -index}>
           <PickedCard cardId={cardId} index={index} />
         </li>
       )}

@@ -27,7 +27,7 @@ const SelectableCollection = ({ data, view, cardsPageChanged, pickedCards }) =>
         {cards =>
           <ul className='card-collection'>
             {cards.map((cardId, index) =>
-              <li key={index}>
+              <li key={cardId}>
                 {pickedCards.indexOf(cardId) === -1
                   ? <SelectableCard cardId={cardId} />
                   : <Card className='card-display--picked' cardId={cardId} />
