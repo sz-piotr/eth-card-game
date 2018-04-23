@@ -3,14 +3,16 @@ import {
   CARDS_PAGE_CHANGED,
   RESOULUTION_CHANGED,
   CARD_VIEW_RESET,
-  CARD_SORT_CHANGED
+  CARD_SORT_CHANGED,
+  CARD_TYPE_CHANGED
 } from '../../actions'
 
 const defaultState = {
   search: '',
   page: 0,
   itemsPerPage: 4 * 2,
-  sort: 'id descending'
+  sort: 'id descending',
+  type: ''
 }
 
 export function reducer (state = defaultState, action) {
@@ -34,6 +36,11 @@ export function reducer (state = defaultState, action) {
       return {
         ...state,
         sort: action.sort
+      }
+      case CARD_TYPE_CHANGED:
+      return {
+        ...state,
+        type: action.value
       }
     case CARD_VIEW_RESET:
       return {

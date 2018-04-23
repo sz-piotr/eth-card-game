@@ -114,6 +114,9 @@ export const cardsPageChanged = makeActionCreator(CARDS_PAGE_CHANGED, 'value')
 export const CARD_SORT_CHANGED = 'CARD_SORT_CHANGED'
 export const cardSortChanged = makeActionCreator(CARD_SORT_CHANGED, 'sort')
 
+export const CARD_TYPE_CHANGED = 'CARD_TYPE_CHANGED'
+export const cardTypeChanged = makeActionCreator(CARD_TYPE_CHANGED, 'value')
+
 export const CARD_VIEW_RESET = 'CARD_VIEW_RESET'
 export const cardViewReset = makeActionCreator(CARD_VIEW_RESET)
 

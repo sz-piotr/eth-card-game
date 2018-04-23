@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 
 import PickedCard from './PickedCard'
 
-const PickedCards = ({ pickedCards }) =>
+const PickedCards = ({ pickedCards, hero }) =>
   <section className='container'>
     <h1>Selected Cards</h1>
     {pickedCards && <ul className='card-collection'>
-      {pickedCards.map((cardId, index) => console.log(cardId) ||
+      <PickedCard cardId={hero}/>
+      {pickedCards.map((cardId, index) =>
         <li key={cardId || -index}>
           <PickedCard cardId={cardId} index={index} />
         </li>
@@ -17,6 +18,7 @@ const PickedCards = ({ pickedCards }) =>
 
 export default connect(
   state => ({
-    pickedCards: state.pickCards.picked
+    pickedCards: state.pickCards.picked,
+    hero: state.pickCards.hero
   })
 )(PickedCards)

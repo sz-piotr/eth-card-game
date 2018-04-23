@@ -8,8 +8,7 @@ const SelectableCard = ({ cardSelected, selectedCard, cardId }) =>
   <Card
     className={selectedCard === cardId && 'card-display--selected'}
     cardId={cardId}
-    // TODO: move this logic to reducer
-    onClick={() => selectedCard === cardId ? cardSelected(null) : cardSelected(cardId)}
+    onClick={() => cardSelected(cardId)}
   />
 
 export default connect(

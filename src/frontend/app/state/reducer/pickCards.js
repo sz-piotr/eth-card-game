@@ -17,7 +17,9 @@ export function reducer (state = {
     case CARD_SELECTED:
       return {
         ...state,
-        selected: action.cardId
+        selected: action.cardId == state.selected
+          ? null
+          : action.cardId
       }
     default:
       return state

@@ -26,7 +26,8 @@ const cardsToDisplay = memoize((collection, view, details) => {
 
 function getFilters (view) {
   return [
-    textFilter(view.search)
+    textFilter(view.search, 'searchtext'),
+    textFilter(view.type, 'type')
   ]
 }
 
@@ -48,7 +49,7 @@ function stringCompare (a, b) {
 }
 
 const isNotEmptyString = x => x !== ''
-function textFilter (text) {
+function textFilter (text, attribute) {
   const keywords = text
     .toLowerCase()
     .split(' ')
@@ -56,7 +57,7 @@ function textFilter (text) {
 
   return function (card) {
     return keywords.every(keyword =>
-      card.searchText.includes(keyword)
+      card[attribute].includes(keyword)
     )
   }
 }

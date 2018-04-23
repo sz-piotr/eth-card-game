@@ -10,6 +10,7 @@ import SelectableCard from './SelectableCard'
 import Card from '../../components/cards/Card'
 import CollectionFilter from '../collection/CollectionFilter'
 import CollectionSort from '../collection/CollectionSort'
+import CardTypeSort from './CardTypeSort'
 import Paginated from '../../components/pagination/Paginated'
 
 const SelectableCollection = ({ data, view, cardsPageChanged, pickedCards }) =>
@@ -18,6 +19,7 @@ const SelectableCollection = ({ data, view, cardsPageChanged, pickedCards }) =>
     <div>
       <CollectionFilter />
       <CollectionSort />
+      <CardTypeSort />
     </div>
     {!data && <SelectionPlaceholder />}
     {data &&
