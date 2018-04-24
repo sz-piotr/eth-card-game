@@ -17,7 +17,7 @@ export function reducer (state = {
     case CARD_SELECTED:
       return {
         ...state,
-        selected: action.cardId == state.selected
+        selected: action.cardId === state.selected
           ? null
           : action.cardId
       }

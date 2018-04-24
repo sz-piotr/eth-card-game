@@ -37,7 +37,7 @@ export function reducer (state = defaultState, action) {
         ...state,
         sort: action.sort
       }
-      case CARD_TYPE_CHANGED:
+    case CARD_TYPE_CHANGED:
       return {
         ...state,
         type: action.value
