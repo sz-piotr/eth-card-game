@@ -7,7 +7,7 @@ const PickedCards = ({ pickedCards, hero }) =>
   <section className='container'>
     <h1>Selected Cards</h1>
     {pickedCards && <ul className='card-collection'>
-      <PickedCard cardId={hero} />
+      <PickedCard cardId={hero} key={hero} />
       {pickedCards.map((cardId, index) =>
         <li key={cardId || -index}>
           <PickedCard cardId={cardId} index={index} />

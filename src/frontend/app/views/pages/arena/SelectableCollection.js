@@ -13,7 +13,7 @@ import CollectionSort from '../collection/CollectionSort'
 import CardTypeSort from './CardTypeSort'
 import Paginated from '../../components/pagination/Paginated'
 
-const SelectableCollection = ({ data, view, cardsPageChanged, pickedCards }) =>
+const SelectableCollection = ({ data, view, cardsPageChanged, pickedCards, pickedHero }) =>
   <section className='container'>
     <h1>Select Cards</h1>
     <div>
@@ -30,7 +30,7 @@ const SelectableCollection = ({ data, view, cardsPageChanged, pickedCards }) =>
           <ul className='card-collection'>
             {cards.map((cardId, index) =>
               <li key={cardId}>
-                {pickedCards.indexOf(cardId) === -1
+                {pickedCards.indexOf(cardId) === -1 && pickedHero !== cardId
                   ? <SelectableCard cardId={cardId} />
                   : <Card className='card-display--picked' cardId={cardId} />
                 }
@@ -48,6 +48,7 @@ export default compose(
     state => ({
       data: selectCardsToDisplay(state),
       pickedCards: state.pickCards.picked,
+      pickedHero: state.pickCards.hero,
       view: state.cards.view
     }), { cardsPageChanged }
   )
