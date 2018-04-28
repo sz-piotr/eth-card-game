@@ -12,10 +12,6 @@
           {
             "name": "hiveguardian",
             "displayName": "Hive Guardian"
-          },
-          {
-            "name": "spectre",
-            "displayName": "Spectre"
           }
         ],
         "uncommon": [
@@ -32,12 +28,28 @@
           {
             "name": "quark",
             "displayName": "Quark"
+          },
+          {
+            "name": "spectre",
+            "displayName": "Spectre"
           }
         ]
       },
       "actions": {
-        "common": [],
-        "uncommon": [],
+        "common": [
+          {
+            "name": "action-punch",
+            "displayName": "Punch",
+            "damage": 13
+          }
+        ],
+        "uncommon": [
+          {
+            "name": "action-fireball",
+            "displayName": "Fireball",
+            "damage": 13
+          }
+        ],
         "rare": []
       }
     }

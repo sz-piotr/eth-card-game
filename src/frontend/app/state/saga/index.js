@@ -8,6 +8,7 @@ import { saga as packPrice } from './packPrice'
 import { saga as packPurchase } from './packPurchase'
 import { saga as market } from './market'
 import { saga as resize } from './resize'
+import { saga as challenge } from './challenge'
 
 export function * saga () {
   yield all([
@@ -18,6 +19,7 @@ export function * saga () {
     packPrice(),
     packPurchase(),
     market(),
-    resize()
+    resize(),
+    challenge()
   ])
 }
