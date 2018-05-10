@@ -12,8 +12,8 @@ import Paginated from '../../components/pagination/Paginated'
 import CollectionSort from './CollectionSort'
 
 const Collection = ({ data, view, cardsPageChanged }) =>
-  <section className='container'>
-    <h1>My Cards</h1>
+  <section className='container page'>
+    <h1 className='page-title'>Collection</h1>
     <div>
       <CollectionFilter />
       <CollectionSort />
