@@ -14,7 +14,7 @@ import CollectionSort from './CollectionSort'
 const Collection = ({ data, view, cardsPageChanged }) =>
   <section className='container page'>
     <h1 className='page-title'>Collection</h1>
-    <div>
+    <div className='input-group'>
       <CollectionFilter />
       <CollectionSort />
     </div>

@@ -1,0 +1,36 @@
+.collection-sort {
+  position: relative;
+  margin-left: @space-l;
+  display: flex;
+  align-items: center;
+
+  select {
+    height: 100%;
+
+    @media @device-phone {
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      border: none;
+      appearance: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      color: transparent;
+    }
+  }
+
+  .icon {
+    display: none;
+
+    @media @device-phone {
+      display: block;
+      width: 24px;
+      border: none;
+      background-color: transparent;
+      font-size: 24px;
+    }
+  }
+}
