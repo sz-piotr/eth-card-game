@@ -69,7 +69,7 @@
       margin: 0;
       text-align: center;
       height: 100%;
-      font-size: 0.8rem;
+      font-size: @font-size-small;
     }
 
     a {
@@ -80,6 +80,11 @@
       transition: color .2s ease-out;
       -moz-outline-style: none !important;
       outline-style: none !important;
+
+      span {
+        position: relative;
+        top: 2px;
+      }
     }
 
     .icon {
