@@ -1,9 +1,14 @@
-@media @device-phone {
-  .page {
+.page {
+  @media @device-phone {
     margin-top: @space-l * 3 + @font-size-large;
   }
+}
 
-  .page-title {
+.page-title {
+  font-size: @font-size-huge;
+  margin-bottom: @space-l;
+
+  @media @device-phone {
     top: 0;
     left: 0;
     width: 100%;
