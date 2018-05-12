@@ -6,7 +6,7 @@ import { selectCardsToDisplay } from '../../../state/selectors'
 import { cardsPageChanged } from '../../../state/actions'
 import { fetchingCollection } from './fetchingCollection'
 import CollectionPlaceholder from './CollectionPlaceholder'
-import CollectionFilter from './CollectionFilter'
+import CollectionSearch from './CollectionSearch'
 import Card from '../../components/cards/Card'
 import Paginated from '../../components/pagination/Paginated'
 import CollectionSort from './CollectionSort'
@@ -15,7 +15,7 @@ const Collection = ({ data, view, cardsPageChanged }) =>
   <section className='container page'>
     <h1 className='page-title'>Collection</h1>
     <div className='input-group'>
-      <CollectionFilter />
+      <CollectionSearch />
       <CollectionSort />
     </div>
     {!data && <CollectionPlaceholder />}

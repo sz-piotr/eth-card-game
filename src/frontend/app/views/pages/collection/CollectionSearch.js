@@ -6,7 +6,7 @@ import {
   cardViewReset
 } from '../../../state/actions'
 
-class CollectionFilter extends React.Component {
+class CollectionSearch extends React.Component {
   render () {
     const { view, cardSearchChanged } = this.props
     return (
@@ -26,4 +26,4 @@ class CollectionFilter extends React.Component {
 export default connect(
   state => ({ view: state.cards.view }),
   { cardSearchChanged, cardViewReset }
-)(CollectionFilter)
+)(CollectionSearch)

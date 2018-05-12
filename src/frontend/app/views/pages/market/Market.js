@@ -1,15 +1,27 @@
 import React from 'react'
-import CollectionFilter from '../collection/CollectionFilter'
+import { connect } from 'react-redux'
+
 import Paginated from '../../components/pagination/Paginated'
+import MarketSearch from './MarketSearch'
 import MarketItem from './MarketItem'
+import {
+  marketPageChanged
+} from '../../../state/actions'
 
 const mockData = new Array(400).fill(null)
 
-const Market = () =>
+const Market = ({ data, view, marketPageChanged }) =>
   <section className='container page'>
     <h1 className='page-title'>Market</h1>
-    <CollectionFilter /> {/* TODO: replace with market specific component */}
-    <Paginated data={mockData} page={3} itemsPerPage={10} onChange={() => {}}>
+    <div className='input-group'>
+      <MarketSearch />
+    </div>
+    <Paginated
+      data={data}
+      page={view.page}
+      itemsPerPage={view.itemsPerPage}
+      onChange={marketPageChanged}
+    >
       {data =>
         <ul className='market-items'>
           {data.map((item, index) => <MarketItem key={index} />)}
@@ -18,4 +30,10 @@ const Market = () =>
     </Paginated>
   </section>
 
-export default Market
+export default connect(
+  state => ({
+    data: mockData,
+    view: state.market.view
+  }),
+  { marketPageChanged }
+)(Market)
