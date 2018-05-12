@@ -1,10 +1,10 @@
 @font-face {
 	font-family: "icons";
-	src: url("icons.eot?c9526b7a6ec2dc5f11e08b71390a20de?#iefix") format("embedded-opentype"),
-url("icons.woff2?c9526b7a6ec2dc5f11e08b71390a20de") format("woff2"),
-url("icons.woff?c9526b7a6ec2dc5f11e08b71390a20de") format("woff"),
-url("icons.ttf?c9526b7a6ec2dc5f11e08b71390a20de") format("truetype"),
-url("icons.svg?c9526b7a6ec2dc5f11e08b71390a20de#icons") format("svg");
+	src: url("icons.eot?398992813f9e82581d755e39822094d7?#iefix") format("embedded-opentype"),
+url("icons.woff2?398992813f9e82581d755e39822094d7") format("woff2"),
+url("icons.woff?398992813f9e82581d755e39822094d7") format("woff"),
+url("icons.ttf?398992813f9e82581d755e39822094d7") format("truetype"),
+url("icons.svg?398992813f9e82581d755e39822094d7#icons") format("svg");
 }
 
 .icon {
@@ -23,12 +23,32 @@ url("icons.svg?c9526b7a6ec2dc5f11e08b71390a20de#icons") format("svg");
 .icon-cart:before {
 	content: "\f101";
 }
+
 .icon-collection:before {
 	content: "\f102";
 }
+
 .icon-arena:before {
 	content: "\f103";
 }
+
 .icon-market:before {
 	content: "\f104";
 }
+
+.icon-sort-az:before {
+	content: "\f105";
+}
+
+.icon-sort-za:before {
+	content: "\f106";
+}
+
+.icon-clockwise:before {
+	content: "\f107";
+}
+
+.icon-counter-clockwise:before {
+	content: "\f108";
+}
+

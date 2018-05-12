@@ -5,7 +5,11 @@ const icons = [
   'cart',
   'collection',
   'arena',
-  'market'
+  'market',
+  'sort-az',
+  'sort-za',
+  'clockwise',
+  'counter-clockwise'
 ]
 
 webfontsGenerator({
