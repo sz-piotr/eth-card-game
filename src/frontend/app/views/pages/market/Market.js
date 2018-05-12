@@ -21,7 +21,7 @@ const Market = ({ data, view, marketPageChanged }) =>
     >
       {data =>
         <ul className='market-items'>
-          {data.map((item, index) => <MarketItem key={index} />)}
+          {data.map((item, index) => <MarketItem key={index} cardId={item} />)}
         </ul>
       }
     </Paginated>
