@@ -10,10 +10,10 @@ const ArenaLink = ({ icon, to, children }) =>
 const ArenaLinks = () =>
   <nav>
     <ul className='arena-links'>
-      <ArenaLink to='/arena/ongoing' icon='collection'>
+      <ArenaLink to='/arena/ongoing' icon='arena'>
         Current battles
       </ArenaLink>
-      <ArenaLink to='/arena/history' icon='collection'>
+      <ArenaLink to='/arena/history' icon='counter-clockwise'>
         History
       </ArenaLink>
     </ul>
