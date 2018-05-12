@@ -89,6 +89,7 @@ export const CARD_PICKED = 'CARD_PICKED'
 export const cardPicked = makeActionCreator(CARD_PICKED, 'index')
 
 // CHALLENGE
+
 export const CHALLENGE_INITIALIZED = 'CHALLENGE_INITIALIZED'
 export const challengeInitialized = makeActionCreator(CHALLENGE_INITIALIZED)
 
@@ -102,6 +103,17 @@ export const marketOfferCanceled = makeActionCreator(MARKET_OFFER_CANCELED, 'at'
 
 export const MARKET_TOKEN_PURCHASED = 'MARKET_TOKEN_PURCHASED'
 export const marketTokenPurchased = makeActionCreator(MARKET_TOKEN_PURCHASED, 'at', 'tokenId')
+
+// MARKET VIEW
+
+export const MARKET_SEARCH_CHANGED = 'MARKET_SEARCH_CHANGED'
+export const marketSearchChanged = makeActionCreator(MARKET_SEARCH_CHANGED, 'value')
+
+export const MARKET_PAGE_CHANGED = 'MARKET_PAGE_CHANGED'
+export const marketPageChanged = makeActionCreator(MARKET_PAGE_CHANGED, 'value')
+
+export const MARKET_VIEW_RESET = 'MARKET_VIEW_RESET'
+export const marketViewReset = makeActionCreator(MARKET_VIEW_RESET)
 
 // CARD VIEW
 

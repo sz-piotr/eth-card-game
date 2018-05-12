@@ -2,7 +2,7 @@ import {
   MARKET_OFFER_CREATED,
   MARKET_OFFER_CANCELED,
   MARKET_TOKEN_PURCHASED
-} from '../actions'
+} from '../../actions'
 
 export function reducer (state = {}, action) {
   switch (action.type) {
