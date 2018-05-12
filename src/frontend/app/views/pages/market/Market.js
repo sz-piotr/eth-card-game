@@ -4,11 +4,8 @@ import { connect } from 'react-redux'
 import Paginated from '../../components/pagination/Paginated'
 import MarketSearch from './MarketSearch'
 import MarketItem from './MarketItem'
-import {
-  marketPageChanged
-} from '../../../state/actions'
-
-const mockData = new Array(400).fill(null)
+import { marketPageChanged } from '../../../state/actions'
+import { selectOffersToDisplay } from '../../../state/selectors'
 
 const Market = ({ data, view, marketPageChanged }) =>
   <section className='container page'>
@@ -32,7 +29,7 @@ const Market = ({ data, view, marketPageChanged }) =>
 
 export default connect(
   state => ({
-    data: mockData,
+    data: selectOffersToDisplay(state),
     view: state.market.view
   }),
   { marketPageChanged }

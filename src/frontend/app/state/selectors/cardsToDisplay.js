@@ -1,5 +1,9 @@
 import { getCardAttributes } from '../../data'
 import { memoize } from './memoize'
+import {
+  textFilter,
+  attributeFilter
+} from './filters'
 
 export function selectCardsToDisplay (state) {
   const view = state.cards.view
@@ -26,8 +30,8 @@ const cardsToDisplay = memoize((collection, view, details) => {
 
 function getFilters (view) {
   return [
-    textFilter(view.search, 'searchtext'),
-    stringFilter(view.type, (card) => card.type)
+    textFilter(view.search),
+    attributeFilter('type', view.type)
   ]
 }
 
@@ -46,24 +50,4 @@ function getSort (view) {
 
 function stringCompare (a, b) {
   return a > b ? 1 : (a < b ? -1 : 0)
-}
-
-const isNotEmptyString = x => x !== ''
-function textFilter (text) {
-  const keywords = text
-    .toLowerCase()
-    .split(' ')
-    .filter(isNotEmptyString)
-
-  return function (card) {
-    return keywords.every(keyword =>
-      card.searchtext.includes(keyword)
-    )
-  }
-}
-
-function stringFilter (text, attributeGetter) {
-  return function (card) {
-    return !text ? true : attributeGetter(card) === text
-  }
 }
