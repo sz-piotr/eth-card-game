@@ -5,12 +5,22 @@
   list-style-type: none;
 }
 
+.arena-select {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: @space-m;
+  margin: @space-m 0;
+
+  @media @device-phone {
+    grid-template-columns: 1fr;
+  }
+}
+
 .arena-option {
   position: relative;
   width: 100%;
   border-radius: @border-radius;
   overflow: hidden;
-  margin: @space-l 0;
 }
 
 .arena-option-image {
@@ -23,7 +33,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   color: @color-text-white;
   padding: @space-m @space-l;
 }
