@@ -7,7 +7,18 @@ import {
 
 const defaultState = {
   nextId: 0,
-  list: []
+  list: [
+    {
+      id: -2,
+      title: 'Pack purchase',
+      description: 'Transaction pending'
+    },
+    {
+      id: -1,
+      title: 'Example Notification',
+      description: 'This is the description. How about we make it long?'
+    }
+  ]
 }
 
 export function reducer (state = defaultState, action) {

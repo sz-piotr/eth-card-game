@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 import Notification from './Notification'
 
-const NotificationOverlay = ({ notifications }) =>
-  <ul className='notification-overlay'>
+const NotificationList = ({ notifications }) =>
+  <ul className='notification-list'>
     {notifications.map(notification =>
       <Notification key={notification.id} {...notification} />
     )}
@@ -12,4 +12,4 @@ const NotificationOverlay = ({ notifications }) =>
 
 export default connect(
   state => ({ notifications: state.notifications.list })
-)(NotificationOverlay)
+)(NotificationList)

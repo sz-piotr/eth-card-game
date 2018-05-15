@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 
 import Navbar from './components/navigation/Navbar'
 import AlertBar from './components/info/AlertBar'
-import NotificationOverlay from './components/info/NotificationOverlay'
+import NotificationList from './components/info/NotificationList'
 import ErrorBoundary from './components/ErrorBoundary'
 
 import Arena from './pages/arena/Arena'
@@ -15,7 +15,7 @@ const App = () =>
   <ErrorBoundary>
     <Navbar />
     <AlertBar />
-    <NotificationOverlay />
+    <NotificationList />
     <Route exact path='/shop' component={Shop} />
     <Route exact path='/collection' component={Collection} />
     <Route exact path='/arena' component={Arena} />
