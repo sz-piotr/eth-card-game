@@ -1,10 +1,12 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
+import ErrorBoundary from './components/ErrorBoundary'
+
 import Navbar from './components/navigation/Navbar'
 import AlertBar from './components/info/AlertBar'
 import NotificationList from './components/info/NotificationList'
-import ErrorBoundary from './components/ErrorBoundary'
+import SignTransaction from './components/info/SignTransaction'
 
 import Arena from './pages/arena/Arena'
 import Collection from './pages/collection/Collection'
@@ -13,6 +15,7 @@ import Shop from './pages/shop/Shop'
 
 const App = () =>
   <ErrorBoundary>
+    <SignTransaction />
     <Navbar />
     <AlertBar />
     <NotificationList />

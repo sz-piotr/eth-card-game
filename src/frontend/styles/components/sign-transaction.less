@@ -1,0 +1,36 @@
+.sign-transaction {
+  position: fixed;
+  top: 0;
+  right: -500px;
+  width: 400px;
+  height: 100%;
+  z-index: @z-index-sign-transaction;
+  background-color: @color-foreground;
+  padding: @space-l;
+  transition: right .3s;
+}
+
+.sign-transaction--open {
+  right: 0;
+}
+
+.sign-transaction__shadow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color .3s, width .3s step-end;
+  z-index: @z-index-sign-shadow;
+}
+
+.sign-transaction--open + .sign-transaction__shadow {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: background-color .3s, width .3s step-start;
+}
+
+.sign-transaction__title {
+  font-size: @font-size-large;
+}
