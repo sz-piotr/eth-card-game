@@ -3,16 +3,19 @@
   margin: 0;
   padding: 0;
   top: @navbar-height - @space-m;
-  right: @space-m;
+  left: @space-m;
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   z-index: @z-index-notifications;
   max-width: 300px;
 
   @media @device-phone {
     top: @header-height-phone - @space-m;
+    left: unset;
+    right: @space-m;
+    align-items: flex-end;
   }
 }
 
