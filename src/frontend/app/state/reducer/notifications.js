@@ -11,7 +11,8 @@ const defaultState = {
     {
       id: -2,
       title: 'Pack purchase',
-      description: 'Transaction pending'
+      description: 'Transaction pending',
+      spinner: true
     },
     {
       id: -1,
