@@ -4,10 +4,12 @@ import ArenaLinks from './ArenaLinks'
 import ArenaSelection from './ArenaSelection'
 
 const Arena = (props) =>
-  <section className='container page'>
-    <h1 className='page-title'>Arena</h1>
+  <main className='page'>
+    <header className='header'>
+      <h1 className='header__title'>Arena</h1>
+    </header>
     <ArenaLinks />
     <ArenaSelection />
-  </section>
+  </main>
 
 export default Arena

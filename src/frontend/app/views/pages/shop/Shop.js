@@ -14,8 +14,10 @@ class Shop extends React.Component {
   render () {
     const { canTransact, purchasePackClicked } = this.props
     return (
-      <section className='container page'>
-        <h1 className='page-title'>Shop</h1>
+      <main className='page'>
+        <header className='header'>
+          <h1 className='header__title'>Shop</h1>
+        </header>
         <img className='shop-booster' src='/images/placeholders/booster-pack.png' /><br />
         <button
           disabled={!canTransact}
@@ -23,7 +25,7 @@ class Shop extends React.Component {
         >
           Buy
         </button>
-      </section>
+      </main>
     )
   }
 }

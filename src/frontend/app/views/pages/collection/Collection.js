@@ -12,8 +12,10 @@ import Paginated from '../../components/pagination/Paginated'
 import CollectionSort from './CollectionSort'
 
 const Collection = ({ data, view, cardsPageChanged }) =>
-  <section className='container page'>
-    <h1 className='page-title'>Collection</h1>
+  <main className='page'>
+    <header className='header'>
+      <h1 className='header__title'>Collection</h1>
+    </header>
     <div className='input-group'>
       <CollectionSearch />
       <CollectionSort />
@@ -34,7 +36,7 @@ const Collection = ({ data, view, cardsPageChanged }) =>
         }
       </Paginated>
     }
-  </section>
+  </main>
 
 export default compose(
   fetchingCollection,

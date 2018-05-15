@@ -1,0 +1,40 @@
+.header {
+  margin-bottom: @space-l;
+  display: flex;
+  align-items: center;
+
+  @media @device-phone {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: @space-l;
+    height: 2 * @space-l + @font-size-large;
+    background-color: white;
+    z-index: @z-index-page-title;
+  }
+}
+
+.header__action {
+  margin-left: @space-s;
+
+  @media @device-phone {
+    &:first-of-type {
+      margin-left: auto;
+    }
+  }
+}
+
+.header__title {
+  flex: 1;
+  font-size: @font-size-huge;
+  margin: 0;
+
+  @media @device-phone {
+    font-size: @font-size-large;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}

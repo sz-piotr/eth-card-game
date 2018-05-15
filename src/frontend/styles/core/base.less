@@ -1,5 +1,5 @@
 @font-stack-primary: 'Lato', sans-serif;
-@base-line-height: 1.25;
+@line-height-base: 1.25;
 @font-size-base: 16px;
 
 *,
@@ -10,7 +10,8 @@
 
 html {
   font-family: sans-serif;
-  line-height: @base-line-height;
+  line-height: @line-height-base;
+  font-size: @font-size-base;
   -webkit-tap-highlight-color: transparent;
   height: 100%;
 }
@@ -20,9 +21,8 @@ body {
   background-color: @color-background;
   color: @color-text;
   font-family: @font-stack-primary;
-  font-size: @font-size-base;
   font-weight: 400;
-  line-height: @base-line-height;
+  line-height: @line-height-base;
   text-align: left;
 }
 

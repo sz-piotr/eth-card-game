@@ -8,10 +8,10 @@ import { marketPageChanged } from '../../../state/actions'
 import { selectOffersToDisplay } from '../../../state/selectors'
 
 const Market = ({ data, view, marketPageChanged }) =>
-  <section className='container page'>
-    <header className='page-header'>
-      <h1 className='page-title'>Market</h1>
-      <button className='button page-header-action'>Create Offer</button>
+  <main className='page'>
+    <header className='header'>
+      <h1 className='header__title'>Market</h1>
+      <button className='header__action button'>Create Offer</button>
     </header>
     <div className='input-group'>
       <MarketSearch />
@@ -28,7 +28,7 @@ const Market = ({ data, view, marketPageChanged }) =>
         </ul>
       }
     </Paginated>
-  </section>
+  </main>
 
 export default connect(
   state => ({
