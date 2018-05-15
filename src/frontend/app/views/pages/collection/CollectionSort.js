@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { cardSortChanged } from '../../../state/actions'
-import { Icon } from '../../components/Icon'
+import Icon from '../../components/Icon'
 
 const iconOf = {
   'id descending': 'counter-clockwise',

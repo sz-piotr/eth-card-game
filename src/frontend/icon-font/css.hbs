@@ -17,7 +17,7 @@
 }
 
 {{#each codepoints}}
-.{{../classPrefix}}{{@key}}:before {
+{{../baseSelector}}--{{@key}}:before {
 	content: "\\{{this}}";
 }
 

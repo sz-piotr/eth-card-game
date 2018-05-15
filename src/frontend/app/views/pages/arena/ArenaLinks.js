@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import Icon from '../../components/Icon'
+
 const ArenaLink = ({ icon, to, children }) =>
   <li className='page-link'><Link to={to}>
-    <i className={`icon icon-${icon}`} />
+    <Icon name={icon} />
     {children}
   </Link></li>
 

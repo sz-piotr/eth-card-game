@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { Icon } from '../Icon'
+import Icon from '../Icon'
 import NavbarLinks from './NavbarLinks'
 
 const Navbar = () =>

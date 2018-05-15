@@ -20,35 +20,35 @@ url("icons.svg?398992813f9e82581d755e39822094d7#icons") format("svg");
 	vertical-align: top;
 }
 
-.icon-cart:before {
+.icon--cart:before {
 	content: "\f101";
 }
 
-.icon-collection:before {
+.icon--collection:before {
 	content: "\f102";
 }
 
-.icon-arena:before {
+.icon--arena:before {
 	content: "\f103";
 }
 
-.icon-market:before {
+.icon--market:before {
 	content: "\f104";
 }
 
-.icon-sort-az:before {
+.icon--sort-az:before {
 	content: "\f105";
 }
 
-.icon-sort-za:before {
+.icon--sort-za:before {
 	content: "\f106";
 }
 
-.icon-clockwise:before {
+.icon--clockwise:before {
 	content: "\f107";
 }
 
-.icon-counter-clockwise:before {
+.icon--counter-clockwise:before {
 	content: "\f108";
 }
 
