@@ -4,21 +4,43 @@
   }
 }
 
-.page-title {
-  font-size: @font-size-huge;
+.page-header {
   margin-bottom: @space-l;
+  display: flex;
+  align-items: center;
 
   @media @device-phone {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    position: fixed;
     text-align: center;
-    padding: @space-l 0;
-    font-size: @font-size-large;
-    line-height: 1;
+    padding: @space-l;
     background-color: white;
     z-index: @z-index-page-title;
+  }
+}
+
+.page-header-action {
+  margin-left: @space-s;
+
+  @media @device-phone {
+    &:first-of-type {
+      margin-left: auto;
+    }
+  }
+}
+
+.page-title {
+  flex: 1;
+  font-size: @font-size-huge;
+  margin: 0;
+
+  @media @device-phone {
+    font-size: @font-size-large;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
   }
 }
 
@@ -35,7 +57,7 @@
   }
 }
 
-.section-title {
+.page-title-secondary {
   font-size: @font-size-large;
   text-align: center;
   margin-bottom: @space-l;

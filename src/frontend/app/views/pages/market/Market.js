@@ -9,7 +9,10 @@ import { selectOffersToDisplay } from '../../../state/selectors'
 
 const Market = ({ data, view, marketPageChanged }) =>
   <section className='container page'>
-    <h1 className='page-title'>Market</h1>
+    <header className='page-header'>
+      <h1 className='page-title'>Market</h1>
+      <button className='button page-header-action'>Create Offer</button>
+    </header>
     <div className='input-group'>
       <MarketSearch />
     </div>

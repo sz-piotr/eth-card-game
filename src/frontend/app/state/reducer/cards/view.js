@@ -53,9 +53,9 @@ export function reducer (state = defaultState, action) {
 }
 
 function widthToItemsPerPage (width) {
-  if (width < 650) { // @device-phone
+  if (width < 768) { // @device-phone
     return 2 * 3
-  } else if (width < 800) { // @device-tablet
+  } else if (width < 1024) { // @device-tablet
     return 3 * 2
   } else {
     return 4 * 2

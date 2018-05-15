@@ -12,7 +12,7 @@ const ArenaOption = ({ id, image, name, description }) =>
 
 const ArenaSelection = () =>
   <section>
-    <h2 className='section-title'>Start a new battle</h2>
+    <h2 className='page-title-secondary'>Start a new battle</h2>
     <nav>
       <ul className='arena-select'>
         <ArenaOption id={1} image='images/arenas/urog-proving-grounds.png'
