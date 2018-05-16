@@ -11,10 +11,9 @@ const Notification = ({ id, notificationDismissed, ...notification }) =>
     notification.spinner && 'notification--has-spinner'
   )}>
     {notification.spinner && <Spinner className='notification__spinner' />}
-    <button
-      className='notification__close'
-      onClick={() => notificationDismissed(id)}
-    >&times;</button>
+    <button className='close' onClick={() => notificationDismissed(id)}>
+      &times;
+    </button>
     <p className='notification__title'>{notification.title}</p>
     <p className='notification__description'>{notification.description}</p>
   </li>

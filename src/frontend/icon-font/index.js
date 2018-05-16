@@ -9,7 +9,8 @@ const icons = [
   'sort-az',
   'sort-za',
   'clockwise',
-  'counter-clockwise'
+  'counter-clockwise',
+  'warning'
 ]
 
 webfontsGenerator({
