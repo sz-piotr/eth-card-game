@@ -136,3 +136,14 @@ export const cardViewReset = makeActionCreator(CARD_VIEW_RESET)
 
 export const RESOULUTION_CHANGED = 'RESOULUTION_CHANGED'
 export const resolutionChanged = makeActionCreator(RESOULUTION_CHANGED, 'width', 'height')
+
+// SIGN_TRANSACTION
+
+export const SIGN_TRANSACTION_OPENED = 'SIGN_TRANSACTION_OPENED'
+export const signTransactionOpened = makeActionCreator(SIGN_TRANSACTION_OPENED)
+
+export const SIGN_TRANSACTION_CLOSED = 'SIGN_TRANSACTION_CLOSED'
+export const signTransactionClosed = makeActionCreator(SIGN_TRANSACTION_CLOSED)
+
+export const SIGN_TRANSACTION_CONFIRMED = 'SIGN_TRANSACTION_CONFIRMED'
+export const signTransactionConfirmed = makeActionCreator(SIGN_TRANSACTION_CONFIRMED)

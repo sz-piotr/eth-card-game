@@ -6,6 +6,7 @@ import { reducer as cards } from './cards'
 import { reducer as packPrice } from './packPrice'
 import { reducer as pickCards } from './pickCards'
 import { reducer as market } from './market'
+import { reducer as signTransaction } from './signTransaction'
 
 export const reducer = combineReducers({
   user,
@@ -13,5 +14,6 @@ export const reducer = combineReducers({
   cards,
   packPrice,
   pickCards,
-  market
+  market,
+  signTransaction
 })
