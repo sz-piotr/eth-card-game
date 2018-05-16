@@ -1,5 +1,5 @@
 .button {
-  background-color: @color-green;
+  background-image: @gradient-button;
   color: @color-text-white;
   font-weight: bold;
   border: none;
@@ -7,6 +7,12 @@
   padding: @space-s @space-m;
   border-radius: @border-radius;
   cursor: pointer;
+  outline: none;
+  transition: box-shadow .2s;
+
+  &:focus, &:hover {
+    box-shadow: 0 0 0 @space-xs fade(@color-blue, 40%);
+  }
 }
 
 .button__wide {

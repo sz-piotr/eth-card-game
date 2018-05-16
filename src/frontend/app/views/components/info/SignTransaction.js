@@ -6,6 +6,7 @@ const SignTransaction = (props) =>
   <React.Fragment>
     <aside className='sign-transaction sign-transaction--open'>
       <div className='sign-transaction__title'>Sign Transaction</div>
+      <button className='sign-transaction__close'>&times;</button>
       <div className='alert'>
         <Icon name='collection' />{' '}
         Please review this before proceeding.
