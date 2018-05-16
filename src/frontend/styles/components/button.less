@@ -15,6 +15,16 @@
   }
 }
 
+.button[disabled] {
+  background-image: none;
+  background-color: darken(@color-background, 20%);
+  cursor: default;
+
+  &:focus, &:hover {
+    box-shadow: none;
+  }
+}
+
 .button--wide {
   width: 100%;
   text-align: center;

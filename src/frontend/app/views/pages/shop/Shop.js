@@ -20,6 +20,7 @@ class Shop extends React.Component {
         </header>
         <img className='shop-booster' src='/images/placeholders/booster-pack.png' /><br />
         <button
+          className='button'
           disabled={!canTransact}
           onClick={() => purchasePackClicked()}
         >
