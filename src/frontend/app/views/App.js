@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import ErrorBoundary from './components/ErrorBoundary'
 
@@ -12,6 +12,7 @@ import Arena from './pages/arena/Arena'
 import Collection from './pages/collection/Collection'
 import Market from './pages/market/Market'
 import Shop from './pages/shop/Shop'
+import NotFound from './pages/NotFound'
 
 const App = () =>
   <ErrorBoundary>
@@ -19,10 +20,14 @@ const App = () =>
     <Navbar />
     <AlertBar />
     <NotificationList />
-    <Route exact path='/shop' component={Shop} />
-    <Route exact path='/collection' component={Collection} />
-    <Route exact path='/arena' component={Arena} />
-    <Route exact path='/market' component={Market} />
+    <Switch>
+      <Route exact path='/shop' component={Shop} />
+      <Route exact path='/collection' component={Collection} />
+      <Route exact path='/arena' component={Arena} />
+      <Route exact path='/market' component={Market} />
+      <Redirect exact from='/' to='/shop' />
+      <Route component={NotFound} />
+    </Switch>
   </ErrorBoundary>
 
 export default App
