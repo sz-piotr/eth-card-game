@@ -39,6 +39,9 @@ export const metamaskAccountChanged = makeActionCreator(METAMASK_ACCOUNT_CHANGED
 
 // NOTIFICATIONS
 
+export const NOTIFICATION_CREATED = 'NOTIFICATION_CREATED'
+export const notificationCreated = makeActionCreator(NOTIFICATION_CREATED, 'notification')
+
 export const NOTIFICATION_DISMISSED = 'NOTIFICATION_DISMISSED'
 export const notificationDismissed = makeActionCreator(NOTIFICATION_DISMISSED, 'id')
 

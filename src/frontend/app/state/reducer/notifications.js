@@ -1,44 +1,17 @@
 import {
-  COLLECTION_FETCH_FAILED,
-  CARD_DETAILS_FETCH_FAILED,
-  PACK_PRICE_FETCH_FAILED,
+  NOTIFICATION_CREATED,
   NOTIFICATION_DISMISSED
 } from '../actions'
 
 const defaultState = {
-  nextId: 0,
-  list: [
-    {
-      id: -2,
-      title: 'Pack purchase',
-      description: 'Transaction pending',
-      spinner: true
-    },
-    {
-      id: -1,
-      title: 'Example Notification',
-      description: 'This is the description. How about we make it long?'
-    }
-  ]
+  currentId: 0,
+  list: []
 }
 
 export function reducer (state = defaultState, action) {
   switch (action.type) {
-    case COLLECTION_FETCH_FAILED:
-      return addNotification(state, {
-        title: 'Failed to fetch collection',
-        description: action.error
-      })
-    case CARD_DETAILS_FETCH_FAILED:
-      return addNotification(state, {
-        title: 'Failed to fetch card details',
-        description: action.error
-      })
-    case PACK_PRICE_FETCH_FAILED:
-      return addNotification(state, {
-        title: 'Failed to fetch pack price',
-        description: action.error
-      })
+    case NOTIFICATION_CREATED:
+      return addNotification(state, action.notification)
     case NOTIFICATION_DISMISSED:
       return {
         nextId: state.nextId,
@@ -50,12 +23,18 @@ export function reducer (state = defaultState, action) {
 }
 
 function addNotification (state, notification) {
-  notification.id = state.nextId
+  const toBeAdded = {
+    id: state.currentId + 1,
+    type: notification.type || 'info',
+    title: notification.title,
+    description: notification.description,
+    spinner: notification.spinner || false
+  }
   return {
-    nextId: state.nextId + 1,
+    currentId: toBeAdded.id,
     list: [
       ...state.list,
-      notification
+      toBeAdded
     ]
   }
 }

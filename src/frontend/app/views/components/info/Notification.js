@@ -8,7 +8,9 @@ import { notificationDismissed } from '../../../state/actions'
 const Notification = ({ id, notificationDismissed, ...notification }) =>
   <li className={classnames(
     'notification',
-    notification.spinner && 'notification--has-spinner'
+    notification.spinner && 'notification--has-spinner',
+    notification.type === 'success' && 'notification--success',
+    notification.type === 'error' && 'notification--error'
   )}>
     {notification.spinner && <Spinner className='notification__spinner' />}
     <button className='close' onClick={() => notificationDismissed(id)}>

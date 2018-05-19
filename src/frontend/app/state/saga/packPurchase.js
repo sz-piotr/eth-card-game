@@ -5,7 +5,9 @@ import {
   PURCHASE_PACK_CLICKED,
   signTransactionOpened,
   SIGN_TRANSACTION_CLOSED,
-  SIGN_TRANSACTION_CONFIRMED
+  SIGN_TRANSACTION_CONFIRMED,
+  notificationCreated,
+  notificationDismissed
 } from '../actions'
 
 const BASE_EXPANSION_ID = 0
@@ -30,11 +32,29 @@ function * purchasePack () {
       }
     )
 
+    yield put(notificationCreated({
+      spinner: true,
+      title: 'Pack purchase pending',
+      description: 'Please wait while the transaction is being confirmed'
+    }))
+
+    const notificationId = yield select(state => state.notifications.currentId)
+
     try {
       yield call(waitForConfirmation, txHash)
-      console.log('confirmed')
+      yield put(notificationCreated({
+        type: 'success',
+        title: 'Pack purchase successful',
+        description: 'The transaction was confirmed'
+      }))
     } catch (error) {
-      console.error(error)
+      yield put(notificationCreated({
+        type: 'error',
+        title: 'Pack purchase unsuccessful',
+        description: error.message
+      }))
+    } finally {
+      yield put(notificationDismissed(notificationId))
     }
   } catch (error) {
     // TODO: handle errors better
