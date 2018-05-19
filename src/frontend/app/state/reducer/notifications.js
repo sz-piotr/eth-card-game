@@ -14,7 +14,7 @@ export function reducer (state = defaultState, action) {
       return addNotification(state, action.notification)
     case NOTIFICATION_DISMISSED:
       return {
-        nextId: state.nextId,
+        ...state,
         list: state.list.filter(({ id }) => id !== action.id)
       }
     default:
