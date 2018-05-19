@@ -1,6 +1,6 @@
 import { takeEvery, call, select, put, take } from 'redux-saga/effects'
 
-import { Minter } from '../../contracts'
+import { Minter, waitForConfirmation } from '../../contracts'
 import {
   PURCHASE_PACK_CLICKED,
   signTransactionOpened,
@@ -21,12 +21,24 @@ function * purchasePack () {
   }
 
   try {
-    yield call(Minter.purchasePack, BASE_EXPANSION_ID, {
-      value: packPrice,
-      gas: 1200000 // dummy value
-    })
+    const txHash = yield call(
+      Minter.purchasePack,
+      BASE_EXPANSION_ID,
+      {
+        value: packPrice,
+        gas: 1200000 // dummy value
+      }
+    )
+
+    try {
+      yield call(waitForConfirmation, txHash)
+      console.log('confirmed')
+    } catch (error) {
+      console.error(error)
+    }
   } catch (error) {
-    console.error(error.message)
+    // TODO: handle errors better
+    console.error(error)
   }
 }
 

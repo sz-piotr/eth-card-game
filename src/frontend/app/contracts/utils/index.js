@@ -2,6 +2,8 @@ import { getWeb3 } from './web3'
 import { callToPromise } from './callToPromise'
 import { toPrimitives } from './toPrimitives'
 
+export { waitForConfirmation } from './waitForConfirmation'
+
 export function createContractInstance (abi, networks) {
   return getWeb3()
     .then(web3 => {
