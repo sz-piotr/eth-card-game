@@ -6,5 +6,6 @@ const instance = createContractInstance(abi, networks)
 export const Cards = {
   // TODO: data immutable, use storage cache?
   getCard: createWeb3Function(instance, 'getCard'),
+  ownerOf: createWeb3Function(instance, 'ownerOf'),
   tokensOf: createWeb3Function(instance, 'tokensOf')
 }

@@ -2,6 +2,7 @@ import { all } from 'redux-saga/effects'
 
 import { saga as metamask } from './metamask'
 import { saga as cards } from './cards'
+import { saga as cardOwners } from './cardOwners'
 import { saga as collection } from './collection'
 import { saga as fetchNewCards } from './fetchNewCards'
 import { saga as packPrice } from './packPrice'
@@ -14,6 +15,7 @@ export function * saga () {
   yield all([
     metamask(),
     cards(),
+    cardOwners(),
     collection(),
     fetchNewCards(),
     packPrice(),

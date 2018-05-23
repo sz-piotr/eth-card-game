@@ -67,6 +67,17 @@ export const cardDetailsFetchSucceded = makeActionCreator(CARD_DETAILS_FETCH_SUC
 export const CARD_DETAILS_FETCH_FAILED = 'CARD_DETAILS_FETCH_FAILED'
 export const cardDetailsFetchFailed = makeActionCreator(CARD_DETAILS_FETCH_FAILED, 'cardId', 'error')
 
+// FETCH CARD OWNER
+
+export const CARD_OWNER_FETCH_REQUESTED = 'CARD_OWNER_FETCH_REQUESTED'
+export const cardOwnerFetchRequested = makeActionCreator(CARD_OWNER_FETCH_REQUESTED, 'cardId')
+
+export const CARD_OWNER_FETCH_SUCCEDED = 'CARD_OWNER_FETCH_SUCCEDED'
+export const cardOwnerFetchSucceded = makeActionCreator(CARD_OWNER_FETCH_SUCCEDED, 'cardId', 'owner')
+
+export const CARD_OWNER_FETCH_FAILED = 'CARD_OWNER_FETCH_FAILED'
+export const cardOwnerFetchFailed = makeActionCreator(CARD_OWNER_FETCH_FAILED, 'cardId', 'error')
+
 // FETCH PACK PRICE
 
 export const PACK_PRICE_FETCH_REQUESTED = 'PACK_PRICE_FETCH_REQUESTED'
