@@ -10,7 +10,11 @@ const icons = [
   'sort-za',
   'clockwise',
   'counter-clockwise',
-  'warning'
+  'warning',
+  'chevron-left',
+  'chevron-right',
+  'chevron-up',
+  'chevron-down'
 ]
 
 webfontsGenerator({

@@ -1,10 +1,10 @@
 @font-face {
 	font-family: "icons";
-	src: url("icons.eot?ca906a7462726cf4862be58804066a2c?#iefix") format("embedded-opentype"),
-url("icons.woff2?ca906a7462726cf4862be58804066a2c") format("woff2"),
-url("icons.woff?ca906a7462726cf4862be58804066a2c") format("woff"),
-url("icons.ttf?ca906a7462726cf4862be58804066a2c") format("truetype"),
-url("icons.svg?ca906a7462726cf4862be58804066a2c#icons") format("svg");
+	src: url("icons.eot?6bc072b905dcc70994249c70c5cffe5e?#iefix") format("embedded-opentype"),
+url("icons.woff2?6bc072b905dcc70994249c70c5cffe5e") format("woff2"),
+url("icons.woff?6bc072b905dcc70994249c70c5cffe5e") format("woff"),
+url("icons.ttf?6bc072b905dcc70994249c70c5cffe5e") format("truetype"),
+url("icons.svg?6bc072b905dcc70994249c70c5cffe5e#icons") format("svg");
 }
 
 .icon {
@@ -54,5 +54,21 @@ url("icons.svg?ca906a7462726cf4862be58804066a2c#icons") format("svg");
 
 .icon--warning:before {
 	content: "\f109";
+}
+
+.icon--chevron-left:before {
+	content: "\f10a";
+}
+
+.icon--chevron-right:before {
+	content: "\f10b";
+}
+
+.icon--chevron-up:before {
+	content: "\f10c";
+}
+
+.icon--chevron-down:before {
+	content: "\f10d";
 }
 

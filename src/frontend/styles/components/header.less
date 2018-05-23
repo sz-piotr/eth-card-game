@@ -40,3 +40,18 @@
     transform: translate(-50%, 0);
   }
 }
+
+.header__back-button {
+  display: none;
+
+  @media @device-phone {
+    display: block;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-size: @icon-size;
+    font-family: inherit;
+    outline: none;
+  }
+}
