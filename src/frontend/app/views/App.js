@@ -10,6 +10,7 @@ import SignTransaction from './components/info/SignTransaction'
 
 import Arena from './pages/arena/Arena'
 import Collection from './pages/collection/Collection'
+import CardDetails from './pages/card-details/CardDetails'
 import Market from './pages/market/Market'
 import Shop from './pages/shop/Shop'
 import NotFound from './pages/NotFound'
@@ -22,8 +23,8 @@ const App = () =>
     <NotificationList />
     <Switch>
       <Route exact path='/shop' component={Shop} />
-      <Route exact path='/collection' component={Collection} />
-      <Route exact path='/collection/:account' component={Collection} />
+      <Route exact path='/collection/card/:id(\d+)' component={CardDetails} />
+      <Route exact path='/collection/:account(0x[a-fA-F0-9]+)?' component={Collection} />
       <Route exact path='/arena' component={Arena} />
       <Route exact path='/market' component={Market} />
       <Redirect exact from='/' to='/shop' />
