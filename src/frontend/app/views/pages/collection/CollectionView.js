@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { cardsPageChanged } from '../../../state/actions'
 import Card from '../../components/cards/Card'
@@ -13,7 +14,9 @@ const CollectionView = ({ data, view, cardsPageChanged }) =>
       <ul className='card-collection'>
         {cards.map((cardId, index) =>
           <li key={cardId}>
-            <Card cardId={cardId} />
+            <Link to={`collection/card/${cardId}`}>
+              <Card cardId={cardId} />
+            </Link>
           </li>
         )}
       </ul>
