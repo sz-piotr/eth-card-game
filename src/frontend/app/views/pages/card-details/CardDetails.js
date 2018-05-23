@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import Page from '../../components/Page'
 import Card from '../../components/cards/Card'
+import CardDetailsInfo from './CardDetailsInfo'
 import { cardDetailsFetchRequested } from '../../../state/actions'
 
 class CardDetails extends React.Component {
@@ -24,9 +25,7 @@ class CardDetails extends React.Component {
           <div className='card-details__card'>
             <Card cardId={id} />
           </div>
-          <div className='card-details__data'>
-            Lorem Ipsum
-          </div>
+          <CardDetailsInfo />
         </div>
       </Page>
     )
