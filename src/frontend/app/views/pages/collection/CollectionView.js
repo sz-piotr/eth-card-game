@@ -5,7 +5,7 @@ import { cardsPageChanged } from '../../../state/actions'
 import Card from '../../components/cards/Card'
 import Paginated from '../../components/pagination/Paginated'
 
-const CollectionView = ({ data, view }) =>
+const CollectionView = ({ data, view, cardsPageChanged }) =>
   <Paginated data={data} page={view.page}
     itemsPerPage={view.itemsPerPage}
     onChange={page => cardsPageChanged(page)}>

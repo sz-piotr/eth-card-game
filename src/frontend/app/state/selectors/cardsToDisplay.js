@@ -5,9 +5,9 @@ import {
   attributeFilter
 } from './filters'
 
-export function selectCardsToDisplay (state) {
+export function selectCardsToDisplay (state, account) {
   const view = state.cards.view
-  const collection = (state.cards.byOwner[state.user.account] || {}).data
+  const collection = (state.cards.byOwner[account] || {}).data
   const details = state.cards.details
   if (!collection) {
     return null

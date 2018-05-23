@@ -23,6 +23,7 @@ const App = () =>
     <Switch>
       <Route exact path='/shop' component={Shop} />
       <Route exact path='/collection' component={Collection} />
+      <Route exact path='/collection/:account' component={Collection} />
       <Route exact path='/arena' component={Arena} />
       <Route exact path='/market' component={Market} />
       <Redirect exact from='/' to='/shop' />

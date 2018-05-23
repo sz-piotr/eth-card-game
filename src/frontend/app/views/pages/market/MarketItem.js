@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 import { getCardAttributes } from '../../../data'
 
 const MarketItem = ({ details, seller, price }) => {
@@ -10,9 +12,9 @@ const MarketItem = ({ details, seller, price }) => {
       <div className='market-item-name'>
         {attributes.displayName}
       </div>
-      <a href='#' className='market-item-seller'>
+      <Link to={`collection/${seller}`} className='market-item-seller'>
         {seller}
-      </a>
+      </Link>
       <div className='market-item-price'>
         <span className='market-item-value'>{price}</span>
         <span className='market-item-currency'>ETH</span>

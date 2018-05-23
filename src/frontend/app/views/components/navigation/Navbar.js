@@ -13,7 +13,7 @@ const Navbar = () =>
           <Icon name='cart' />
           <span>Shop</span>
         </NavLink>
-        <NavLink exact to='/collection'>
+        <NavLink to='/collection'>
           <Icon name='collection' />
           <span>Collection</span>
         </NavLink>
