@@ -2,7 +2,13 @@
   "presets": [
     ["env", {
       "modules": false,
-      "useBuiltIns": true
+      "useBuiltIns": true,
+      "targets": {
+        "browsers": [
+          "> 2%",
+          "not ie <= 11"
+        ]
+      }
     }]
   ],
   "plugins": [

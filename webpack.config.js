@@ -1,14 +1,9 @@
 const path = require('path')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const isProduction = process.env.npm_lifecycle_event === 'build'
-
-const extractLess = new ExtractTextPlugin({
-  filename: '[name].[contenthash].css'
-})
 
 const config = {
   entry: './src/frontend',
@@ -24,29 +19,28 @@ const config = {
       loader: 'babel-loader'
     }, {
       test: /\.less$/,
-      use: extractLess.extract({
-        use: [{
+      use: [
+        MiniCssExtractPlugin.loader,
+        {
           loader: 'css-loader',
           options: { sourceMap: true }
-        }, {
+        },
+        {
           loader: 'less-loader',
           options: { sourceMap: true }
-        }],
-        fallback: 'style-loader'
-      })
+        }
+      ]
     }]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/frontend/index.html'
     }),
-    extractLess
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].css'
+    })
   ],
-  resolve: {
-    alias: {
-      '_contracts': path.resolve(__dirname, 'build/contracts')
-    }
-  },
   devServer: {
     stats: 'minimal',
     contentBase: 'src/frontend/assets',
@@ -60,7 +54,6 @@ const config = {
 
 if (isProduction) {
   config.plugins = config.plugins.concat([
-    new webpack.optimize.ModuleConcatenationPlugin(),
     new CopyWebpackPlugin([{ from: 'src/frontend/assets' }])
   ])
 }
