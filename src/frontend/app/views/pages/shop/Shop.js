@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import Page from '../../components/Page'
 import {
   packPriceFetchRequested,
   purchasePackClicked
@@ -14,10 +15,7 @@ class Shop extends React.Component {
   render () {
     const { canTransact, purchasePackClicked } = this.props
     return (
-      <main className='page'>
-        <header className='header'>
-          <h1 className='header__title'>Shop</h1>
-        </header>
+      <Page title='Shop'>
         <img className='shop-booster' src='/images/placeholders/booster-pack.png' /><br />
         <button
           className='button'
@@ -26,7 +24,7 @@ class Shop extends React.Component {
         >
           Buy
         </button>
-      </main>
+      </Page>
     )
   }
 }

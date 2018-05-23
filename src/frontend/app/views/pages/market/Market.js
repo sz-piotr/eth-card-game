@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import Page from '../../components/Page'
 import Paginated from '../../components/pagination/Paginated'
 import MarketSearch from './MarketSearch'
 import MarketItem from './MarketItem'
@@ -8,11 +9,11 @@ import { marketPageChanged } from '../../../state/actions'
 import { selectOffersToDisplay } from '../../../state/selectors'
 
 const Market = ({ data, view, marketPageChanged }) =>
-  <main className='page'>
-    <header className='header'>
-      <h1 className='header__title'>Market</h1>
-      <button className='header__action button'>Create Offer</button>
-    </header>
+  <Page
+    title='Market'
+    action='Create Offer'
+    onAction={console.log}
+  >
     <div className='input-group'>
       <MarketSearch />
     </div>
@@ -28,7 +29,7 @@ const Market = ({ data, view, marketPageChanged }) =>
         </ul>
       }
     </Paginated>
-  </main>
+  </Page>
 
 export default connect(
   state => ({

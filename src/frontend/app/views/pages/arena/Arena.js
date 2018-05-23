@@ -1,15 +1,13 @@
 import React from 'react'
 
+import Page from '../../components/Page'
 import ArenaLinks from './ArenaLinks'
 import ArenaSelection from './ArenaSelection'
 
 const Arena = (props) =>
-  <main className='page'>
-    <header className='header'>
-      <h1 className='header__title'>Arena</h1>
-    </header>
+  <Page title='Arena'>
     <ArenaLinks />
     <ArenaSelection />
-  </main>
+  </Page>
 
 export default Arena
