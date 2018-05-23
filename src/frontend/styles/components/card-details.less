@@ -1,0 +1,16 @@
+.card-details {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  grid-gap: @space-l;
+
+  @media @device-phone {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+}
+
+.card-details__card {
+  @media @device-phone {
+    padding: 0 20%;
+  }
+}

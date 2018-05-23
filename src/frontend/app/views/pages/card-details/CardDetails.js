@@ -1,16 +1,42 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Page from '../../components/Page'
+import Card from '../../components/cards/Card'
+import { cardDetailsFetchRequested } from '../../../state/actions'
 
 class CardDetails extends React.Component {
+  componentDidMount () {
+    this.componentDidUpdate()
+  }
+
+  componentDidUpdate () {
+    if (!this.props.data && !this.props.isFetching) {
+      this.props.cardDetailsFetchRequested(this.props.match.params.id)
+    }
+  }
+
   render () {
     const id = this.props.match.params.id
     return (
       <Page title='Card Details' showBackButton>
-        {id}
+        <div className='card-details'>
+          <div className='card-details__card'>
+            <Card cardId={id} />
+          </div>
+          <div className='card-details__data'>
+            Lorem Ipsum
+          </div>
+        </div>
       </Page>
     )
   }
 }
 
-export default CardDetails
+export default connect(
+  (state, props) => {
+    const id = props.match.params.id
+    return state.cards.details[id] || {}
+  },
+  { cardDetailsFetchRequested }
+)(CardDetails)
