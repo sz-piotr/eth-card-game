@@ -154,7 +154,7 @@ export const resolutionChanged = makeActionCreator(RESOULUTION_CHANGED, 'width',
 // SIGN_TRANSACTION
 
 export const SIGN_TRANSACTION_OPENED = 'SIGN_TRANSACTION_OPENED'
-export const signTransactionOpened = makeActionCreator(SIGN_TRANSACTION_OPENED)
+export const signTransactionOpened = makeActionCreator(SIGN_TRANSACTION_OPENED, 'txType')
 
 export const SIGN_TRANSACTION_CLOSED = 'SIGN_TRANSACTION_CLOSED'
 export const signTransactionClosed = makeActionCreator(SIGN_TRANSACTION_CLOSED)
