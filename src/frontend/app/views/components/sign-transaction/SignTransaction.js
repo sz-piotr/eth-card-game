@@ -10,9 +10,11 @@ import {
 } from '../../../state/actions'
 
 import PurchasePack from './types/PurchasePack'
+import PurchaseCard from './types/PurchaseCard'
 
 const typeToComponent = {
-  'purchase-pack': PurchasePack
+  'purchase-pack': PurchasePack,
+  'purchase-card': PurchaseCard
 }
 
 const SignTransaction = ({ open, type, signTransactionClosed, signTransactionConfirmed }) => {
