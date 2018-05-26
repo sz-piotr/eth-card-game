@@ -11,24 +11,25 @@ import {
 } from '../actions'
 
 const BASE_EXPANSION_ID = 0
+const PACK_PURCHASE_GAS_LIMIT = 500000
 
 function * purchasePack () {
-  const packPrice = yield select(state => state.packPrice.data)
+  yield put(signTransactionOpened('purchase-pack'))
 
-  yield put(signTransactionOpened())
-
-  const action = yield take([SIGN_TRANSACTION_CLOSED, SIGN_TRANSACTION_CONFIRMED])
-  if (action.type === SIGN_TRANSACTION_CLOSED) {
+  yield take([SIGN_TRANSACTION_CLOSED, SIGN_TRANSACTION_CONFIRMED])
+  const confirmed = yield select(state => state.signTransaction.confirmed)
+  if (!confirmed) {
     return
   }
 
   try {
+    const packPrice = yield select(state => state.packPrice.data)
     const txHash = yield call(
       Minter.purchasePack,
       BASE_EXPANSION_ID,
       {
         value: packPrice,
-        gas: 1200000 // dummy value
+        gas: PACK_PURCHASE_GAS_LIMIT
       }
     )
 
