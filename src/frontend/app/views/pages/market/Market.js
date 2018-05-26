@@ -9,11 +9,7 @@ import { marketPageChanged } from '../../../state/actions'
 import { selectOffersToDisplay } from '../../../state/selectors'
 
 const Market = ({ data, view, marketPageChanged }) =>
-  <Page
-    title='Market'
-    action='Create Offer'
-    onAction={console.log}
-  >
+  <Page title='Market'>
     <div className='input-group'>
       <MarketSearch />
     </div>
