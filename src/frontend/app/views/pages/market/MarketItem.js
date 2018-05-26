@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { getCardAttributes } from '../../../data'
+import { weiToEth } from '../../../contracts'
 
 const MarketItem = ({ details, seller, price }) => {
   const attributes = getCardAttributes(details.data)
@@ -16,7 +17,7 @@ const MarketItem = ({ details, seller, price }) => {
         {seller}
       </Link>
       <div className='market-item-price'>
-        <span className='market-item-value'>{price}</span>
+        <span className='market-item-value'>{weiToEth(price)}</span>
         <span className='market-item-currency'>ETH</span>
       </div>
     </li>

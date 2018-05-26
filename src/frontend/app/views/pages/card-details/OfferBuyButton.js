@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { weiToEth } from '../../../contracts'
+
 const OfferBuyButton = ({ cardId, price }) =>
   <button
     className='button button--wide'
     onClick={() => window.alert('Buying ' + cardId)}
   >
-    Buy ({price} ETH)
+    Buy ({weiToEth(price)} ETH)
   </button>
 
 export default connect(

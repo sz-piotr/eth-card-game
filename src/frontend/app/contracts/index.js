@@ -10,5 +10,12 @@ export { waitForConfirmation } from './utils'
 const web3 = new Web3()
 
 export function weiToEth (wei) {
-  return web3.fromWei(wei, 'ether')
+  const eth = web3.toBigNumber(web3.fromWei(wei, 'ether'))
+  if (eth.lessThan(0.00001)) {
+    return '<0.00001'
+  } else {
+    return eth
+      .round(5)
+      .toString()
+  }
 }
