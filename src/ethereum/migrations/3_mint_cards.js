@@ -8,7 +8,7 @@ module.exports = function (deployer, network, accounts) {
 
 async function deploy (deployer, network, accounts) {
   const minter = await Minter.deployed()
-  await minter.createExpansion(3, 2, 1)
+  await minter.createExpansion(3, 3, 2) // TODO: read from data/cards.json
 
   for (let i = 0; i < 5; i++) {
     await minter.purchasePack(0, {
