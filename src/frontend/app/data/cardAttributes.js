@@ -26,9 +26,8 @@ function getCards (expansion, offset, rarity) {
 
 function heroCardAttributes (definition, number, expansion, rarity) {
   return {
+    ...definition,
     type: 'hero',
-    name: definition.name,
-    displayName: definition.displayName,
     searchText: definition.displayName.toLowerCase(),
     number,
     expansion,
@@ -38,9 +37,8 @@ function heroCardAttributes (definition, number, expansion, rarity) {
 
 function actionCardAttributes (definition, number, expansion, rarity) {
   return {
+    ...definition,
     type: 'action',
-    name: definition.name,
-    displayName: definition.displayName,
     searchText: definition.displayName.toLowerCase(),
     number,
     expansion,

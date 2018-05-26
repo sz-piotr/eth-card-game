@@ -7,6 +7,7 @@ import OfferBuyButton from './OfferBuyButton'
 import OfferSellButton from './OfferSellButton'
 import OfferCancelButton from './OfferCancelButton'
 import { cardOwnerFetchRequested } from '../../../state/actions'
+import { getCardAttributes } from '../../../data'
 
 class CardInfo extends React.Component {
   componentDidMount () {
@@ -23,15 +24,17 @@ class CardInfo extends React.Component {
   render () {
     const { account, details, owner, offer, cardId } = this.props
 
-    const isLoading = !offer.canPurchase && !details.data && !owner.owner
+    if (!offer.canPurchase && (!details.data || !owner.owner)) {
+      return <CardInfoPlaceholder />
+    }
+
     const ownerAddress = offer.canPurchase
       ? offer.seller
       : owner.owner
     const isYours = ownerAddress === account
 
-    if (isLoading) {
-      return <CardInfoPlaceholder />
-    }
+    const attributes = getCardAttributes(details.data)
+
     return (
       <div className='card-details__info'>
         <div>{'Owner: '}
@@ -40,6 +43,8 @@ class CardInfo extends React.Component {
           </Link>
         </div>
         {isYours && <div>It is yours!</div>}
+
+        <p>{attributes.description}</p>
 
         {isYours && offer.canPurchase && <OfferCancelButton cardId={cardId} />}
         {isYours && !offer.canPurchase && <OfferSellButton cardId={cardId} />}
