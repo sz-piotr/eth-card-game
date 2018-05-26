@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import CardInfoPlaceholder from './CardInfoPlaceholder'
-import OfferBuyButton from './OfferBuyButton'
-import OfferSellButton from './OfferSellButton'
-import OfferCancelButton from './OfferCancelButton'
+import PurchaseCardButton from './PurchaseCardButton'
+import CreateOfferButton from './CreateOfferButton'
+import CancelOfferButton from './CancelOfferButton'
 import { cardOwnerFetchRequested } from '../../../state/actions'
 import { getCardAttributes } from '../../../data'
 
@@ -46,9 +46,9 @@ class CardInfo extends React.Component {
 
         <p>{attributes.description}</p>
 
-        {isYours && offer.canPurchase && <OfferCancelButton cardId={cardId} />}
-        {isYours && !offer.canPurchase && <OfferSellButton cardId={cardId} />}
-        {!isYours && offer.canPurchase && <OfferBuyButton cardId={cardId} />}
+        {isYours && offer.canPurchase && <CancelOfferButton cardId={cardId} />}
+        {isYours && !offer.canPurchase && <CreateOfferButton cardId={cardId} />}
+        {!isYours && offer.canPurchase && <PurchaseCardButton cardId={cardId} />}
       </div>
 
     )

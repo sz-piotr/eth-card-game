@@ -2,11 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { weiToEth } from '../../../contracts'
+import { purchaseCardClicked } from '../../../state/actions'
 
-const OfferBuyButton = ({ cardId, price }) =>
+const PurchaseCardButton = ({ cardId, price, purchaseCardClicked }) =>
   <button
     className='button button--wide'
-    onClick={() => window.alert('Buying ' + cardId)}
+    onClick={() => purchaseCardClicked(cardId)}
   >
     Buy ({weiToEth(price)} ETH)
   </button>
@@ -14,5 +15,6 @@ const OfferBuyButton = ({ cardId, price }) =>
 export default connect(
   (state, props) => ({
     price: (state.market.offers[props.cardId] || {}).price
-  })
-)(OfferBuyButton)
+  }),
+  { purchaseCardClicked }
+)(PurchaseCardButton)
