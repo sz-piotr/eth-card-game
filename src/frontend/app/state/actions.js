@@ -129,6 +129,17 @@ export const marketPageChanged = makeActionCreator(MARKET_PAGE_CHANGED, 'value')
 export const MARKET_VIEW_RESET = 'MARKET_VIEW_RESET'
 export const marketViewReset = makeActionCreator(MARKET_VIEW_RESET)
 
+// MARKET OFFER MANIPULATION
+
+export const PURCHASE_CARD_CLICKED = 'PURCHASE_CARD_CLICKED'
+export const purchaseCardClicked = makeActionCreator(PURCHASE_CARD_CLICKED, 'cardId')
+
+export const CREATE_OFFER_CLICKED = 'CREATE_OFFER_CLICKED'
+export const createOfferClicked = makeActionCreator(CREATE_OFFER_CLICKED, 'cardId')
+
+export const CANCEL_OFFER_CLICKED = 'CANCEL_OFFER_CLICKED'
+export const cancelOfferClicked = makeActionCreator(CANCEL_OFFER_CLICKED, 'cardId')
+
 // CARD VIEW
 
 export const CARD_SEARCH_CHANGED = 'CARD_SEARCH_CHANGED'
