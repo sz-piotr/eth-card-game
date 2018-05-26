@@ -14,7 +14,7 @@ const CollectionView = ({ data, view, cardsPageChanged }) =>
       <ul className='card-collection'>
         {cards.map((cardId, index) =>
           <li key={cardId}>
-            <Link to={`collection/card/${cardId}`}>
+            <Link to={`/collection/card/${cardId}`}>
               <Card cardId={cardId} />
             </Link>
           </li>

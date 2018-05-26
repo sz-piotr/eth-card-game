@@ -13,7 +13,7 @@ const MarketItem = ({ details, seller, price }) => {
       <div className='market-item-name'>
         {attributes.displayName}
       </div>
-      <Link to={`collection/${seller}`} className='market-item-seller'>
+      <Link to={`/collection/${seller}`} className='market-item-seller'>
         {seller}
       </Link>
       <div className='market-item-price'>
