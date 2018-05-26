@@ -18,9 +18,13 @@ export function reducer (state = defaultState, action) {
         type: action.txType
       }
     case SIGN_TRANSACTION_CLOSED:
-      return defaultState
+      return {
+        ...state,
+        open: false
+      }
     case SIGN_TRANSACTION_CONFIRMED:
       return {
+        type: state.type,
         open: false,
         confirmed: true
       }
