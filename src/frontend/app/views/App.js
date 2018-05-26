@@ -6,7 +6,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Navbar from './components/navigation/Navbar'
 import AlertBar from './components/info/AlertBar'
 import NotificationList from './components/info/NotificationList'
-import SignTransaction from './components/info/SignTransaction'
+import SignTransaction from './components/sign-transaction/SignTransaction'
 
 import Arena from './pages/arena/Arena'
 import Collection from './pages/collection/Collection'
