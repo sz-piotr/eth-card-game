@@ -12,8 +12,11 @@ class CardDisplay extends React.Component {
     }
     this.attributes = getCardAttributes(props.data)
     this.display = null
+    this.unmounted = false
     fetchResourcesFor(this.attributes)
-      .then(() => this.setState({ isLoading: false }))
+      .then(() => !this.unmounted &&
+        this.setState({ isLoading: false })
+      )
   }
 
   canvasRef (ref) {
@@ -22,6 +25,10 @@ class CardDisplay extends React.Component {
     } else if (this.display) {
       this.display.stopUpdating()
     }
+  }
+
+  componentWillUnmount () {
+    this.unmounted = true
   }
 
   render () {
