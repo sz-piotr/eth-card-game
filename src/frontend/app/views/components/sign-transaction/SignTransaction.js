@@ -1,30 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
-
-import SignTransactionHeader from './SignTransactionHeader'
-import SignTransactionFooter from './SignTransactionFooter'
-import {
-  signTransactionClosed,
-  signTransactionConfirmed
-} from '../../../state/actions'
+import { signTransactionClosed } from '../../../state/actions'
 
 import PurchasePack from './types/PurchasePack'
 import PurchaseCard from './types/PurchaseCard'
+import CancelOffer from './types/CancelOffer'
 
 const typeToComponent = {
   'purchase-pack': PurchasePack,
-  'purchase-card': PurchaseCard
+  'purchase-card': PurchaseCard,
+  'cancel-offer': CancelOffer
 }
 
-const SignTransaction = ({ open, type, signTransactionClosed, signTransactionConfirmed }) => {
+const SignTransaction = ({ open, type, signTransactionClosed }) => {
   const Body = typeToComponent[type]
   return (
     <React.Fragment>
       <aside className={classnames('sign-transaction', open && 'sign-transaction--open')}>
-        <SignTransactionHeader onClose={signTransactionClosed} />
+        <button className='close' onClick={() => signTransactionClosed()}>&times;</button>
         {Body && <Body />}
-        <SignTransactionFooter onConfirm={signTransactionConfirmed} />
       </aside>
       <div className='sign-transaction__shadow' onClick={() => signTransactionClosed()} />
     </React.Fragment>
@@ -33,5 +28,5 @@ const SignTransaction = ({ open, type, signTransactionClosed, signTransactionCon
 
 export default connect(
   state => state.signTransaction,
-  { signTransactionClosed, signTransactionConfirmed }
+  { signTransactionClosed }
 )(SignTransaction)
