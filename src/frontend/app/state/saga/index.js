@@ -7,6 +7,7 @@ import { saga as fetchNewCards } from './cards/fetchNewCards'
 
 import { saga as cancelOffer } from './market/cancelOffer'
 import { saga as cardPurchase } from './market/cardPurchase'
+import { saga as createOffer } from './market/createOffer'
 import { saga as market } from './market/market'
 
 import { saga as packPrice } from './shop/packPrice'
@@ -25,6 +26,7 @@ export function * saga () {
 
     cancelOffer(),
     cardPurchase(),
+    createOffer(),
     market(),
 
     packPrice(),

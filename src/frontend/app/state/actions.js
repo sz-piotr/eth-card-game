@@ -137,6 +137,9 @@ export const purchaseCardClicked = makeActionCreator(PURCHASE_CARD_CLICKED, 'car
 export const CREATE_OFFER_CLICKED = 'CREATE_OFFER_CLICKED'
 export const createOfferClicked = makeActionCreator(CREATE_OFFER_CLICKED, 'cardId')
 
+export const OFFER_PRICE_CHANGED = 'OFFER_PRICE_CHANGED'
+export const offerPriceChanged = makeActionCreator(OFFER_PRICE_CHANGED, 'price')
+
 export const CANCEL_OFFER_CLICKED = 'CANCEL_OFFER_CLICKED'
 export const cancelOfferClicked = makeActionCreator(CANCEL_OFFER_CLICKED, 'cardId')
 
