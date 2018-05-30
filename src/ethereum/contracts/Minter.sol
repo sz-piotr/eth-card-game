@@ -30,7 +30,7 @@ contract Minter is Ownable, Random {
 
   uint public packPrice = 0.01 ether;
 
-  function Minter (address cardsAddress) public {
+  constructor (address cardsAddress) public {
     cards = Cards(cardsAddress);
   }
 
@@ -43,12 +43,12 @@ contract Minter is Ownable, Random {
     rareChance = _rareChance;
     epicChance = _epicChance;
     shinyChance = _shinyChance;
-    ChancesUpdated(commonChance, rareChance, epicChance, shinyChance);
+    emit ChancesUpdated(commonChance, rareChance, epicChance, shinyChance);
   }
 
   function updatePrice (uint _packPrice) public onlyOwner {
     packPrice = _packPrice;
-    PriceUpdated(packPrice);
+    emit PriceUpdated(packPrice);
   }
 
   function mintAnyCard (address _to, uint64 _number, uint32 _level, uint32 _metadata) public onlyOwner {
@@ -65,7 +65,7 @@ contract Minter is Ownable, Random {
     mintRandomCard(expansion, offset);
     mintRandomCard(expansion, offset);
 
-    PackPurchased(msg.sender, firstCardId);
+    emit PackPurchased(msg.sender, firstCardId);
   }
 
   function mintRandomCard (Expansion _expansion, uint offset) private returns (uint) {

@@ -12,14 +12,14 @@ contract ERC721Market {
   event OfferCanceled (address indexed seller, uint indexed tokenId);
   event TokenPurchased (address indexed seller, address indexed buyer, uint indexed tokenId, uint price);
 
-  function ERC721Market (address tokenContractAddress) public {
+  constructor (address tokenContractAddress) public {
     tokenContract = ERC721(tokenContractAddress);
   }
 
   function createOffer (uint tokenId, uint price) public {
     require(sellerOf[tokenId] == address(0));
 
-    OfferCreated(msg.sender, tokenId, price);
+    emit OfferCreated(msg.sender, tokenId, price);
 
     // The takeOwnership function is specified to throw if the caller is not
     // authorized for the specified token, removing the need for a manual check
@@ -31,7 +31,7 @@ contract ERC721Market {
   function cancelOffer (uint tokenId) public {
     require(msg.sender == sellerOf[tokenId]);
 
-    OfferCanceled(msg.sender, tokenId);
+    emit OfferCanceled(msg.sender, tokenId);
 
     sellerOf[tokenId] = address(0);
     priceOf[tokenId] = 0;
@@ -43,7 +43,7 @@ contract ERC721Market {
     require(msg.value == priceOf[tokenId]);
 
     address seller = sellerOf[tokenId];
-    TokenPurchased(seller, msg.sender, tokenId, priceOf[tokenId]);
+    emit TokenPurchased(seller, msg.sender, tokenId, priceOf[tokenId]);
 
     sellerOf[tokenId] = address(0);
     priceOf[tokenId] = 0;

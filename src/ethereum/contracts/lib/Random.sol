@@ -4,12 +4,7 @@ contract Random {
   uint256 _seed;
 
   function random256() public returns (uint256) {
-    _seed = uint256(keccak256(
-      _seed,
-      block.blockhash(block.number - 1),
-      block.coinbase,
-      block.difficulty
-    ));
+    _seed = uint256(keccak256(_seed, blockhash(block.number - 1)));
     return _seed;
   }
 

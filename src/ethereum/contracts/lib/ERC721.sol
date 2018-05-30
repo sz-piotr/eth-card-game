@@ -41,7 +41,7 @@ contract ERC721 {
     require(_to != owner);
     if (approvedFor(_tokenId) != 0 || _to != 0) {
       tokenApprovals[_tokenId] = _to;
-      Approval(owner, _to, _tokenId);
+      emit Approval(owner, _to, _tokenId);
     }
   }
 
@@ -68,7 +68,7 @@ contract ERC721 {
     clearApproval(_tokenId);
     removeTokenFrom(_from, _tokenId);
     giveTokenTo(_to, _tokenId);
-    Transfer(_from, _to, _tokenId);
+    emit Transfer(_from, _to, _tokenId);
   }
 
   bytes4 constant internal MAGIC_NFT_RECEIVED_RETURN_NUMBER = bytes4(keccak256("onNFTReceived(address,uint256,bytes)"));

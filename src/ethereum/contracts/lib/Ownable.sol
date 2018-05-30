@@ -5,7 +5,7 @@ contract Ownable {
 
   event OwnershipTransferred (address indexed _previousOwner, address indexed _newOwner);
 
-  function Ownable () public {
+  constructor () public {
     owner = msg.sender;
   }
 
@@ -16,7 +16,7 @@ contract Ownable {
 
   function transferOwnership (address _newOwner) public onlyOwner {
     require(_newOwner != address(0));
-    OwnershipTransferred(owner, _newOwner);
+    emit OwnershipTransferred(owner, _newOwner);
     owner = _newOwner;
   }
 }

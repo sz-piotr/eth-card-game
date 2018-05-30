@@ -7,7 +7,7 @@ contract Mintable is Ownable {
 
   event MinterChanged (address indexed _previousMinter, address indexed _newMinter);
 
-  function Mintable () public {
+  constructor () public {
     minter = msg.sender;
   }
 
@@ -18,7 +18,7 @@ contract Mintable is Ownable {
 
   function setMinter (address _newMinter) public onlyOwner {
     require(_newMinter != address(0));
-    MinterChanged(minter, _newMinter);
+    emit MinterChanged(minter, _newMinter);
     minter = _newMinter;
   }
 }

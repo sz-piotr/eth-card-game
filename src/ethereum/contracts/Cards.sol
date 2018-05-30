@@ -12,9 +12,10 @@ contract Cards is Mintable, ERC721 {
 
   Card[] public cards;
 
-  function Cards () public {
+  constructor () public {
     minter = msg.sender;
   }
+
   function getCard (uint _tokenId) public view returns (uint64 _number, uint32 _level, uint32 _metadata) {
     Card storage card = cards[_tokenId];
     return (card.number, card.level, card.metadata);
@@ -23,7 +24,7 @@ contract Cards is Mintable, ERC721 {
   function mint (address _to, uint64 _number, uint32 _level, uint32 _metadata) public onlyMinter returns (uint) {
     uint id = cards.push(Card(_number, _level, _metadata)) - 1;
     giveTokenTo(_to, id);
-    Transfer(0x0, _to, id);
+    emit Transfer(0x0, _to, id);
     return id;
   }
 }
