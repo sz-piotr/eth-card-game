@@ -5,7 +5,7 @@ import {
 
 const defaultState = {
   cardId: null,
-  price: null
+  price: ''
 }
 
 export function reducer (state = defaultState, action) {
@@ -13,7 +13,7 @@ export function reducer (state = defaultState, action) {
     case CREATE_OFFER_CLICKED:
       return {
         cardId: action.cardId,
-        price: null
+        price: ''
       }
     case OFFER_PRICE_CHANGED:
       return {

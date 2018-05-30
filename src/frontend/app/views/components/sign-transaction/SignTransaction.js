@@ -6,11 +6,13 @@ import { signTransactionClosed } from '../../../state/actions'
 import PurchasePack from './types/PurchasePack'
 import PurchaseCard from './types/PurchaseCard'
 import CancelOffer from './types/CancelOffer'
+import CreateOffer from './types/CreateOffer'
 
 const typeToComponent = {
   'purchase-pack': PurchasePack,
   'purchase-card': PurchaseCard,
-  'cancel-offer': CancelOffer
+  'cancel-offer': CancelOffer,
+  'create-offer': CreateOffer
 }
 
 const SignTransaction = ({ open, type, signTransactionClosed }) => {
