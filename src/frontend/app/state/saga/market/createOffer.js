@@ -1,6 +1,6 @@
 import { takeEvery, call, select } from 'redux-saga/effects'
 
-import { Market } from '../../../contracts'
+import { Market, ethToWei } from '../../../contracts'
 import { CREATE_OFFER_CLICKED } from '../../actions'
 
 import { signTransaction, makeTransaction } from '../utils'
@@ -14,7 +14,7 @@ function * purchaseCard () {
     yield * makeTransaction('Create offer', call(
       Market.createOffer,
       offer.cardId,
-      offer.price,
+      ethToWei(offer.price),
       { gas: CREATE_OFFER_GAS_LIMIT }
     ))
   }

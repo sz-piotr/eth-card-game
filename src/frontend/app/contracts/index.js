@@ -19,3 +19,7 @@ export function weiToEth (wei) {
       .toString()
   }
 }
+
+export function ethToWei (eth) {
+  return web3.toWei(eth, 'ether')
+}
