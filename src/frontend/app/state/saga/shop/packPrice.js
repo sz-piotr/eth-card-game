@@ -1,11 +1,11 @@
 import { takeEvery, call, put } from 'redux-saga/effects'
 
-import { Minter } from '../../contracts'
+import { Minter } from '../../../contracts'
 import {
   PACK_PRICE_FETCH_REQUESTED,
   packPriceFetchSucceded,
   packPriceFetchFailed
-} from '../actions'
+} from '../../actions'
 
 function * fetchPackPrice ({ account }) {
   try {

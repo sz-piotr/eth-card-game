@@ -4,7 +4,7 @@ import {
   COLLECTION_FETCH_SUCCEDED,
   MARKET_OFFER_CREATED,
   cardDetailsFetchRequested
-} from '../actions'
+} from '../../actions'
 
 function * onCollectionFetchSucceded ({ data }) {
   for (const cardId of data) {

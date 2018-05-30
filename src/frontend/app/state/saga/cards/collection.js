@@ -1,11 +1,11 @@
 import { takeEvery, call, put } from 'redux-saga/effects'
 
-import { Cards } from '../../contracts'
+import { Cards } from '../../../contracts'
 import {
   COLLECTION_FETCH_REQUESTED,
   collectionFetchSucceded,
   collectionFetchFailed
-} from '../actions'
+} from '../../actions'
 
 function * fetchCollection ({ account }) {
   try {

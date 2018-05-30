@@ -1,12 +1,12 @@
 import { eventChannel } from 'redux-saga'
 import { call, take, put } from 'redux-saga/effects'
 
-import { Market } from '../../contracts'
+import { Market } from '../../../contracts'
 import {
   marketOfferCreated,
   marketOfferCanceled,
   marketTokenPurchased
-} from '../actions'
+} from '../../actions'
 
 function createMarketChannel (fromBlock) {
   return eventChannel(function (emitter) {

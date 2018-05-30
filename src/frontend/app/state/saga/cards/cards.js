@@ -1,11 +1,11 @@
 import { takeEvery, call, put } from 'redux-saga/effects'
 
-import { Cards } from '../../contracts'
+import { Cards } from '../../../contracts'
 import {
   CARD_DETAILS_FETCH_REQUESTED,
   cardDetailsFetchSucceded,
   cardDetailsFetchFailed
-} from '../actions'
+} from '../../actions'
 
 function * fetchCardDetails ({ cardId }) {
   try {
