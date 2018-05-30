@@ -1,8 +1,9 @@
 pragma solidity ^0.4.19;
 
 import "./lib/ERC721.sol";
+import "./lib/ERC721TokenReceiver.sol";
 
-contract ERC721Market {
+contract ERC721Market is ERC721TokenReceiver {
   ERC721 private tokenContract;
 
   mapping (uint => address) public sellerOf;
@@ -16,16 +17,28 @@ contract ERC721Market {
     tokenContract = ERC721(tokenContractAddress);
   }
 
-  function createOffer (uint tokenId, uint price) public {
-    require(sellerOf[tokenId] == address(0));
+  function onERC721Received (address _from, uint256 _tokenId, bytes data) external returns (bytes4) {
+    require(msg.sender == address(tokenContract), "Unsupported token");
+    require(sellerOf[_tokenId] == address(0), "Token already listed");
 
-    emit OfferCreated(msg.sender, tokenId, price);
+    uint256 price = bytesToUint(data);
 
-    // The takeOwnership function is specified to throw if the caller is not
-    // authorized for the specified token, removing the need for a manual check
-    tokenContract.takeOwnership(tokenId);
-    sellerOf[tokenId] = msg.sender;
-    priceOf[tokenId] = price;
+    emit OfferCreated(_from, _tokenId, price);
+    sellerOf[_tokenId] = _from;
+    priceOf[_tokenId] = price;
+
+    return ERC721_RECEIVED;
+  }
+
+  function bytesToUint (bytes data) private pure returns (uint) {
+    require(data.length == 32, "Invalid data length");
+    // TODO: consider using assembly
+    uint result = 0;
+    for (uint index = 0; index < 32; index++) {
+      result = result << 8;
+      result += uint8(data[index]);
+    }
+    return result;
   }
 
   function cancelOffer (uint tokenId) public {
