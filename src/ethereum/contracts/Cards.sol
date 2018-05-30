@@ -1,9 +1,9 @@
 pragma solidity ^0.4.18;
 
 import "./Mintable.sol";
-import "./lib/ERC721.sol";
+import "./lib/ERC721Token.sol";
 
-contract Cards is Mintable, ERC721 {
+contract Cards is Mintable, ERC721Token {
   struct Card {
     uint64 number;
     uint32 level;
