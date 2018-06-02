@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.23;
 
 import "./lib/Ownable.sol";
 import "./lib/Random.sol";
@@ -51,8 +51,8 @@ contract Minter is Ownable, Random {
     emit PriceUpdated(packPrice);
   }
 
-  function mintAnyCard (address _to, uint64 _number, uint32 _level, uint32 _metadata) public onlyOwner {
-    cards.mint(_to, _number, _level, _metadata);
+  function mintAnyCard (address _to, uint64 _number, uint32 _level, uint32 _metadata) public onlyOwner returns (uint) {
+    return cards.mint(_to, _number, _level, _metadata);
   }
 
   function purchasePack (uint _expansionId) public payable {
