@@ -6,7 +6,7 @@
     "build": "rimraf build/webpack && webpack --progress --mode production",
     "build:dev": "webpack --progress --mode development",
     "build:icons": "node src/frontend/icon-font/index.js",
-    "test": "standard && jest",
+    "test": "standard && jest && truffle test",
     "test:watch": "jest --watch",
     "testrpc": "ganache-cli -d --db data -i 123456"
   },
