@@ -27,4 +27,18 @@ contract('Cards', (accounts) => {
     const owner = await cards.ownerOf(id)
     assert.equal(owner, TEST_ACCOUNT)
   })
+
+  it('implements ERC721 safeTransferFrom', async () => {
+    const cards = await Cards.deployed()
+    const minter = await Minter.deployed()
+
+    const res = await minter.mintAnyCard(accounts[0], 0, 0, 0)
+    const id = res.receipt.logs[0].data
+
+    // cannot call the 4 argument version because web3.js <3
+    await cards.safeTransferFrom(accounts[0], TEST_ACCOUNT, id)
+
+    const owner = await cards.ownerOf(id)
+    assert.equal(owner, TEST_ACCOUNT)
+  })
 })

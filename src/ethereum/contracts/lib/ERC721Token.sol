@@ -76,7 +76,7 @@ contract ERC721Token {
     transferFrom(_from, _to, _tokenId);
     if (isContract(_to)) {
       bytes4 returnValue = ERC721TokenReceiver(_to).onERC721Received(_from, _tokenId, data);
-      require(returnValue == ERC721_RECEIVED, "Invalid receiver");
+      require(returnValue == ERC721_RECEIVED, "Invalid return value");
     }
   }
 
