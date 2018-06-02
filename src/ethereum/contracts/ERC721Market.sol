@@ -42,7 +42,7 @@ contract ERC721Market is ERC721TokenReceiver {
   }
 
   function cancelOffer (uint tokenId) public {
-    require(msg.sender == sellerOf[tokenId]);
+    require(msg.sender == sellerOf[tokenId], "Sender not the original owner");
 
     emit OfferCanceled(msg.sender, tokenId);
 
@@ -52,8 +52,8 @@ contract ERC721Market is ERC721TokenReceiver {
   }
 
   function purchase (uint tokenId) public payable {
-    require(sellerOf[tokenId] != address(0));
-    require(msg.value == priceOf[tokenId]);
+    require(sellerOf[tokenId] != address(0), "Token not on sale");
+    require(msg.value == priceOf[tokenId], "Value not equal to price");
 
     address seller = sellerOf[tokenId];
     emit TokenPurchased(seller, msg.sender, tokenId, priceOf[tokenId]);
