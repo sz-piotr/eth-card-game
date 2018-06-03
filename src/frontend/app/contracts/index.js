@@ -23,3 +23,7 @@ export function weiToEth (wei) {
 export function ethToWei (eth) {
   return web3.toWei(eth, 'ether')
 }
+
+export function toBigNumber (value) {
+  return web3.toBigNumber(value)
+}

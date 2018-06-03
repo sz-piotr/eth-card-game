@@ -31,10 +31,9 @@ contract ERC721Market is ERC721TokenReceiver {
   }
 
   function bytesToUint (bytes data) private pure returns (uint) {
-    require(data.length == 32, "Invalid data length");
-    // TODO: consider using assembly
+    require(data.length <= 32, "Invalid data length");
     uint result = 0;
-    for (uint index = 0; index < 32; index++) {
+    for (uint index = 0; index < data.length; index++) {
       result = result << 8;
       result += uint8(data[index]);
     }

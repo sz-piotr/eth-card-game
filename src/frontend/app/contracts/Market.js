@@ -4,6 +4,9 @@ import { abi, networks } from '../../../../build/contracts/ERC721Market'
 const instance = createContractInstance(abi, networks)
 
 export const Market = {
+  getAddress () {
+    return instance.then(market => market.address)
+  },
   createOffer: createWeb3Function(instance, 'createOffer'),
   cancelOffer: createWeb3Function(instance, 'cancelOffer'),
   purchase: createWeb3Function(instance, 'purchase'),
