@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-.market-item {
+.market-item > a {
   background-color: @color-foreground;
   border-radius: @border-radius;
   padding: @space-m;
@@ -14,10 +14,10 @@
     "image seller price";
   grid-auto-columns: auto 1fr auto;
   grid-gap: @space-m;
+}
 
-  &:not(:last-child) {
-    margin-bottom: @space-m;
-  }
+.market-item:not(:last-child) {
+  margin-bottom: @space-m;
 }
 
 .market-item-image {
