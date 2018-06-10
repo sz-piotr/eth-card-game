@@ -24,6 +24,11 @@ export function ethToWei (eth) {
   return web3.toWei(eth, 'ether')
 }
 
-export function toBigNumber (value) {
-  return web3.toBigNumber(value)
+export function encodeAsBytes (value) {
+  const hex = web3.toBigNumber(value).toString(16)
+  if (hex.length % 2 === 0) {
+    return '0x' + hex
+  } else {
+    return '0x0' + hex
+  }
 }

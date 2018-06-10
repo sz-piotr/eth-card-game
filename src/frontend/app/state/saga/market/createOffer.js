@@ -1,6 +1,6 @@
 import { takeEvery, call, select } from 'redux-saga/effects'
 
-import { Cards, Market, ethToWei, toBigNumber } from '../../../contracts'
+import { Cards, Market, ethToWei, encodeAsBytes } from '../../../contracts'
 import { CREATE_OFFER_CLICKED } from '../../actions'
 
 import { signTransaction, makeTransaction } from '../utils'
@@ -14,8 +14,7 @@ function * purchaseCard () {
     const offer = yield select(state => state.market.offerToCreate)
     const marketAddress = yield call(Market.getAddress)
 
-    // https://github.com/ethereum/web3.js/blob/59aae306c1c31ef6a65b9196e7f03af74c69e059/lib/utils/utils.js#L266
-    const data = toBigNumber(ethToWei(offer.price))
+    const data = encodeAsBytes(ethToWei(offer.price))
 
     yield * makeTransaction('Create offer', call(
       Cards.safeTransferFrom,
