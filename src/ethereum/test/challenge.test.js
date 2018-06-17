@@ -32,8 +32,8 @@ contract('Challenges', (accounts) => {
     }
     async function prepareCards () {
       const cardTypes = await CardTypes.deployed()
-      await cardTypes.createCardType(0, 1, 1, 1)
-      await cardTypes.createHero(1, 1, 10)
+      await cardTypes.createCardType(0, 1, 1)
+      await cardTypes.createHero(1, 10)
     }
 
     await prepareCardTypes()

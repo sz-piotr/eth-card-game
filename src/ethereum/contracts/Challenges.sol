@@ -28,7 +28,7 @@ contract Challenges is Ownable {
 
   mapping(uint => address) challengeToInitiator;
 
-  function Challenges(address cardsAddress, address cardTypesAddress) public {
+  constructor(address cardsAddress, address cardTypesAddress) public {
     cards = Cards(cardsAddress);
     cardTypes = CardTypes(cardTypesAddress);
   }
@@ -61,8 +61,8 @@ contract Challenges is Ownable {
     uint initiatorDamage;
     uint challengerDamage;
     for (uint i = 0; i != elementAmount; i++) {
-      (, challengerElement, challengerDamage) = getCard(_challenge.challengerCards[0]);
-      (, initiatorElement, initiatorDamage) = getCard(initiatorCards[0]);
+      (challengerElement, challengerDamage) = getCard(_challenge.challengerCards[0]);
+      (initiatorElement, initiatorDamage) = getCard(initiatorCards[0]);
       uint result = (elementAmount + initiatorElement - challengerElement) % elementAmount;
       if(result != 0) {
         if (result % 2 == 1) {
@@ -90,11 +90,11 @@ contract Challenges is Ownable {
     uint cardTypeId;
     (cardTypeId, ,) = cards.cards(id);
     uint heroHealth;
-    (, heroHealth) = cardTypes.getHero(cardTypeId);
+    (heroHealth) = cardTypes.getHero(cardTypeId);
     return heroHealth;
   }
 
-  function getCard(uint id) public view returns (uint, uint, uint) {
+  function getCard(uint id) public view returns (uint, uint) {
     uint cardTypeId;
     (cardTypeId, ,) = cards.cards(id);
     return cardTypes.getCardType(cardTypeId);
