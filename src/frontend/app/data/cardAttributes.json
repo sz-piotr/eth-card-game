@@ -1,0 +1,84 @@
+{
+  "1100": {
+    "name": "archangel",
+    "displayName": "Archangel",
+    "description": "Lorem ipsum dolor Archangel, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "type": "hero",
+    "searchText": "archangel",
+    "number": 1100,
+    "expansion": "core-set",
+    "rarity": "common"
+  },
+  "1101": {
+    "name": "hiveguardian",
+    "displayName": "Hive Guardian",
+    "description": "Lorem ipsum dolor Hive Guardian, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "type": "hero",
+    "searchText": "hive guardian",
+    "number": 1101,
+    "expansion": "core-set",
+    "rarity": "common"
+  },
+  "1200": {
+    "name": "katerina",
+    "displayName": "Katerina",
+    "description": "Lorem ipsum dolor Katerina, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "type": "hero",
+    "searchText": "katerina",
+    "number": 1200,
+    "expansion": "core-set",
+    "rarity": "uncommon"
+  },
+  "1201": {
+    "name": "skullcrasher",
+    "displayName": "Skullcrasher",
+    "description": "Lorem ipsum dolor Skullcrasher, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "type": "hero",
+    "searchText": "skullcrasher",
+    "number": 1201,
+    "expansion": "core-set",
+    "rarity": "uncommon"
+  },
+  "1300": {
+    "name": "quark",
+    "displayName": "Quark",
+    "description": "Lorem ipsum dolor Quark, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "type": "hero",
+    "searchText": "quark",
+    "number": 1300,
+    "expansion": "core-set",
+    "rarity": "rare"
+  },
+  "1301": {
+    "name": "spectre",
+    "displayName": "Spectre",
+    "description": "Lorem ipsum dolor Spectre, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "type": "hero",
+    "searchText": "spectre",
+    "number": 1301,
+    "expansion": "core-set",
+    "rarity": "rare"
+  },
+  "1600": {
+    "name": "punch",
+    "displayName": "Punch",
+    "description": "Lorem ipsum dolor Punch, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "damage": 13,
+    "type": "action",
+    "searchText": "punch",
+    "number": 1600,
+    "expansion": "core-set",
+    "rarity": "common"
+  },
+  "1700": {
+    "name": "fireball",
+    "displayName": "Fireball",
+    "description": "Lorem ipsum dolor Fireball, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "damage": 13,
+    "type": "action",
+    "searchText": "fireball",
+    "number": 1700,
+    "expansion": "core-set",
+    "rarity": "uncommon"
+  }
+}

@@ -10,7 +10,9 @@ class CardDisplay extends React.Component {
     this.state = {
       isLoading: true
     }
+    console.log(props.data)
     this.attributes = getCardAttributes(props.data)
+    console.log(this.attributes)
     this.display = null
     this.unmounted = false
     fetchResourcesFor(this.attributes)

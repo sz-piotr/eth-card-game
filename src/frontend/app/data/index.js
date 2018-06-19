@@ -1,4 +1,4 @@
-import { cardAttributes } from './cardAttributes'
+import cardAttributes from './cardAttributes.json'
 
 const DEFAULT_CARD = {
   type: 'unknown',
