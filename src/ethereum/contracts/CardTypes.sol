@@ -6,7 +6,7 @@ contract CardTypes is Ownable {
 
   uint8 public elementAmount = 5;
 
-  struct CardType {
+  struct Action {
     uint damage;
     uint8 element;
   }
@@ -15,12 +15,12 @@ contract CardTypes is Ownable {
     uint health;
   }
 
-  mapping(uint => CardType) cardTypes;
+  mapping(uint => Action) actions;
   mapping(uint => Hero) heroes;
   mapping(uint => bool) isHero;
 
-  function createCardType(uint id, uint damage, uint8 element) public onlyOwner {
-    cardTypes[id] = CardType(damage, element);
+  function createAction(uint id, uint damage, uint8 element) public onlyOwner {
+    actions[id] = Action(damage, element);
     isHero[id] = false;
   }
 
@@ -29,10 +29,10 @@ contract CardTypes is Ownable {
     isHero[id] = true;
   }
 
-  function getCardType(uint id) public view returns (uint, uint8) {
+  function getAction(uint id) public view returns (uint, uint8) {
     assert(isHero[id] == false);
-    CardType storage cardType = cardTypes[id];
-    return (cardType.damage, cardType.element);
+    Action storage action = actions[id];
+    return (action.damage, action.element);
   }
 
   function getHero(uint id) public view returns (uint) {

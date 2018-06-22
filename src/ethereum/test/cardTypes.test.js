@@ -4,17 +4,17 @@ const CardTypes = artifacts.require('./CardTypes.sol')
 const damage = 2
 const element = 1
 const health = 10
-const resultCardType = [damage, element]
+const resultAction = [damage, element]
 const resultHero = health
 
 contract('CardTypes', () => {
-  it('should create a cardType', async () => {
+  it('should create a action', async () => {
     const instance = await CardTypes.deployed()
-    await instance.createCardType(0, damage, element)
+    await instance.createAction(0, damage, element)
 
-    const card = await instance.getCardType(0)
+    const card = await instance.getAction(0)
 
-    assert.deepEqual(card.map(x => x.toNumber()), resultCardType)
+    assert.deepEqual(card.map(x => x.toNumber()), resultAction)
   })
 
   it('should create a hero ', async () => {

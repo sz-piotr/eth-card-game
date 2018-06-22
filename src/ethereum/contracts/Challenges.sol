@@ -95,9 +95,9 @@ contract Challenges is Ownable {
   }
 
   function getCard(uint id) public view returns (uint, uint) {
-    uint cardTypeId;
-    (cardTypeId, ,) = cards.cards(id);
-    return cardTypes.getCardType(cardTypeId);
+    uint actionId;
+    (actionId, ,) = cards.cards(id);
+    return cardTypes.getAction(actionId);
   }
 
   function getResult(uint id) public view returns (challengeResultEnum) {
