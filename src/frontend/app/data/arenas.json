@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Urog Proving Grounds",
+    "description": "Level 1, common only",
+    "image": "images/arenas/urog-proving-grounds.png"
+  },
+  {
+    "name": "Lone Moon",
+    "description": "Levels 1-2",
+    "image": "images/arenas/lone-moon.png"
+  },
+  {
+    "name": "Drowned World",
+    "description": "Levels 2-3",
+    "image": "images/arenas/drowned-world.png"
+  },
+  {
+    "name": "Ringworld",
+    "description": "Levels 2-4",
+    "image": "images/arenas/ringworld.png"
+  },
+  {
+    "name": "Purgatory",
+    "description": "Levels 3+",
+    "image": "images/arenas/purgatory.png"
+  },
+  {
+    "name": "GX0874C - Singularity",
+    "description": "evels 4+, rare and epic only",
+    "image": "images/arenas/black-hole.png"
+  }
+]
