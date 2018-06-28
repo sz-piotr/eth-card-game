@@ -7,17 +7,17 @@ const ACTION_OFFSET = 500
 const COMMON_OFFSET = 100
 const UNCOMMON_OFFSET = 200
 const RARE_OFFSET = 300
-exports.migrateCards = function (middlewares = []) {
+exports.migrateCards = function (migrater) {
     const cardAttributes = {}
-    middlewares.push(addCard(cardAttributes))
-    const runMiddlewares = card => middlewares.forEach(middleware => middleware(card))
+    const addCardClosure = addCard(cardAttributes)
     cards.expansions.forEach((expansion, index) => {
         const offset = (index + 1) * EXPANSION_OFFSET
-        getCards(expansion, offset + COMMON_OFFSET, 'common').forEach(runMiddlewares)
-        getCards(expansion, offset + UNCOMMON_OFFSET, 'uncommon').forEach(runMiddlewares)
-        getCards(expansion, offset + RARE_OFFSET, 'rare').forEach(runMiddlewares)
+        getCards(expansion, offset + COMMON_OFFSET, 'common').forEach(addCardClosure)
+        getCards(expansion, offset + UNCOMMON_OFFSET, 'uncommon').forEach(addCardClosure)
+        getCards(expansion, offset + RARE_OFFSET, 'rare').forEach(addCardClosure)
     })
     save(cardAttributes)
+    return Promise.all(Object.entries(cardAttributes).map(([_, card]) => migrater(card)))
 }
 
 function getCards(expansion, offset, rarity) {
