@@ -9,7 +9,8 @@ module.exports = function (deployer, network, accounts) {
 async function deploy (deployer, network, accounts) {
   const minter = await Minter.deployed()
   const cardTypes = await CardTypes.deployed()
-  deployExpansions(minter)
+  await deployExpansions(minter)
+  console.log(":D")
   migrateCards.migrateCards([deployCardTypes(cardTypes)])
 }
 
@@ -23,11 +24,11 @@ function deployCardTypes (contract) {
   }
 }
 
-function deployExpansions (contract) {
-  cards.expansions.forEach(expansion => {
+async function deployExpansions (contract) {
+  await Promise.all(cards.expansions.map(expansion => {
     const props = getExpansionsProps(expansion)
-    contract.createExpansion(...props)
-  })
+    return contract.createExpansion(...props)
+  }))
 }
 
 function getExpansionsProps (expansion) {
