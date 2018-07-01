@@ -2,31 +2,37 @@
   {
     "name": "Urog Proving Grounds",
     "description": "Level 1, common only",
-    "image": "images/arenas/urog-proving-grounds.png"
+    "image": "images/arenas/urog-proving-grounds.png",
+    "wideDescription": "Lorem ipsum dolor Archangel, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   {
     "name": "Lone Moon",
     "description": "Levels 1-2",
-    "image": "images/arenas/lone-moon.png"
+    "image": "images/arenas/lone-moon.png",
+    "wideDescription": "Lorem ipsum dolor Archangel, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   {
     "name": "Drowned World",
     "description": "Levels 2-3",
-    "image": "images/arenas/drowned-world.png"
+    "image": "images/arenas/drowned-world.png",
+    "wideDescription": "Lorem ipsum dolor Archangel, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   {
     "name": "Ringworld",
     "description": "Levels 2-4",
-    "image": "images/arenas/ringworld.png"
+    "image": "images/arenas/ringworld.png",
+    "wideDescription": "Lorem ipsum dolor Archangel, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   {
     "name": "Purgatory",
     "description": "Levels 3+",
-    "image": "images/arenas/purgatory.png"
+    "image": "images/arenas/purgatory.png",
+    "wideDescription": "Lorem ipsum dolor Archangel, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   {
     "name": "GX0874C - Singularity",
     "description": "evels 4+, rare and epic only",
-    "image": "images/arenas/black-hole.png"
+    "image": "images/arenas/black-hole.png",
+    "wideDescription": "Lorem ipsum dolor Archangel, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   }
 ]

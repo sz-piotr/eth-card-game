@@ -23,6 +23,14 @@
   overflow: hidden;
 }
 
+.arena-option-title {
+  font-size: @font-size-base;
+}
+
+.arena-option-description {
+  margin: 0;
+}
+
 .arena-option-image {
   width: 100%;
   display: block;
@@ -38,10 +46,53 @@
   padding: @space-m @space-l;
 }
 
-.arena-option-title {
-  font-size: @font-size-base;
+.arena-location-image { 
+  width: 100%;
+  z-index: 1;
 }
 
-.arena-option-description {
+.arena-location {
+  width: 100%;
+  position: relative;
+}
+
+.arena-new-challenge {
+  color:  rgba(255, 255, 255, 0.8);
+  background-color:  rgba(255, 255, 255, 0.5);
+  font-size: 250px;
+  text-align: center;
+  border-radius: 15%;
+  top: 10%;
+  left: 35%;
+  position: absolute;
+  z-index: 2;
+}
+
+.arena-location-opponents {
+  top: 70%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+}
+
+.arena-location-icon {
+  top: 50px;
+  position: relative;
+  color:  rgba(255, 255, 255, 0.5);
+  font-size: 140px;
+}
+
+.arena-location-opponents-collection {
+  width: 100%;
+  list-style-type: none;
   margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2*@space-l;
+
+  li {
+    padding: 0;
+  }
 }
