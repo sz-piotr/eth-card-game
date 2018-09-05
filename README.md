@@ -1,5 +1,7 @@
 # Eth Card Game
 
+NOTE: The project was cancelled and the development stopped. Use this project as a resource for dapp development.
+
 # Development
 
 To develop the project the following tools are required:
